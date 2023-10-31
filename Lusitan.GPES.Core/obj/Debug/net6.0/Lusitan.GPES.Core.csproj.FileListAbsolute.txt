@@ -1,0 +1,11 @@
+E:\GPES\Lusitan.GPES.Core\bin\Debug\net6.0\Lusitan.GPES.Core.deps.json
+E:\GPES\Lusitan.GPES.Core\bin\Debug\net6.0\Lusitan.GPES.Core.dll
+E:\GPES\Lusitan.GPES.Core\bin\Debug\net6.0\Lusitan.GPES.Core.pdb
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.AssemblyInfoInputs.cache
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.AssemblyInfo.cs
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.csproj.CoreCompileInputs.cache
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.dll
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\refint\Lusitan.GPES.Core.dll
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\Lusitan.GPES.Core.pdb
+E:\GPES\Lusitan.GPES.Core\obj\Debug\net6.0\ref\Lusitan.GPES.Core.dll

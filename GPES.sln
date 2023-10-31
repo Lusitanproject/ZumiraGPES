@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.Core", "Lusitan.GPES.Core\Lusitan.GPES.Core.csproj", "{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domonio", "3 - Domonio", "{8E6CBD7F-1AA3-4437-AC13-848987D00B55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{1E97AD90-AE56-4829-94C5-F0A725D58FC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Dados", "4.1 - Dados", "{EE1A6A49-CB80-434D-B2E7-A51D216F3CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lusitan.GPES.Infra.Repositorio", "Lusitan.GPES.Infra.Repositorio\Lusitan.GPES.Infra.Repositorio.csproj", "{09281A8D-72C8-41FD-9F80-6B866E023683}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09281A8D-72C8-41FD-9F80-6B866E023683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09281A8D-72C8-41FD-9F80-6B866E023683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09281A8D-72C8-41FD-9F80-6B866E023683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09281A8D-72C8-41FD-9F80-6B866E023683}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BEEA217-C6A6-4562-BC2C-7C08352EEDFA} = {8E6CBD7F-1AA3-4437-AC13-848987D00B55}
+		{EE1A6A49-CB80-434D-B2E7-A51D216F3CB9} = {1E97AD90-AE56-4829-94C5-F0A725D58FC3}
+		{09281A8D-72C8-41FD-9F80-6B866E023683} = {EE1A6A49-CB80-434D-B2E7-A51D216F3CB9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E23C1B84-CA9E-4C87-A202-3459D72AD09F}
+	EndGlobalSection
+EndGlobal
