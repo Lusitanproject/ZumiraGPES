@@ -1,0 +1,14 @@
+O envio de e-mails vai ser feito pelo micro-servico XMS, com uma chamada Post no método /api/XMS/controle-mensagem, com os seguintes parametros:
+
+numRemetente
+   numero inteiro, que e o remetente id remetente cadastrado no MS do XMS
+nomDestino
+   lista de emails de destivo. devem ser colocados emails validos, quando mais de um destino, os endereços devem ser separados por ponto e virgula. Para esses casos, sera enviado somnete um email com todos os destinatarios no campo "para". O tamanho total desse campo nao deve passar de 100 carateres.
+descAssunto
+   campo de carateres alfanumericos de tamanhao maximo 100
+
+descMensagem
+   corpo da msg, texto de tamanho maximo 8000 carecteres
+
+Todos os eventos de envio de email serao controlados pelo back-office da aplicação GPES
+

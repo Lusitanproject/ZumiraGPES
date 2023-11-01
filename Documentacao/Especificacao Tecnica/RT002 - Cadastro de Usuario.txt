@@ -1,0 +1,34 @@
+O cadastro de usuário e pre-requisitos para os usuários de diversos perfis do sistema, que devera conter as seguintes informações:
+
+Id: numero sequencial iniciado em 1
+Nome: texto de tamanho maximo 100 carateres
+E-mail: email válido de tamanho maximo 100
+Senha: texto de tamanho 8 caracteres. A senha deve ser armazenada criptografada no padrao SHA1
+Situação: situção do usuario no sistema, caracter de tamanho 1, sendo A para Ativo, I para Inativo e B para bloqueado
+
+Observações:
+
+- Não pode haver mais de um usuário com o mesmo email. Nesse caso, o sistema deve emitir uma a msg de erro: "Ja existe um usuário cadastrado com esse email!" e impedir a gravação do registro
+
+- O sistema deve cadastrar uma senha padrao a ser parametrizada, que no primeiro login deve ser alterada
+
+- O usuário deve ser cadastrado como Ativo
+
+- Nas telas de edição do usuário, o email deve estar desabilitado para que se mantenha único
+
+- Um usuário pode estar em mais de um perfil, um perfil pode ter varios usuários
+
+- Tudo o que for feito ao usuário, deve ser gravado um log a fins de auditoria, contendo:
+
+Numero sequencial do log iniciado em 1
+Id do usuário que o log pertence.
+Id do usuário responsavel pela ação que o log esta armazenando
+Descrição do log, texto de tamanho maximo 100
+Data/hora que o log foi gerado
+
+- O sistema deve ter uma tela para alteração da senha, onde o usuário logado só pode alterar a propria senha. Nesse caso, gravar log com a descrição: "Senha alterada"
+
+- O sistema deve possuir a funcionalide de reenvio da senha, em caso de esquecimento. Nesse caso, devera ser gravado um log com o texto: "Senha reenviada a pedido do usuário"
+
+
+
