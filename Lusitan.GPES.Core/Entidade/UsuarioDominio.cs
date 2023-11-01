@@ -11,10 +11,6 @@ namespace Lusitan.GPES.Core.Entidade
         [Required(ErrorMessage = "A aplicação requer que o campo E-mail seja preenchido!")]
         [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 100 caracteres")]
         public string eMail { get; set; }
-
-        public DateTime DthInicioAcesso { get; set; }
-
-        public DateTime DthFimAcesso { get; set; }
     }
 
     public class UsuarioViewDominio : UsuarioDominio

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nlog" Version="5.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lusitan.GPES.Core\Lusitan.GPES.Core.csproj" />
+    <ProjectReference Include="..\Lusitan.GPES.Infra.Repositorio\Lusitan.GPES.Infra.Repositorio.csproj" />
+  </ItemGroup>
+
+</Project>

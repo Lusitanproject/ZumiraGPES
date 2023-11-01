@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mLQKKPr3yPxcbMnPU4EC2hNLu+zuakZCz5/e2R0PGyg=",
+  "Source": "Lusitan.GPES.WebApi",
+  "BasePath": "_content/Lusitan.GPES.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
