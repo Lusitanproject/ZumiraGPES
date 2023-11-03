@@ -1,0 +1,14 @@
+E:\ZumiraGPES\Lusitan.GPES.Core\bin\Debug\net7.0\Lusitan.GPES.Core.deps.json
+E:\ZumiraGPES\Lusitan.GPES.Core\bin\Debug\net7.0\Lusitan.GPES.Core.dll
+E:\ZumiraGPES\Lusitan.GPES.Core\bin\Debug\net7.0\Lusitan.GPES.Core.pdb
+E:\ZumiraGPES\Lusitan.GPES.Core\bin\Debug\net7.0\CORE.Validacao.dll
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.csproj.AssemblyReference.cache
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.AssemblyInfoInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.AssemblyInfo.cs
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.csproj.CoreCompileInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.csproj.CopyComplete
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.dll
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\refint\Lusitan.GPES.Core.dll
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\Lusitan.GPES.Core.pdb
+E:\ZumiraGPES\Lusitan.GPES.Core\obj\Debug\net7.0\ref\Lusitan.GPES.Core.dll

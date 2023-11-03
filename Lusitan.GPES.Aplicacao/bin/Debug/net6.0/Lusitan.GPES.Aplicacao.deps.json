@@ -10,7 +10,8 @@
         "dependencies": {
           "Lusitan.GPES.Core": "1.0.0",
           "Lusitan.GPES.Infra.Repositorio": "1.0.0",
-          "NLog": "5.2.5"
+          "NLog": "5.2.5",
+          "CORE.CryptObj": "1.0.0.0"
         },
         "runtime": {
           "Lusitan.GPES.Aplicacao.dll": {}
@@ -121,6 +122,14 @@
         "runtime": {
           "Lusitan.GPES.Infra.Repositorio.dll": {}
         }
+      },
+      "CORE.CryptObj/1.0.0.0": {
+        "runtime": {
+          "CORE.CryptObj.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -214,6 +223,11 @@
     },
     "Lusitan.GPES.Infra.Repositorio/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CORE.CryptObj/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

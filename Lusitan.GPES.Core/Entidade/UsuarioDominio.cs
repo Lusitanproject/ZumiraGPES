@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using CORE.Validacao;
+using Lusitan.GPES.Core.Base;
 
 namespace Lusitan.GPES.Core.Entidade
 {
@@ -10,6 +12,7 @@ namespace Lusitan.GPES.Core.Entidade
 
         [Required(ErrorMessage = "A aplicação requer que o campo E-mail seja preenchido!")]
         [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 100 caracteres")]
+        [ValidaEMail]
         public string eMail { get; set; }
     }
 

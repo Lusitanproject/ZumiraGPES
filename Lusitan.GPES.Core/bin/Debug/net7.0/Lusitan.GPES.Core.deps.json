@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Lusitan.GPES.Core/1.0.0": {
+        "dependencies": {
+          "CORE.Validacao": "1.0.0.0"
+        },
+        "runtime": {
+          "Lusitan.GPES.Core.dll": {}
+        }
+      },
+      "CORE.Validacao/1.0.0.0": {
+        "runtime": {
+          "CORE.Validacao.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Lusitan.GPES.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CORE.Validacao/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
