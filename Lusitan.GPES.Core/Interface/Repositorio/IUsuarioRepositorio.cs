@@ -3,11 +3,11 @@ using Lusitan.GPES.Core.Entidade;
 
 namespace Lusitan.GPES.Core.Interface.Repositorio
 {
-    public interface IUsuarioRepositorio: IGetList<UsuarioDominio>,
-                                          IAdd<UsuarioViewDominio>,
+    public interface IUsuarioRepositorio: IAdd<UsuarioViewDominio>,
                                           IGetById<UsuarioDominio>
     {
-        UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail);
+        List<UsuarioDominio> GetList(string idcAtivo);
 
+        UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail);
     }
 }

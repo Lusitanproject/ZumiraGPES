@@ -48,5 +48,19 @@ namespace Lusitan.GPES.Infra.Repositorio
                 return _usuarioPerfil;
             }
         }
+
+        IUsuarioLogRepositorio _usuarioLog;
+        public IUsuarioLogRepositorio UsuarioLog
+        {
+            get
+            {
+                if (_usuarioLog == null)
+                {
+                    _usuarioLog = new UsuarioLogRepositorio(this.StrConexao);
+                }
+
+                return _usuarioLog;
+            }
+        }
     }
 }

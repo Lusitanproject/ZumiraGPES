@@ -1,0 +1,31 @@
+Pre-requisitos:
+
+RT002 - Cadastro de Admin do Sistema
+
+Descrição:
+
+- o sistema deve recuperar o usuário na base de dados pelo email
+
+- o sistema deve verificar se o usuário existe
+
+- o sistema deve validar a situação do usuário
+
+- o sistema deve validar a senha informada confere com a senha armazenada
+
+Se não ocorrerem erros nesses passos, o sistema deve:
+
+- Gerar um log de atividade de login
+
+- Gerar um token com a chave de acesso "43e4dbf0-52ed-4203-895d-42b586496bd4" contendo as Claims:
+   ClaimTypes.Sid: Id do usuário,
+   ClaimTypes.Name: Nome do Usuário,
+   ClaimTypes.Email: EMail do Usuário,
+   ClaimTypes.Role: lista de perfis que o usuário possui acesso
+
+Retorno da rotina de login:
+   LoginEhValido (bool): informa se o login foi efetuado com sucesso
+   UltimoAcesso (DateTime): Data/hora do ultimo login valido
+   Token: token de acesso ou msg de erros
+
+Obs:
+o acesso ao end-point de login deve ser anonimo

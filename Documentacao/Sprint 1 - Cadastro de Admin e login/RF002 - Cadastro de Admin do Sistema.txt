@@ -1,0 +1,22 @@
+Pre-requisitos:
+
+RF001 - Envio de Email
+
+Descrição:
+
+Eu como um Usuário Admin, desejo cadastradar novos Usuários com esse mesmo perfil no sistema, de maneira que:
+
+- não podem haver 2 usuários com o mesmo email
+
+- O email deve possuir no maximo 100 caracteres
+
+- A senha deve possuir no maximo 8 caracteres
+
+- O nome do usuário deve possuir no máximo 100 caracteres
+
+- O sistema deve cadastrar uma senha padrão para os novos usuários
+
+- O sistema deve enviar email com os dados de acesso a esse novo usuário cadastrado
+   O sistema deve armazenar log com o retorno do envio do email 
+
+- Somente Administradores podem cadastrar Administradores

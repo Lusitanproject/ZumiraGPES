@@ -1,0 +1,20 @@
+GPES - Sistema de Gestão de Pessoas
+
+-> Front-end:
+
+.net 7
+Desenvolvido em Blazor
+   Radzen
+JavaScript
+BootStrap
+
+-> Back-end
+
+.net 7 (C#)
+Restfull api
+Dapper
+nlog
+Arquitetura DDD
+
+-> Banco de Dados
+  MS-SQL Server

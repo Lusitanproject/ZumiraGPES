@@ -14,34 +14,13 @@ namespace Lusitan.GPES.Infra.Repositorio
                                     IdPerfilAcesso = num_perfil
                             FROM usuario_perfil (NOLOCK) ";
 
-        public string Add(UsuarioPerfilDominio obj)
-        {
-            try
-            {
-                var _query = @" INSERT INTO usuario_perfil (num_usuario, num_perfil) 
-                                VALUES (@NUM_USUARIO, @NUM_PERFIL)";
-
-                this.ConexaoBD.Execute(_query.ToString(), new { NUM_USUARIO = obj.IdUsuario, NUM_PERFIL = obj.IdPerfilAcesso });
-
-                return string.Empty;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
-            }
-            finally
-            {
-                this.FechaConexao();
-            }
-        }
-
         public List<UsuarioPerfilDominio> GetByPerfil(int idPerfil)
         {
             try
             {
-                var _queryUsuarioPerfil = @$"{_query} WHERE num_perfil = @NUM_PERFIL";
+                var _queryUsuarioPerfil = @$"{_query} WHERE num_perfil = {idPerfil}";
 
-                return this.ConexaoBD.Query<UsuarioPerfilDominio>(_queryUsuarioPerfil, new { NUM_PERFIL = idPerfil }).ToList();
+                return this.ConexaoBD.Query<UsuarioPerfilDominio>(_queryUsuarioPerfil).ToList();
             }
             catch (Exception ex)
             {
@@ -57,9 +36,30 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _queryUsuarioPerfil = @$"{_query} WHERE num_usuario = @NUM_USUARIO";
+                var _queryUsuarioPerfil = @$"{_query} WHERE num_usuario = {idUsuario}";
 
-                return this.ConexaoBD.Query<UsuarioPerfilDominio>(_queryUsuarioPerfil, new { NUM_USUARIO = idUsuario }).ToList();
+                return this.ConexaoBD.Query<UsuarioPerfilDominio>(_queryUsuarioPerfil).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
+        public string Add(UsuarioPerfilDominio obj)
+        {
+            try
+            {
+                var _query = @$" INSERT INTO usuario_perfil (num_usuario, num_perfil) 
+                                 VALUES ({obj.IdUsuario}, {obj.IdPerfilAcesso})";
+
+                this.ConexaoBD.Execute(_query.ToString());
+
+                return string.Empty;
             }
             catch (Exception ex)
             {

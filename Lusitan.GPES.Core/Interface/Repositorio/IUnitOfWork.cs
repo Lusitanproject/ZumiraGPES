@@ -10,5 +10,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         IPerfilAcessoRepositorio PerfilAcesso { get; }
 
         IUsuarioPerfilRepositorio UsuarioPerfil { get; }
+
+        IUsuarioLogRepositorio UsuarioLog { get; }
     }
 }

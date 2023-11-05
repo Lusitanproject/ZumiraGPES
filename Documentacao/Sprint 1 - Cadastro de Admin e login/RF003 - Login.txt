@@ -1,0 +1,23 @@
+Pre-requisitos:
+
+RF002 - Cadastro de Admin do Sistema
+
+Descrição:
+
+Eu como usuário, desejo realizar o login no sistema, informando meu usuário (email) e senha, de maneira que:
+
+- o sistera devera recuperar o usuário pelo email. se o usuário não existir, devera ser exibida a msg: "Não existe nenhum usuário cadastrado com este e-mail!"
+
+- o sistema deve validar minha situação; so poderei logar na aplicação se meu usuário estiver ativo
+   Se o usuário estiver Bloquedo, o sistema deve exibir a msg de erro: "Usuário Bloqueado, Contacte do Admin do Sistema!"
+   Se o usuário estiver Inativo, o sistema deve exibir a msg de erro: "Usuário Inativo, Contacte do Admin do Sistema!"
+
+- caso o usuário tente por 3 vezes digitar a senha sem sucesso, o sistema devera bloquear este usuário e gerar log como "Usuário Bloqueado por exceder a quantidade de tentativas de login!"
+
+- o sistema deve validar se a senha informada é igual a armazenada no banco de dados
+
+- o sistema deve retornar o token com validade de 4 horas contendo:
+   Id do Usuário
+   Nome do Usuário
+   EMail
+   Lista de todos os perfis que este usuário esta

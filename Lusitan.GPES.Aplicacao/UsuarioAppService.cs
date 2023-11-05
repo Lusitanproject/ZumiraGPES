@@ -2,6 +2,7 @@
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Lusitan.GPES.Aplicacao
 {
@@ -10,6 +11,7 @@ namespace Lusitan.GPES.Aplicacao
         readonly IUsuarioServico _servico;
         readonly IPerfilAcessoAppService _perfilAcesso;
         readonly IUsuarioPerfilAppService _usuarioPerfil;
+        readonly IUsuarioLogAppService _log;
         readonly ConfigAmbiente _config;
         readonly ConfigXMS _configXMS;
 
@@ -19,14 +21,16 @@ namespace Lusitan.GPES.Aplicacao
                                     ConfigXMS configXMS,
                                     IUsuarioServico servico,
                                     IPerfilAcessoAppService perfilAcesso,
-                                    IUsuarioPerfilAppService usuarioPerfil)
-            :base(configXMS)
+                                    IUsuarioPerfilAppService usuarioPerfil,
+                                    IUsuarioLogAppService log)
+            : base(configXMS)
         {
             _config = config;
             _servico = servico;
             _perfilAcesso = perfilAcesso;
             _usuarioPerfil = usuarioPerfil;
-            _configXMS = configXMS;            
+            _configXMS = configXMS;
+            _log = log;
         }
 
         void Init()
@@ -59,7 +63,11 @@ namespace Lusitan.GPES.Aplicacao
 
                 var _result = new List<UsuarioDominio>();
 
-                foreach (var item in _servico.GetList())
+                var _lstUsuarios = _servico.GetList("A");
+                _lstUsuarios.AddRange(_servico.GetList("I"));
+                _lstUsuarios.AddRange(_servico.GetList("B"));
+
+                foreach (var item in _lstUsuarios)
                 {
                     if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == _idPerfilAdmin))
                     {
@@ -89,20 +97,25 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (string.IsNullOrEmpty(_msg))
                 {
-                    var _novoUsuarioCadastrado = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
+                    var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
 
-                    _msg = _usuarioPerfil.Add(new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, 
-                                                                            IdUsuario = _novoUsuarioCadastrado.Id});
+                    _msg = _usuarioPerfil.Add(new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id});
 
                     if (string.IsNullOrEmpty(_msg))
                     {
-                        var _msgEnvioEmail = this.EnviaEMail(new EMailDominio()
-                                                                                {
+                        var _msgEnvioEmail = this.EnviaEMail(new EMailDominio() {
                                                                                     NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
                                                                                     DescAssunto = "Novo acesso",
-                                                                                    NomDestino = obj.eMail,
+                                                                                    NomDestino = _novoUsuario.eMail,
                                                                                     DescMensagem = Constantes.GetTextoEMailNovoUsuario.Replace("[USUARIO]", obj.NomeUsuario).Replace("[LOGIN]", obj.eMail).Replace("[SENHA]", _config.SenhaPadraoNovoUsuario)
                                                                                 });
+
+                        _log.Add(new UsuarioLogDominio()
+                        {
+                            IdUsuario = _novoUsuario.Id,
+                            DescLog = $"Retorno envio e-mail: {_msgEnvioEmail}",
+                            IdUsuarioResp = _novoUsuario.Id
+                        });
                     }
                 }
 

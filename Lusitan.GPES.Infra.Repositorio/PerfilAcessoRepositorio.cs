@@ -32,9 +32,9 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = "SELECT Id = num_perfil, NomPerfil = nom_perfil FROM perfil_acesso (NOLOCK) WHERE num_perfil = @NUM_PERFIL";
+                var _query = $"SELECT Id = num_perfil, NomPerfil = nom_perfil FROM perfil_acesso (NOLOCK) WHERE num_perfil = {id}";
 
-                return this.ConexaoBD.QueryFirstOrDefault<PerfilAcessoDominio>(_query, new { NUM_PERFIL = id});
+                return this.ConexaoBD.QueryFirstOrDefault<PerfilAcessoDominio>(_query);
             }
             catch (Exception ex)
             {

@@ -6,6 +6,9 @@ drop table perfil_acesso
 drop table usuario_log
 drop table usuario
 */
+
+set nocount on
+
 create table usuario
 (
    num_usuario int not null identity,
@@ -15,10 +18,16 @@ create table usuario
    idc_ativo char(1) not null,
    constraint pk_usuario primary key (num_usuario),
    constraint uk1_usuario unique (e_mail),
-   constraint ck1_usuario check(idc_ativo = 'S' or idc_ativo = 'N')
+   constraint ck1_usuario check(idc_ativo = 'A' or idc_ativo = 'I' or idc_ativo = 'B')
 )
 go
+insert into usuario (nom_usuario, des_senha, e_mail, idc_ativo)
+values ('Admin Sistema', 'u6FT3UmuYHKPIssrfl+71A==', 'teste@teste.com.br', 'A')  --Senha: admin123
+
+go
 create index ix1_usuario on usuario(e_mail)
+go
+create index ix2_usuario on usuario(idc_ativo)
 go
 create table usuario_log
 (
@@ -47,3 +56,5 @@ create table usuario_perfil
    constraint fk1_usuario_perfil  foreign key (num_usuario) references usuario(num_usuario),
    constraint fk2_usuario_perfil  foreign key (num_perfil) references perfil_acesso(num_perfil)
 )
+
+set nocount off

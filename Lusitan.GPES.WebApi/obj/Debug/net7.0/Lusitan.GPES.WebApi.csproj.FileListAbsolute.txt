@@ -40,7 +40,6 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Generated
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cs
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.Lusitan.GPES.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.build.Lusitan.GPES.WebApi.props

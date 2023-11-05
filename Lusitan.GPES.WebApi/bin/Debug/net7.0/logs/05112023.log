@@ -1,0 +1,5 @@
+05.11.2023 16:07:33 ERROR ERRO UsuarioAppService.System.String AddAdmin(Lusitan.GPES.Core.Entidade.UsuarioDominio)(): Erro ao enviar em-mail: "4fc0b97a-5111-41b1-b4c7-a8ffd711be78"
+05.11.2023 16:10:19 ERROR ERRO UsuarioAppService.System.String AddAdmin(Lusitan.GPES.Core.Entidade.UsuarioDominio)(): Erro ao enviar em-mail: "76337501-788f-4456-b5db-aaa525b87d85"
+05.11.2023 16:30:54 ERROR ERRO UsuarioAppService.System.String AddAdmin(Lusitan.GPES.Core.Entidade.UsuarioDominio)(): Erro ao enviar email: "Remetente não encontrado!"
+05.11.2023 16:35:22 ERROR ERRO UsuarioAppService.System.String AddAdmin(Lusitan.GPES.Core.Entidade.UsuarioDominio)(): Erro ao enviar email: "Remetente não encontrado!"
+05.11.2023 16:36:21 ERROR ERRO UsuarioAppService.System.String AddAdmin(Lusitan.GPES.Core.Entidade.UsuarioDominio)(): Erro ao enviar email: "Remetente não encontrado!"

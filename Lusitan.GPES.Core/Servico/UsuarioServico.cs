@@ -11,8 +11,8 @@ namespace Lusitan.GPES.Core.Servico
         public UsuarioServico(IUnitOfWork repositorio)
             : base(repositorio) { }
 
-        public List<UsuarioDominio> GetList()
-            => _repositorio.Usuario.GetList();
+        public List<UsuarioDominio> GetList(string idcAtivo)
+            => _repositorio.Usuario.GetList(idcAtivo);
 
         public UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail)
            => _repositorio.Usuario.GetUsuarioSemSenhaPorEmail(eMail);

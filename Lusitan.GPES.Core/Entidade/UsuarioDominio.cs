@@ -14,6 +14,31 @@ namespace Lusitan.GPES.Core.Entidade
         [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 100 caracteres")]
         [ValidaEMail]
         public string eMail { get; set; }
+
+        public string DescSituacao
+        {
+            get {      
+                
+                var _descSituacao = string.Empty;
+
+                switch (this.IdcAtivo)
+                {
+                    case "A":
+                        _descSituacao = "Ativo";
+                        break;
+
+                    case "I":
+                        _descSituacao = "Inativo";
+                        break;
+
+                    case "B":
+                        _descSituacao = "Bloqueado";
+                        break;
+                }
+
+                return _descSituacao; 
+            }
+        }
     }
 
     public class UsuarioViewDominio : UsuarioDominio

@@ -1,0 +1,30 @@
+Pre-requisitos:
+
+RT001 - Envio de Email
+
+Descrição:
+
+Usuários admisnitradores são usuários associados ao Perfil "Admin" no sistema. Isso deve ser feito de acordo com:
+
+- o sistema cadastra o usuário na situação "Ativo" e com a senha que foi parametrizada e encriptada no padrão SHA1
+   Tabela USUARIO
+
+- o sistema recupera o Id do perfil de "Admin"
+   Tabela PERFIL_ACESSO
+
+- o sistema associa o usuário ao perfil de "Admin"
+   Tabela USUARIO_PERFIL
+
+- o sistema envia - email com as credenciais de acesso
+   o remetente do email deve ser parametrizado
+
+- o sistema grava o log para esse usuário com o retorno do serviço de envio de email
+   Tabela USUARIO_LOG
+
+
+Obs:
+- Não havera tela de cadastro de Perfis de Acesso. Estes deve ser cadastrados via script
+
+- Um usuário pode estar associado a N perfis, um perfil de acesso pode conter N usuários, é uma relação de N x N
+
+- Somente quem contem a role "Admin" pode efetuar as funcionalidades de cadastro e pesquisa de Admins

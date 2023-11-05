@@ -25,6 +25,10 @@ namespace Lusitan.GPES.Infra.IOC
             servico.AddSingleton<IUsuarioPerfilAppService, UsuarioPerfilAppService>();
             servico.AddSingleton<IUsuarioPerfilServico, UsuarioPerfilServico>();
             servico.AddSingleton<IUsuarioPerfilRepositorio>(s => new UsuarioPerfilRepositorio(string.Empty));
+
+            servico.AddSingleton<IUsuarioLogAppService, UsuarioLogAppService>();
+            servico.AddSingleton<IUsuarioLogServico, UsuarioLogServico>();
+            servico.AddSingleton<IUsuarioLogRepositorio>(s => new UsuarioLogRepositorio(string.Empty));
         }
     }
 }

@@ -17,11 +17,31 @@ namespace Lusitan.GPES.Infra.Repositorio
                                     IdcAtivo = idc_ativo
                             FROM usuario (NOLOCK) ";
 
-        public List<UsuarioDominio> GetList()
+        public List<UsuarioDominio> GetList(string idcAtivo)
         {
             try
             {
-                return this.ConexaoBD.Query<UsuarioDominio>(_query).ToList();
+                var _novaQuery = $"{_query} WHERE idc_ativo = '{idcAtivo}'";
+
+                return this.ConexaoBD.Query<UsuarioDominio>(_novaQuery).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
+        public UsuarioDominio GetById(int id)
+        {
+            try
+            {
+                var _buscaUsuario = @$"{_query} WHERE num_usuario = '{id}";
+
+                return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }
             catch (Exception ex)
             {
@@ -37,7 +57,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"{_query} WHERE e_mail = '{eMail.Trim()}'";
+                var _buscaUsuario = @$"{_query} WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }
@@ -56,7 +76,7 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = @" INSERT INTO usuario (nom_usuario, des_senha, e_mail, idc_ativo) 
-                                VALUES (@NOM_USUARIO, @DES_SENHA, @E_MAIL, 'S')";
+                                VALUES (@NOM_USUARIO, @DES_SENHA, @E_MAIL, 'A')";
 
                 this.ConexaoBD.Execute(_query.ToString(),
                                         new
@@ -67,24 +87,6 @@ namespace Lusitan.GPES.Infra.Repositorio
                                         });
 
                 return string.Empty;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
-            }
-            finally
-            {
-                this.FechaConexao();
-            }
-        }
-
-        public UsuarioDominio GetById(int id)
-        {
-            try
-            {
-                var _buscaUsuario = @$"{_query} WHERE num_usuario = '{id.ToString()}";
-
-                return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }
             catch (Exception ex)
             {
