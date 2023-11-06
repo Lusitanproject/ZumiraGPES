@@ -2,7 +2,6 @@
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using System.Reflection;
-using System.Security.Cryptography;
 
 namespace Lusitan.GPES.Infra.Repositorio
 {
@@ -14,7 +13,9 @@ namespace Lusitan.GPES.Infra.Repositorio
         string _query = @"  SELECT	Id = num_usuario,
                                     NomeUsuario = nom_usuario,
                                     eMail = e_mail,
-                                    IdcAtivo = idc_ativo
+                                    IdcAtivo = idc_ativo,
+                                    UltimoAcesso = dth_ultimo_acesso,
+                                    IdcForcaAlteraSenha = idc_forca_altera_senha
                             FROM usuario (NOLOCK) ";
 
         public List<UsuarioDominio> GetList(string idcAtivo)
@@ -71,12 +72,38 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        public UsuarioViewDominio GetUsuarioComSenhaPorEmail(string eMail)
+        {
+            try
+            {
+                var _buscaUsuario = @$"SELECT	Id = num_usuario,
+                                                NomeUsuario = nom_usuario,
+                                                eMail = e_mail,
+                                                IdcAtivo = idc_ativo,
+                                                DesSenha = des_senha,
+                                                UltimoAcesso = dth_ultimo_acesso,
+                                                IdcForcaAlteraSenha = idc_forca_altera_senha
+                                        FROM usuario (NOLOCK) 
+                                        WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
+
+                return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
         public string Add(UsuarioViewDominio obj)
         {
             try
             {
-                var _query = @" INSERT INTO usuario (nom_usuario, des_senha, e_mail, idc_ativo) 
-                                VALUES (@NOM_USUARIO, @DES_SENHA, @E_MAIL, 'A')";
+                var _query = @" INSERT INTO usuario (nom_usuario, des_senha, e_mail, idc_ativo, dth_ultimo_acesso, idc_forca_altera_senha) 
+                                VALUES (@NOM_USUARIO, @DES_SENHA, @E_MAIL, 'A', NULL, 'S')";
 
                 this.ConexaoBD.Execute(_query.ToString(),
                                         new
@@ -85,6 +112,50 @@ namespace Lusitan.GPES.Infra.Repositorio
                                             DES_SENHA = obj.DesSenha.Trim(),
                                             E_MAIL = obj.eMail.Trim()
                                         });
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
+        public string AlteraSituacao(string idcSituacao, int idUsuario)
+        {
+            try
+            {
+                var _query = @$" UPDATE usuario 
+                                 SET idc_ativo = '{idcSituacao}'
+                                 WHERE num_usuario = {idUsuario}";
+
+                this.ConexaoBD.Execute(_query.ToString());
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
+        public string RegistraLogAcesso(int idUsuario)
+        {
+            try
+            {
+                var _query = @$" UPDATE usuario 
+                                 SET dth_ultimo_acesso = GETDATE()
+                                 WHERE num_usuario = {idUsuario}";
+
+                this.ConexaoBD.Execute(_query.ToString());
 
                 return string.Empty;
             }

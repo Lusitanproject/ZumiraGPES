@@ -9,5 +9,11 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         List<UsuarioDominio> GetList(string idcAtivo);
 
         UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail);
+
+        UsuarioViewDominio GetUsuarioComSenhaPorEmail(string eMail);
+
+        string AlteraSituacao(string idcSituacao, int idUsuario);
+
+        string RegistraLogAcesso(int idUsuario);
     }
 }

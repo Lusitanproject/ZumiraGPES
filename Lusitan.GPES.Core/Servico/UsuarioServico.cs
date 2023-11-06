@@ -17,8 +17,17 @@ namespace Lusitan.GPES.Core.Servico
         public UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail)
            => _repositorio.Usuario.GetUsuarioSemSenhaPorEmail(eMail);
 
+        public UsuarioViewDominio GetUsuarioComSenhaPorEmail(string eMail)
+            => _repositorio.Usuario.GetUsuarioComSenhaPorEmail(eMail);
+
         public UsuarioDominio GetById(int id)
            => _repositorio.Usuario.GetById(id);
+
+        public string AlteraSituacao(string idcSituacao, int idUsuario)
+            => _repositorio.Usuario.AlteraSituacao(idcSituacao, idUsuario);
+
+        public string RegistraLogAcesso(int idUsuario)
+           => _repositorio.Usuario.RegistraLogAcesso(idUsuario);
 
         public string Add(UsuarioViewDominio obj)
         {

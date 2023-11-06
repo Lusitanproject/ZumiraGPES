@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lusitan.GPES.Aplicacao;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,6 +33,9 @@ namespace Lusitan.GPES.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            #region Configurações
+
             CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
 
             var _confAmbiente = new ConfigAmbiente();
@@ -54,8 +58,25 @@ namespace Lusitan.GPES.WebApi
                     });
                 });
 
+            #endregion
 
             services.AddControllers();
+
+            #region JWT
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
+                                                                                                      opt.RequireHttpsMetadata = false;
+                                                                                                      opt.TokenValidationParameters = new TokenValidationParameters
+                                                                                                      {
+                                                                                                          ValidateIssuer = false,
+                                                                                                          ValidateAudience = false,
+                                                                                                          ValidateLifetime = true,
+                                                                                                          RequireExpirationTime = true,
+                                                                                                          ClockSkew = TimeSpan.FromSeconds(10),
+                                                                                                          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWT.Chave))
+                                                                                                      };
+                                                                                                   });
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

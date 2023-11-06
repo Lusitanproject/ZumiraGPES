@@ -6,5 +6,7 @@ namespace Lusitan.GPES.Core.Entidade
         public string StrConexao { get; set; }
 
         public string SenhaPadraoNovoUsuario { get; set; }
+
+        public int TempoSessaoMin { get; set; }
     }
 }

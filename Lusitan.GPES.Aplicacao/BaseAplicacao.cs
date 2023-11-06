@@ -22,7 +22,7 @@ namespace Lusitan.GPES.Aplicacao
             this.EnviaEMail(new EMailDominio()
             {
                 NumRemetente = _configXMS.IdRemetenteMsgErro,
-                DescAssunto = "Erro de Sistema",
+                DescAssunto = "Erro back-end sistema GPES",
                 NomDestino = _configXMS.DestinoEMailErroSistema,
                 DescMensagem = msgErro
             });

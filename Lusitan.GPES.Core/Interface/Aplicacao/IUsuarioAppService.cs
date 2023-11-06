@@ -1,5 +1,4 @@
-﻿using Lusitan.GPES.Core.Base.Interface.CRUD;
-using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Entidade;
 
 namespace Lusitan.GPES.Core.Interface.Aplicacao
 {
@@ -8,5 +7,7 @@ namespace Lusitan.GPES.Core.Interface.Aplicacao
         List<UsuarioDominio> GetListAdmin();
 
         string AddAdmin(UsuarioDominio obj);
+
+        LoginResponse Login(LoginRequest login);
     }
 }

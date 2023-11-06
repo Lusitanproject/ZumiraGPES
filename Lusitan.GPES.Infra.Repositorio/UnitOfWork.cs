@@ -62,5 +62,20 @@ namespace Lusitan.GPES.Infra.Repositorio
                 return _usuarioLog;
             }
         }
+
+        ILogAcessoErroRepositorio _logAcessoErro;
+        public ILogAcessoErroRepositorio LogAcessoErro
+        {
+            get
+            {
+                if (_logAcessoErro == null)
+                {
+                    _logAcessoErro = new LogAcessoErroRepositorio(this.StrConexao);
+                }
+
+                return _logAcessoErro;
+            }
+        }
+
     }
 }

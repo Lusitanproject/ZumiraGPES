@@ -15,6 +15,10 @@ namespace Lusitan.GPES.Core.Entidade
         [ValidaEMail]
         public string eMail { get; set; }
 
+        public DateTime? UltimoAcesso { get; set; }
+
+        public string IdcForcaAlteraSenha { get; set; }
+
         public string DescSituacao
         {
             get {      

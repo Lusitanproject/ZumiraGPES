@@ -23,14 +23,39 @@ namespace Lusitan.GPES.WebApi.Controllers
             _appServico = appServico;
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("/api/GPES/Login")]
+        public IActionResult Login([FromBody] LoginRequest login)
+        {
+            try
+            {
+                var _msg = ValidaPreenchimento.Validar(login);
+
+                if (!string.IsNullOrEmpty(_msg))
+                {
+                    return BadRequest(_msg);
+                }
+
+                var _response = _appServico.Login(login);
+
+                return _response.LoginEhValido ? Ok(_response) : BadRequest(_response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("api/GPES/Admin")]
         public IActionResult ListaAdmin()
            => Get(_appServico.GetListAdmin());
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("api/GPES/Admin")]
         public ActionResult InsereAdmin([FromBody] UsuarioDominio obj)
         {

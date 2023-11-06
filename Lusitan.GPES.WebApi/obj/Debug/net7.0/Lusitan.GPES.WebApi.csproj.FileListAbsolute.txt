@@ -1,6 +1,7 @@
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.Development.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.exe
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\nlog.config
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.deps.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.runtimeconfig.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.dll
@@ -14,6 +15,7 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Proto
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.OpenApi.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\NLog.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\RestSharp.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -40,6 +42,7 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Generated
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cs
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.Lusitan.GPES.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.build.Lusitan.GPES.WebApi.props
@@ -55,5 +58,4 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\refint\Lusitan.GPES.WebApi.dl
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.genruntimeconfig.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\ref\Lusitan.GPES.WebApi.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\RestSharp.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\nlog.config
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
