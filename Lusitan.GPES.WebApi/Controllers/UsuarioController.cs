@@ -1,13 +1,10 @@
 ﻿using CORE.Validacao;
-using Lusitan.GPES.Aplicacao;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Repositorio;
-using Lusitan.GPES.Core.Interface.Servico;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
@@ -25,7 +22,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("/api/GPES/Login")]
+        [Route("login")]
         public IActionResult Login([FromBody] LoginRequest login)
         {
             try
@@ -45,18 +42,17 @@ namespace Lusitan.GPES.WebApi.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        [Route("api/GPES/Admin")]
+        [Authorize(Roles = "admin")]
+        [Route("Admin")]
         public IActionResult ListaAdmin()
            => Get(_appServico.GetListAdmin());
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        [Route("api/GPES/Admin")]
+        [Authorize(Roles = "admin")]
+        [Route("Admin")]
         public ActionResult InsereAdmin([FromBody] UsuarioDominio obj)
         {
             try

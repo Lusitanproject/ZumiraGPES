@@ -10,6 +10,8 @@ using CORE.Validacao;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
+    [Route("/api/GPES/[Controller]")]
+    [ApiController]
     public class GPESWebApi<T> : ControllerBase where T : class
     {
         protected ConfigAmbiente _config;

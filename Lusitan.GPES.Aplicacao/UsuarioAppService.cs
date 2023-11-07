@@ -28,7 +28,6 @@ namespace Lusitan.GPES.Aplicacao
                                     IUsuarioPerfilAppService usuarioPerfil,
                                     IUsuarioLogAppService log,
                                     ILogAcessoErroAppService logAcessoErro)
-            : base(configXMS)
         {
             _config = config;
             _servico = servico;
@@ -62,12 +61,13 @@ namespace Lusitan.GPES.Aplicacao
 
         void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
-            var _msgEnvioEmail = this.EnviaEMail(new EMailDominio() {
-                                                                        NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
-                                                                        DescAssunto = descAssunto,
-                                                                        NomDestino = obj.eMail,
-                                                                        DescMensagem = msg
-                                                                    });
+            var _msgEnvioEmail = this.EnviaEMail(   _configXMS, 
+                                                    new EMailDominio() {
+                                                                            NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
+                                                                            DescAssunto = descAssunto,
+                                                                            NomDestino = obj.eMail,
+                                                                            DescMensagem = msg
+                                                                        });
 
             _log.Add(new UsuarioLogDominio() {
                                                 IdUsuario = obj.Id,

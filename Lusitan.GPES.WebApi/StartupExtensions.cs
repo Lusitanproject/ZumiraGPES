@@ -30,12 +30,11 @@ namespace Lusitan.GPES.WebApi
 
             Dependencia.RegistrarDependencias(service);
 
-            service.AddSwaggerGen(c => {
-                                            c.SwaggerDoc("v1", new OpenApiInfo()
-                                            {
-                                                Title = "Back-end - Sistema de Gestão de Pessoas",
-                                                Version = "v1",
-                                            });
+            service.AddSwaggerGen(c => {    c.SwaggerDoc(   "v1", 
+                                                            new OpenApiInfo() {
+                                                                                Title = "Back-end - Sistema de Gestão de Pessoas",
+                                                                                Version = "v1",
+                                                                              });
                                         });
         }
 
