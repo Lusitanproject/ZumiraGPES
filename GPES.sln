@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - IOC", "4.2 - IOC", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.Infra.IOC", "Lusitan.GPES.Infra.IOC\Lusitan.GPES.Infra.IOC.csproj", "{9536D1F2-868B-4901-9283-D7E006F3049E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lusitan.GPES.WebApi", "Lusitan.GPES.WebApi\Lusitan.GPES.WebApi.csproj", "{AC188566-5358-40E2-9FC2-01DC5349A924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.WebApi", "Lusitan.GPES.WebApi\Lusitan.GPES.WebApi.csproj", "{AC188566-5358-40E2-9FC2-01DC5349A924}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Apresentacao", "0-Apresentacao", "{06BCA57A-A783-43C7-92A8-DEEE085B67AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

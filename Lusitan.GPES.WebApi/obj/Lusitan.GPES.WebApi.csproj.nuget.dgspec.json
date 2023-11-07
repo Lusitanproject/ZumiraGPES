@@ -53,7 +53,7 @@
           "dependencies": {
             "RestSharp": {
               "target": "Package",
-              "version": "[110.2.0, )"
+              "version": "[106.13.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

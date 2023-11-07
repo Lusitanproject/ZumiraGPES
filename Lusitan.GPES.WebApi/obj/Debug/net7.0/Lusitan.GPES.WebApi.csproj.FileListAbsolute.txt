@@ -8,6 +8,7 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Dapper.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
@@ -58,4 +59,3 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\refint\Lusitan.GPES.WebApi.dl
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.genruntimeconfig.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\ref\Lusitan.GPES.WebApi.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll

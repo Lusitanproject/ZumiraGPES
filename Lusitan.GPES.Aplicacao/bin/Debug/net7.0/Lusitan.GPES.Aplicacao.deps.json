@@ -10,7 +10,7 @@
         "dependencies": {
           "Lusitan.GPES.Core": "1.0.0",
           "Lusitan.GPES.Infra.Repositorio": "1.0.0",
-          "RestSharp": "110.2.0",
+          "RestSharp": "106.13.0",
           "System.IdentityModel.Tokens.Jwt": "7.0.3",
           "NLog": "5.2.5",
           "CORE.CryptObj": "1.0.0.0"
@@ -83,14 +83,11 @@
           }
         }
       },
-      "RestSharp/110.2.0": {
-        "dependencies": {
-          "System.Text.Json": "7.0.2"
-        },
+      "RestSharp/106.13.0": {
         "runtime": {
-          "lib/net7.0/RestSharp.dll": {
-            "assemblyVersion": "110.2.0.0",
-            "fileVersion": "110.2.0.0"
+          "lib/netstandard2.0/RestSharp.dll": {
+            "assemblyVersion": "106.13.0.0",
+            "fileVersion": "106.13.0.0"
           }
         }
       },
@@ -174,12 +171,6 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "System.Text.Encodings.Web/7.0.0": {},
-      "System.Text.Json/7.0.2": {
-        "dependencies": {
-          "System.Text.Encodings.Web": "7.0.0"
-        }
-      },
       "Lusitan.GPES.Core/1.0.0": {
         "runtime": {
           "Lusitan.GPES.Core.dll": {}
@@ -275,12 +266,12 @@
       "path": "nlog/5.2.5",
       "hashPath": "nlog.5.2.5.nupkg.sha512"
     },
-    "RestSharp/110.2.0": {
+    "RestSharp/106.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FXGw0IMcqY7yO/hzS9QrD3iNswNgb9UxJnxWmfOxmGs4kRlZWqdtBoGPLuhlbgsDzX1RFo4WKui8TGGKXWKalw==",
-      "path": "restsharp/110.2.0",
-      "hashPath": "restsharp.110.2.0.nupkg.sha512"
+      "sha512": "sha512-vwUdmmtC5vtePeNfBWnFcixBF2KjUeVv3ss4ZFzCIkOf7NB7W/9qX8JNZD9DOrz2yGk4AJW8k9znwgPZhnoiNg==",
+      "path": "restsharp/106.13.0",
+      "hashPath": "restsharp.106.13.0.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",
@@ -337,20 +328,6 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
-    },
-    "System.Text.Encodings.Web/7.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-OP6umVGxc0Z0MvZQBVigj4/U31Pw72ITihDWP9WiWDm+q5aoe0GaJivsfYGq53o6dxH7DcXWiCTl7+0o2CGdmg==",
-      "path": "system.text.encodings.web/7.0.0",
-      "hashPath": "system.text.encodings.web.7.0.0.nupkg.sha512"
-    },
-    "System.Text.Json/7.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/LZf/JrGyilojqwpaywb+sSz8Tew7ij4K/Sk+UW8AKfAK7KRhR6mKpKtTm06cYA7bCpGTWfYksIW+mVsdxPegQ==",
-      "path": "system.text.json/7.0.2",
-      "hashPath": "system.text.json.7.0.2.nupkg.sha512"
     },
     "Lusitan.GPES.Core/1.0.0": {
       "type": "project",
