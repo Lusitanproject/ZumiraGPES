@@ -1,0 +1,52 @@
+﻿@using System.IdentityModel.Tokens.Jwt;
+@using CORE.Util
+
+@inject IUsuario _usarioValidado
+
+@code 
+{
+	protected async void TrataErro(string msgErro)
+				=> await _js.InvokeVoidAsync("console.log", msgErro);
+
+	protected async Task<int> NumUsuarioLogado()
+	{
+		var _usuario = await this.GetObjSessao<UsuarioDominio>("Usuario");
+
+		return _usuario.Id;
+	}
+
+	protected async Task<string> Token()
+				=> await this.GetObjSessao<string>("token");
+
+
+	protected async Task<T> GetObjSessao<T>(string nomObj)
+				=> await _sessao.GetItemAsync<T>(nomObj);
+
+	protected async void GravaObjSessao<T>(string nomObj, T valor)
+				=> await _sessao.SetItemAsync<T>(nomObj, valor);
+
+	protected async void RemoveItemSessao(string nomObj)
+				=> await _sessao.RemoveItemAsync(nomObj);
+
+	protected async Task ValidaToken()
+	{
+		var _token = await this.Token();
+		var _numUsuarioLogado = await this.NumUsuarioLogado();
+
+		if (!(CORE.Util.JwtToken.TokenEhValido(_token) && (_numUsuarioLogado == 0 ? true : _usarioValidado.GetById(_numUsuarioLogado).IdcAtivo == "A")))
+		{
+			((ProvedorAutenticacao)_autenticacao).Logout();
+
+			_nav.NavigateTo("index", forceLoad: true);
+			base.StateHasChanged();
+		}
+	}
+
+	protected async Task<List<string>> GetListaAcesso()
+	{
+		return (from tks in (((JwtSecurityToken)JwtToken.GetDecodeToken(await this.Token())).Claims)
+				.Where(x => x.Type.ToLower() == "role")
+				select tks.Value).ToList();
+	}
+
+}

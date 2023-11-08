@@ -1,0 +1,31 @@
+﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.JSInterop
+@using Lusitan.GPES.Front.Blazor
+@using Lusitan.GPES.Front.Blazor.Shared
+
+@using System
+@using System.IO;
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@using System.Reflection
+@using Blazored.SessionStorage;
+@using MudBlazor
+@using Radzen
+@using Radzen.Blazor
+@using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Http
+@using Lusitan.GPES.Core.Entidade;
+@using Lusitan.GPES.Front.Blazor.Autenticacao;
+@using Lusitan.GPES.Front.Blazor.Backend.Interface;
+
+@inject NavigationManager _nav
+@inject IConfiguration _conf
+@inject ISessionStorageService _sessao
+@inject AuthenticationStateProvider _autenticacao
+@inject IJSRuntime _js

@@ -1,3 +1,9 @@
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.AssemblyReference.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.Development.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.WebApi.exe
@@ -38,13 +44,7 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Aplicacao.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Core.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Infra.IOC.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.AssemblyReference.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.GeneratedMSBuildEditorConfig.editorconfig
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cs
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.Lusitan.GPES.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.build.Lusitan.GPES.WebApi.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Lusitan.GPES.WebApi.props

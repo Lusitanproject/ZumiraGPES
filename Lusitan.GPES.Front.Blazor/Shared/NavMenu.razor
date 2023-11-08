@@ -1,0 +1,28 @@
+﻿@inject AuthenticationStateProvider _autenticacao
+
+<MudNavMenu>
+    <AuthorizeView Roles="XCAf1002.1">
+        <MudNavLink OnClick=AlteraSenha>Altera Senha</MudNavLink>
+    </AuthorizeView>
+
+
+
+</MudNavMenu>
+
+@code
+{
+    bool _idcOrganizacaoPF = true;
+
+    async void AlteraSenha()
+    {
+        var _usuario = await _sessao.GetItemAsync<UsuarioDominio>("Usuario");
+
+        if (_usuario == null)
+        {
+            _usuario = new UsuarioDominio() { Id = 0 };
+        }
+
+        _nav.NavigateTo("AlteraSenha/" + _usuario.Id);
+    }
+
+}

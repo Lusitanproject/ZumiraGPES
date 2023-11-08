@@ -1,0 +1,42 @@
+﻿@page
+@model Lusitan.GPES.Front.Blazor.Pages.ErrorModel
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Erro</title>
+    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/app.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="content px-4">
+            <h1 class="text-danger">Erro.</h1>
+            <h2 class="text-danger">Um erro ocorreu durante o processamento do seu pedido.</h2>
+
+            @if (Model.ShowRequestId)
+            {
+                <p>
+                    <strong>ID:</strong> <code>@Model.RequestId</code>
+                </p>
+            }
+
+            <h3>Modo de Desenvolvimento</h3>
+            <p>
+                Trocando para o<strong>Development</strong> ambiente exibe informações detalhadas sobre o erro que ocorreu.
+            </p>
+            <p>
+                <strong>O ambiente de desenvolvimento não deve ser habilitado para aplicativos implantados.</strong>
+                Isso pode resultar na exibição de informações confidenciais de exceções para os usuários finais.
+                Para depuração local, habilite o <strong>Desenvolvimento</strong>ambiente, definindo o <strong>ASPNETCORE_ENVIRONMENT</strong> variável de ambiente para <strong>Desenvolvimento</strong>
+                e reiniciar o aplicativo.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

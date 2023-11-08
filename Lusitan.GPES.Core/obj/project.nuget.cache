@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "37ApWgCtCVEeslFtmzj40Cd8lS6ar6jBxpqF4JWxvvCd9sXOO0154Dhig3Da3sjbIDEvfwTvZNcnsQ9h4Q+SDg==",
+  "dgSpecHash": "aS0smzu4W8Ifa3kYOALTEOheXXSPAdbay3kZEjhyykUbTKTjfw6X2/DVP8euez9P63FZUgvuM8uW91MkzfpiaA==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Core\\Lusitan.GPES.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\glaub\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

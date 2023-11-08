@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
+    <PackageReference Include="Bootstrap" Version="5.3.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="MudBlazor" Version="5.1.5" />
+    <PackageReference Include="nlog" Version="5.2.5" />
+    <PackageReference Include="Radzen.Blazor" Version="4.20.1" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\script\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lusitan.GPES.Core\Lusitan.GPES.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CORE.CryptObj">
+      <HintPath>..\Componentes\CORE.CryptObj.dll</HintPath>
+    </Reference>
+    <Reference Include="CORE.Util">
+      <HintPath>..\Componentes\CORE.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="CORE.Validacao">
+      <HintPath>..\Componentes\CORE.Validacao.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\script\Download.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

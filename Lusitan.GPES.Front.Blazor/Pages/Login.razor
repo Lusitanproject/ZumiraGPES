@@ -1,0 +1,122 @@
+﻿@page "/login"
+
+@layout LayoutPublico
+
+@inherits _form
+
+@using CORE.Validacao
+@using Lusitan.GPES.Front.Blazor.Autenticacao
+
+@inject IUsuario _usuario
+
+<div class="form-group col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12">
+
+    <div class="form-group" style="text-align: center ">
+        <h2>@_nomSistema</h2>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">E-mail:</label>
+        <input type="text"
+               class="form-control"
+               maxlength="50"
+               placeholder="E-mail"
+               @bind="@model.EMail" 
+               @onblur="BuscaUsuario" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Senha:</label>
+        <input type="password"
+               class="form-control"
+               maxlength="8"
+               placeholder="Senha"
+        @bind="@model.Pwd" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-dark btn-block btn-lg"
+                style="max-width:350px;background-color:#a9d0d7;color:#000000"
+        @onclick="Submit">
+            Login
+        </button>
+
+    </div>
+
+    <b class="text-danger">@_msgErro</b>
+</div>
+
+@code {
+    string _msgErro = string.Empty;
+    string _nomSistema = string.Empty;
+
+    LoginRequest model = new LoginRequest();
+
+    UsuarioDominio _usuarioLogado;
+
+    async void Submit()
+    {
+        try
+        {
+            _msgErro = ValidaPreenchimento.Validar(model);
+
+            if (string.IsNullOrEmpty(_msgErro))
+            {
+                var _login = _usuario.Login(model.EMail, model.Pwd);
+
+                if (_login.LoginEhValido)
+                {
+                    ((ProvedorAutenticacao)_autenticacao).MarcaUsuarioComoAutenticado(new UsuarioDominio()
+                        {
+                            Token = _login.Token,
+                            Id = _usuarioLogado.Id,
+                            NomeUsuario = _usuarioLogado.NomeUsuario,
+                            eMail = _usuarioLogado.eMail
+                        });
+
+                    _usuario.Token = _login.Token;
+                    _usuario.NumUsuario = _usuarioLogado.Id;
+
+                    this.GravaObjSessao<UsuarioDominio>("Usuario", _usuarioLogado);
+
+                    this.GravaObjSessao<string>("token", _login.Token);
+                    this.GravaObjSessao<string>("ultimoAcesso", (_login.UltimoAcesso ?? DateTime.Now).ToString("dd/MM/yyyy HH:mm"));
+
+                    _nav.NavigateTo("index", forceLoad: true);
+                }
+                else
+                {
+                    _msgErro = _login.Token;
+                }
+            }
+        }
+        finally
+        {
+            base.StateHasChanged();
+        }
+    }
+
+    void BuscaUsuario()
+    {
+        try
+        {
+            _msgErro = string.Empty;
+            _usuarioLogado = _usuario.BuscaPeloEMail(model.EMail);
+
+            if (_usuarioLogado == null)
+            {
+                _msgErro = "Usuário não encontrado!";
+            }
+        }
+        catch (Exception ex)
+        {
+            _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+            TrataErro(_msgErro);
+        }
+        finally
+        {
+            base.StateHasChanged();
+        }
+    }
+
+}

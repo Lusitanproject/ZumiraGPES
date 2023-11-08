@@ -16,7 +16,7 @@ namespace Lusitan.GPES.Aplicacao
 
         protected string EnviaEMail(ConfigXMS configXMS, EMailDominio eMail)
         {
-            var _reqEnviaEmail = new RestRequest("/api/XMS/controle-mensagem", Method.POST);
+            var _reqEnviaEmail = new RestRequest("/api/XMS/controle-mensagem", Method.Post);
 
             _reqEnviaEmail.AddJsonBody(eMail);
 

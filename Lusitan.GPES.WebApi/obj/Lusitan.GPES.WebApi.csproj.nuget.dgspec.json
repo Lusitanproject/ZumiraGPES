@@ -53,7 +53,7 @@
           "dependencies": {
             "RestSharp": {
               "target": "Package",
-              "version": "[106.13.0, )"
+              "version": "[110.2.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -123,6 +123,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "RestSharp": {
+              "target": "Package",
+              "version": "[110.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

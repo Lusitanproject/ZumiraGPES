@@ -6,6 +6,8 @@ namespace Lusitan.GPES.Core.Entidade
 {
     public class UsuarioDominio: BaseDomonio
     {
+        public string Token { get; set; }
+
         [Required(ErrorMessage = "A aplicação requer que o campo Nome seja preenchido!")]
         [StringLength(100, ErrorMessage = "O Nome deve possuir no máximo 100 caracteres")]
         public string NomeUsuario { get; set; }
