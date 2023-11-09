@@ -33,8 +33,6 @@ namespace Lusitan.GPES.Front.Blazor.Backend
         protected void TrataErroAcessoAPI(string msgErro)
         {
             NLog.LogManager.GetCurrentClassLogger().Error(msgErro);
-
-            throw new Exception(msgErro);
         }
 
         protected List<T> GetList<T>(string url)

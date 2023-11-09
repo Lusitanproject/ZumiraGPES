@@ -151,8 +151,7 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (_usuarioLogado == null)
                 {
-                    _idcValidaLogin = false;
-                    _msgErroLogin = "Usuário não encontrado!";
+                    return new LoginResponse() { LoginEhValido = false, UltimoAcesso = null, Token = "Usuário não encontrado!" };
                 }
 
                 if ((_usuarioLogado.IdcAtivo != "A") && _idcValidaLogin)
