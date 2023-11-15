@@ -233,6 +233,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\log-off.png",
+      "PackagePath": "staticwebassets\\img\\log-off.png"
+    },
+    {
       "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\script\\Download.js",
       "PackagePath": "staticwebassets\\script\\Download.js"
     },

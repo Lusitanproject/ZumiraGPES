@@ -8,6 +8,8 @@ namespace Lusitan.GPES.Core.Interface.Aplicacao
 
         string AddAdmin(UsuarioDominio obj);
 
+        UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail);
+
         LoginResponse Login(LoginRequest login);
     }
 }

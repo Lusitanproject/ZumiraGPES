@@ -20,3 +20,7 @@ Eu como um Usuário Admin, desejo cadastradar novos Usuários com esse mesmo per
    O sistema deve armazenar log com o retorno do envio do email 
 
 - Somente Administradores podem cadastrar Administradores
+
+- O sistema deve possuir a funcionalidade de reenvio da senha para o usuário
+     o remetente da msg deve ser parametrizado
+     quando essa funcionalidade for usada, o sistema deve armazenar no log do usuário

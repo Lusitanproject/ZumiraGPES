@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1r05B6lTmfjprBzAXAZBYv0+GnveP+DvdL0m9NgTtBI=",
+  "Hash": "NacLiTFaEw2ucjNpreTQtH/sU5RrwVOSSHFWjTBC0yQ=",
   "Source": "Lusitan.GPES.Front.Blazor",
   "BasePath": "_content/Lusitan.GPES.Front.Blazor",
   "Mode": "Default",
@@ -1613,6 +1613,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\log-off.png",
+      "SourceId": "Lusitan.GPES.Front.Blazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\",
+      "BasePath": "_content/Lusitan.GPES.Front.Blazor",
+      "RelativePath": "img/log-off.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\log-off.png"
     },
     {
       "Identity": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\script\\Download.js",

@@ -33,7 +33,20 @@ namespace Lusitan.GPES.Front.Blazor.Backend
 
         public UsuarioDominio BuscaPeloEMail(string eMail)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var _req = new RestRequest(string.Format("api/GPES/Usuario/busca-por-email/{0}", eMail.Trim()), Method.Get);
+
+                return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<UsuarioDominio>(_req).Data;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErroAcessoAPI(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
         }
 
         public UsuarioDominio GetById(int id)

@@ -45,6 +45,12 @@ namespace Lusitan.GPES.WebApi.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
+        [Route("busca-por-email/{eMail}")]
+        public IActionResult BuscaPorEMail(string eMail)
+           => Get(_appServico.GetUsuarioSemSenhaPorEmail(eMail.Trim()));
+
+        [HttpGet]
         [Authorize(Roles = "admin")]
         [Route("Admin")]
         public IActionResult ListaAdmin()

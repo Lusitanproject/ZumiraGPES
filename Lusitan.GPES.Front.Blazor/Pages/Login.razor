@@ -21,7 +21,8 @@
                class="form-control"
                maxlength="50"
                placeholder="E-mail"
-               @bind="@model.EMail"  />
+               @bind="@model.EMail"
+        @onblur="BuscaUsuario" />
     </div>
 
     <div class="form-group">
@@ -65,21 +66,16 @@
 
                 if (_login.LoginEhValido)
                 {
-                    ((ProvedorAutenticacao)_autenticacao).MarcaUsuarioComoAutenticado(new UsuarioDominio()
-                        {
-                            Token = _login.Token,
-                            Id = _usuarioLogado.Id,
-                            NomeUsuario = _usuarioLogado.NomeUsuario,
-                            eMail = _usuarioLogado.eMail
-                        });
-
                     _usuario.Token = _login.Token;
                     _usuario.NumUsuario = _usuarioLogado.Id;
 
                     this.GravaObjSessao<UsuarioDominio>("Usuario", _usuarioLogado);
-
                     this.GravaObjSessao<string>("token", _login.Token);
                     this.GravaObjSessao<string>("ultimoAcesso", (_login.UltimoAcesso ?? DateTime.Now).ToString("dd/MM/yyyy HH:mm"));
+
+                    _usuarioLogado.Token = _login.Token;
+
+                    ((ProvedorAutenticacao)_autenticacao).MarcaUsuarioComoAutenticado(_usuarioLogado);
 
                     _nav.NavigateTo("index", forceLoad: true);
                 }
