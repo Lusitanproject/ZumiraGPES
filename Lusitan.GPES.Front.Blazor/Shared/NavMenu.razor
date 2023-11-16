@@ -1,9 +1,8 @@
 ﻿@inject AuthenticationStateProvider _autenticacao
+@inject IStringLocalizer<App> _local
 
 <MudNavMenu>
-    <AuthorizeView Roles="XCAf1002.1">
-        <MudNavLink OnClick=AlteraSenha>Altera Senha</MudNavLink>
-    </AuthorizeView>
+    <MudNavLink OnClick=AlteraSenha>@_local["mnuAlteraSenha"]</MudNavLink>
 
 
 

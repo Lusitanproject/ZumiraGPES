@@ -57,3 +57,17 @@ E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\refint\Lusitan.GPES.Fro
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.pdb
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.genruntimeconfig.cache
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\ref\Lusitan.GPES.Front.Blazor.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\en\Lusitan.GPES.Front.Blazor.resources.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\es\Lusitan.GPES.Front.Blazor.resources.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.Resource.App.resources
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.Resource.App.en.resources
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.Resource.App.es.resources
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\Lusitan.GPES.Front.Blazor.csproj.GenerateResource.cache
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\en\Lusitan.GPES.Front.Blazor.resources.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\obj\Debug\net7.0\es\Lusitan.GPES.Front.Blazor.resources.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.Localization.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll

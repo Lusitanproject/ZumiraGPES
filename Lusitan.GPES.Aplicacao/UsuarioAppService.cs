@@ -77,69 +77,6 @@ namespace Lusitan.GPES.Aplicacao
         }
 
 
-        public List<UsuarioDominio> GetListAdmin()
-        {
-            try
-            {
-                Init();
-
-                var _result = new List<UsuarioDominio>();
-
-                var _lstUsuarios = _servico.GetList("A");
-                _lstUsuarios.AddRange(_servico.GetList("I"));
-                _lstUsuarios.AddRange(_servico.GetList("B"));
-
-                foreach (var item in _lstUsuarios)
-                {
-                    if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == _idPerfilAdmin))
-                    {
-                        _result.Add(item);
-                    }
-                }
-
-                return _result;
-            }
-            catch (Exception ex)
-            {
-                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
-
-                TrataErro(_msgErro);
-
-                throw new Exception(_msgErro);
-            }
-        }
-
-        public string AddAdmin(UsuarioDominio obj)
-        {
-            try
-            {
-                Init();
-
-                var _msg = this.AddUsuario(obj);
-
-                if (string.IsNullOrEmpty(_msg))
-                {
-                    var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
-
-                    _msg = _usuarioPerfil.Add( new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id} );
-
-                    this.EnviaEMailParaUsuario( _novoUsuario,
-                                                "Novo acesso",
-                                                Constantes.GetTextoEMailNovoUsuario.Replace("[USUARIO]", _novoUsuario.NomeUsuario).Replace("[LOGIN]", _novoUsuario.eMail).Replace("[SENHA]", _config.SenhaPadraoNovoUsuario));
-                }
-
-                return _msg;
-            }
-            catch (Exception ex)
-            {
-                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
-
-                TrataErro(_msgErro);
-
-                throw new Exception(_msgErro);
-            }
-        }
-
         public LoginResponse Login(LoginRequest login)
         {
             try
@@ -157,7 +94,7 @@ namespace Lusitan.GPES.Aplicacao
                 if ((_usuarioLogado.IdcAtivo != "A") && _idcValidaLogin)
                 {
                     _idcValidaLogin = false;
-                    _msgErroLogin = $"Não é possivel efetuar o Login. Usuário se encontra {_usuarioLogado.DescSituacao}. Contacte o Admin do Sistema!" ;
+                    _msgErroLogin = $"Não é possivel efetuar o Login. Usuário se encontra {_usuarioLogado.DescSituacao}. Contacte o Admin do Sistema!";
                 }
 
                 if ((CORE.CryptObj.Decripta(_usuarioLogado.DesSenha) != login.Pwd) && (_usuarioLogado.IdcAtivo == "A") && _idcValidaLogin)
@@ -231,7 +168,7 @@ namespace Lusitan.GPES.Aplicacao
 
                 return new LoginResponse() { LoginEhValido = true, UltimoAcesso = _usuarioLogado.UltimoAcesso, Token = _strToken };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
 
@@ -256,5 +193,69 @@ namespace Lusitan.GPES.Aplicacao
                 throw new Exception(_msgErro);
             }
         }
+
+        public List<UsuarioDominio> GetListAdmin()
+        {
+            try
+            {
+                Init();
+
+                var _result = new List<UsuarioDominio>();
+
+                var _lstUsuarios = _servico.GetList("A");
+                _lstUsuarios.AddRange(_servico.GetList("I"));
+                _lstUsuarios.AddRange(_servico.GetList("B"));
+
+                foreach (var item in _lstUsuarios)
+                {
+                    if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == _idPerfilAdmin))
+                    {
+                        _result.Add(item);
+                    }
+                }
+
+                return _result;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
+
+        public string AddAdmin(UsuarioDominio obj)
+        {
+            try
+            {
+                Init();
+
+                var _msg = this.AddUsuario(obj);
+
+                if (string.IsNullOrEmpty(_msg))
+                {
+                    var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
+
+                    _msg = _usuarioPerfil.Add( new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id} );
+
+                    this.EnviaEMailParaUsuario( _novoUsuario,
+                                                "Novo acesso",
+                                                Constantes.GetTextoEMailNovoUsuario.Replace("[USUARIO]", _novoUsuario.NomeUsuario).Replace("[LOGIN]", _novoUsuario.eMail).Replace("[SENHA]", _config.SenhaPadraoNovoUsuario));
+                }
+
+                return _msg;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
+
     }
 }

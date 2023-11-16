@@ -1,4 +1,5 @@
 ﻿@using GPES.Front.Blazor.Pages
+@inject IStringLocalizer<App> _local
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -12,7 +13,7 @@
     <NotFound>
         <CascadingAuthenticationState>
             <LayoutView Layout="@typeof(MainLayout)">
-                <p>Desculpe, não há nada neste endereço.</p>
+                <p>@_local["paginaNaoEncontrada"]</p>
             </LayoutView>
         </CascadingAuthenticationState>
     </NotFound>

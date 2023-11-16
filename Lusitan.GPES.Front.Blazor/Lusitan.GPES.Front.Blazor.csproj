@@ -8,6 +8,7 @@
     <PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
     <PackageReference Include="Bootstrap" Version="5.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
     <PackageReference Include="MudBlazor" Version="5.1.5" />
     <PackageReference Include="nlog" Version="5.2.5" />
     <PackageReference Include="Radzen.Blazor" Version="4.20.1" />
@@ -16,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\img\flag\" />
     <Folder Include="wwwroot\script\" />
   </ItemGroup>
 

@@ -51,13 +51,13 @@ namespace Lusitan.GPES.WebApi.Controllers
            => Get(_appServico.GetUsuarioSemSenhaPorEmail(eMail.Trim()));
 
         [HttpGet]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         [Route("Admin")]
         public IActionResult ListaAdmin()
            => Get(_appServico.GetListAdmin());
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         [Route("Admin")]
         public ActionResult InsereAdmin([FromBody] UsuarioDominio obj)
         {

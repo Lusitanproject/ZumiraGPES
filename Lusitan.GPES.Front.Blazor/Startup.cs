@@ -11,6 +11,8 @@ namespace Lusitan.GPES.Front.Blazor
 {
     public class Startup
     {
+        RequestLocalizationOptions _lstCulturasSuportadas;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +25,7 @@ namespace Lusitan.GPES.Front.Blazor
             services.AddServerSideBlazor();
 
             services.ConfigureServices(Configuration);
+            _lstCulturasSuportadas = services.OpcoesLocalizacao(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,6 +41,8 @@ namespace Lusitan.GPES.Front.Blazor
 
             app.UseStaticFiles(); //
 
+            app.UseRequestLocalization(_lstCulturasSuportadas); //
+
             app.UseRouting();
 
             app.UseAuthentication(); //
@@ -45,7 +50,8 @@ namespace Lusitan.GPES.Front.Blazor
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub();
+				endpoints.MapControllers(); //
+				endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
         }

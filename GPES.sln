@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.WebApi", "Lusi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Apresentacao", "0-Apresentacao", "{06BCA57A-A783-43C7-92A8-DEEE085B67AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lusitan.GPES.Front.Blazor", "Lusitan.GPES.Front.Blazor\Lusitan.GPES.Front.Blazor.csproj", "{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.Front.Blazor", "Lusitan.GPES.Front.Blazor\Lusitan.GPES.Front.Blazor.csproj", "{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

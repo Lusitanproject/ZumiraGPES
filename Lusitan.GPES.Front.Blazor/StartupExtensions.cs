@@ -2,12 +2,14 @@
 using Lusitan.GPES.Front.Blazor.Autenticacao;
 using Lusitan.GPES.Front.Blazor.Backend;
 using Lusitan.GPES.Front.Blazor.Backend.Interface;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 using Radzen;
 using System.Globalization;
+using System.Linq;
 
 namespace Lusitan.GPES.Front.Blazor
 {
@@ -18,8 +20,9 @@ namespace Lusitan.GPES.Front.Blazor
 			CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
 
 			services.AddControllers();
+            services.AddLocalization(options => options.ResourcesPath = "Resource");
             //
-			services.AddScoped<IUsuario, Usuario>();
+            services.AddScoped<IUsuario, Usuario>();
 
             //
             services.AddScoped<AuthenticationStateProvider, ProvedorAutenticacao>();
@@ -31,6 +34,17 @@ namespace Lusitan.GPES.Front.Blazor
 
             services.AddMudServices();
             services.AddBlazoredSessionStorage();
+        }
+
+        public static RequestLocalizationOptions OpcoesLocalizacao(this IServiceCollection services, IConfiguration configuration)
+        {
+            var _culturasSuportadas = (configuration.GetSection("Cultura").GetChildren().ToDictionary(x => x.Key, x => x.Value)).Keys.ToArray();
+
+            var _opcoesLocalizacao = new RequestLocalizationOptions()
+                .AddSupportedCultures(_culturasSuportadas)
+                .AddSupportedUICultures(_culturasSuportadas);
+
+            return _opcoesLocalizacao;
         }
     }
 }

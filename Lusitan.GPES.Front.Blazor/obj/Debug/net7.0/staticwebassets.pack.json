@@ -233,6 +233,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\flag\\ar.png",
+      "PackagePath": "staticwebassets\\img\\flag\\ar.png"
+    },
+    {
+      "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\flag\\br.png",
+      "PackagePath": "staticwebassets\\img\\flag\\br.png"
+    },
+    {
+      "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\flag\\us.png",
+      "PackagePath": "staticwebassets\\img\\flag\\us.png"
+    },
+    {
       "Id": "E:\\ZumiraGPES\\Lusitan.GPES.Front.Blazor\\wwwroot\\img\\log-off.png",
       "PackagePath": "staticwebassets\\img\\log-off.png"
     },

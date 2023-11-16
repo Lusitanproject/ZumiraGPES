@@ -71,7 +71,7 @@
 
                     this.GravaObjSessao<UsuarioDominio>("Usuario", _usuarioLogado);
                     this.GravaObjSessao<string>("token", _login.Token);
-                    this.GravaObjSessao<string>("ultimoAcesso", (_login.UltimoAcesso ?? DateTime.Now).ToString("dd/MM/yyyy HH:mm"));
+                    this.GravaObjSessao<string>("ultimoAcesso", (_login.UltimoAcesso ?? DateTime.Now).ToString());
 
                     _usuarioLogado.Token = _login.Token;
 

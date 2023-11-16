@@ -1,0 +1,46 @@
+﻿@inject NavigationManager _nav;
+@inject IConfiguration _conf;
+
+@if (_culturas != null)
+{
+    <MudToolBar>
+        @foreach (var cul in _culturas)
+        {
+            <MudIconButton 
+                Title="@(cul.Value.ToString().Split(';')[0])"
+                Color="Color.Inherit"
+                @onclick="() => SelecionaCultura(cul.Key)">
+                <img src="@(cul.Value.ToString().Split(';')[1])">
+            </MudIconButton>
+        }
+    </MudToolBar>
+}
+
+@code {
+
+    string _culturaSelecionada = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+
+    Dictionary<string, string> _culturas;
+
+    protected override void OnInitialized()
+    {
+        _culturas = _conf.GetSection("Cultura").GetChildren().ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    void SelecionaCultura(string cultura)
+    {
+        _culturaSelecionada = cultura;
+
+        if (string.IsNullOrWhiteSpace(_culturaSelecionada))
+        {
+            return;
+        }
+
+        var _uri = new Uri(_nav.Uri)
+            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+
+        var _busca = $"?cultura={Uri.EscapeDataString(_culturaSelecionada)}&" + $"url={Uri.EscapeDataString(_uri)}";
+
+        _nav.NavigateTo("Cultura/SetCultura" + _busca, forceLoad: true);
+    }
+}
