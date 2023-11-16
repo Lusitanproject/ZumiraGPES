@@ -1,0 +1,2 @@
+16.11.2023 00:48:44 ERROR ERRO UsuarioAppService.Lusitan.GPES.Core.Entidade.UsuarioDominio GetById(Int32)(): ERRO UsuarioRepositorio.Lusitan.GPES.Core.Entidade.UsuarioDominio GetById(Int32)(): Unclosed quotation mark after the character string '2'.
+Incorrect syntax near '2'.

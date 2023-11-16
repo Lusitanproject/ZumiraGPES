@@ -40,7 +40,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"{_query} WHERE num_usuario = '{id}";
+                var _buscaUsuario = @$"{_query} WHERE num_usuario = {id}";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }

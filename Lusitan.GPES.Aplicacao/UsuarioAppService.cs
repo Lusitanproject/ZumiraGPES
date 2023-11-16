@@ -194,6 +194,22 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
+        public UsuarioDominio GetById(int id)
+        {
+            try
+            {
+                return _servico.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
+
         public List<UsuarioDominio> GetListAdmin()
         {
             try

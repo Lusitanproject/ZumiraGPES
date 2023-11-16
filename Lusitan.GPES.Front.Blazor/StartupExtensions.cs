@@ -10,6 +10,7 @@ using MudBlazor.Services;
 using Radzen;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 
 namespace Lusitan.GPES.Front.Blazor
 {
@@ -17,9 +18,9 @@ namespace Lusitan.GPES.Front.Blazor
     {
         public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
-			CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
+            
 
-			services.AddControllers();
+            services.AddControllers();
             services.AddLocalization(options => options.ResourcesPath = "Resource");
             //
             services.AddScoped<IUsuario, Usuario>();

@@ -10,7 +10,7 @@ using CORE.Validacao;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
-    [Route("/api/GPES/[Controller]")]
+    [Route("/api/GPES/{cultura:cultura}/[Controller]")]
     [ApiController]
     public class GPESWebApi<T> : ControllerBase where T : class
     {

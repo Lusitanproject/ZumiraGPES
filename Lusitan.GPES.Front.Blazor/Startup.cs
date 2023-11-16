@@ -21,6 +21,8 @@ namespace Lusitan.GPES.Front.Blazor
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("pt-BR");
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
