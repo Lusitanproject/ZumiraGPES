@@ -36,7 +36,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
         {
             try
             {
-                var _req = new RestRequest(string.Format($"api/GPES/{CultureInfo.CurrentCulture.Name}/Usuario/busca-por-email/{0}", eMail.Trim()), Method.Get);
+                var _req = new RestRequest(string.Format("api/GPES/{0}/Usuario/busca-por-email/{1}", CultureInfo.CurrentCulture.Name, eMail.Trim()), Method.Get);
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<UsuarioDominio>(_req).Data;
             }
