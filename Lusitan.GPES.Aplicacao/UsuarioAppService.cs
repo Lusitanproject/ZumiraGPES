@@ -4,6 +4,7 @@ using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
+using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -21,6 +22,7 @@ namespace Lusitan.GPES.Aplicacao
         readonly ILogAcessoErroAppService _logAcessoErro;
         readonly ConfigAmbiente _config;
         readonly ConfigXMS _configXMS;
+        readonly IStringLocalizer<UsuarioAppService> _localizador;
 
         int _idPerfilAdmin;
 
@@ -30,7 +32,8 @@ namespace Lusitan.GPES.Aplicacao
                                     IPerfilAcessoAppService perfilAcesso,
                                     IUsuarioPerfilAppService usuarioPerfil,
                                     IUsuarioLogAppService log,
-                                    ILogAcessoErroAppService logAcessoErro)
+                                    ILogAcessoErroAppService logAcessoErro,
+                                    IStringLocalizer<UsuarioAppService> localizador)
         {
             _config = config;
             _servico = servico;
@@ -39,6 +42,7 @@ namespace Lusitan.GPES.Aplicacao
             _configXMS = configXMS;
             _log = log;
             _logAcessoErro = logAcessoErro;
+            _localizador = localizador;
         }
 
         void Init()
@@ -52,7 +56,7 @@ namespace Lusitan.GPES.Aplicacao
 
             if (_novoUsuario != null)
             {
-                return "Já existe um Usuário cadastrado com este E-Mail!";
+                return _localizador.GetString("msgJaExisteUsuarioComEMail");
             }
 
             return _servico.Add(new UsuarioViewDominio() {
@@ -286,12 +290,12 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (_usuario.IdcAtivo != "A")
                 {
-                    return "Não é possível Alterar a Senha de um Usuário Bloqueado ou Inativo!";
+                    return _localizador.GetString("msgBloqueioAlteraSenhaUsuario");
                 }
 
                 if (CORE.CryptObj.Decripta(_usuario.DesSenha.Trim()) != obj.SenhaAntiga.Trim())
                 {
-                    return "A senha atual não confere com a já cadastrada!";
+                    return _localizador.GetString("msgSenhaAtualNaoConfere");
                 }
 
                 _usuario.DesSenha = CORE.CryptObj.Encripta(obj.SenhaNova);
@@ -301,7 +305,7 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (string.IsNullOrEmpty(_resultado))
                 {
-                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = "Senha alterada" });
+                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = _localizador.GetString("logSenhaAlterada") });
                 }
             }
             catch (Exception ex)

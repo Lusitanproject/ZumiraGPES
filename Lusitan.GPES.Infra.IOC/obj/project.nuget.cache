@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2U+p4sD/kuK0JTECfPDPSj3gwhhT9afJkx6KrBw20Ed8oiz0dvo/ds139Fan2TfQ60cCiewl0Wqlw+jitVTGWg==",
+  "dgSpecHash": "OMCOSPoG+g9BULp6hoD52Ixbqdas75u/utIFFSGAZqNMpmDqAFW+PuKYmE5MHOPoUvDbY/kalkBCLO8adrFuhQ==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Infra.IOC\\Lusitan.GPES.Infra.IOC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\glaub\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\8.0.0\\microsoft.extensions.localization.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.3\\microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.3\\microsoft.identitymodel.logging.7.0.3.nupkg.sha512",

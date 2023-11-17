@@ -1,15 +1,9 @@
 using Lusitan.GPES.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 
 namespace Lusitan.GPES.WebApi
 {
@@ -40,7 +34,8 @@ namespace Lusitan.GPES.WebApi
             }
 
             //
-            app.ConfigureSwagger(env);
+            app.ConfigureSwagger();
+            app.ConfigureMultiIdiomas();
             //
 
             app.UseHttpsRedirection();
@@ -48,9 +43,9 @@ namespace Lusitan.GPES.WebApi
             app.UseRouting();
 
             app.UseCors(x => x
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();

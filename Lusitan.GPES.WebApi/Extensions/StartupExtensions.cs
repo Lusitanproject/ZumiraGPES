@@ -5,8 +5,10 @@ using Lusitan.GPES.Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
@@ -19,7 +21,12 @@ namespace Lusitan.GPES.WebApi.Extensions
     {
         public static void ConfigureServices(this IServiceCollection service, IConfiguration configuration)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
+            #region Multi-idiomas
+            service.AddLocalization();
+            service.AddSingleton<LocalizationMiddleware>();
+            service.AddDistributedMemoryCache();
+            service.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+            #endregion
 
             var _confAmbiente = new ConfigAmbiente();
             configuration.Bind("ConfigAmbiente", _confAmbiente);
@@ -60,7 +67,7 @@ namespace Lusitan.GPES.WebApi.Extensions
                 });
         }
 
-        public static void ConfigureSwagger(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static void ConfigureSwagger(this IApplicationBuilder app)
         {
             app.UseSwagger();
             app.UseSwaggerUI();
@@ -69,6 +76,13 @@ namespace Lusitan.GPES.WebApi.Extensions
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "Back-end - Sistema de Gestão de Pessoas");
                 c.RoutePrefix = "docs";
             });
+        }
+
+        public static void ConfigureMultiIdiomas(this IApplicationBuilder app)
+        {
+            app.UseRequestLocalization(new RequestLocalizationOptions { DefaultRequestCulture = new RequestCulture(new CultureInfo("pt-BR")) });
+            app.UseStaticFiles();
+            app.UseMiddleware<LocalizationMiddleware>();
         }
     }
 }

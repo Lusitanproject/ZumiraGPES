@@ -59,11 +59,8 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\refint\Lusitan.GPES.WebApi.dl
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.genruntimeconfig.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\ref\Lusitan.GPES.WebApi.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\en\Lusitan.GPES.WebApi.resources.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\es\Lusitan.GPES.WebApi.resources.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.GenerateResource.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\en\Lusitan.GPES.WebApi.resources.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\es\Lusitan.GPES.WebApi.resources.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.resources
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.en.resources
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.es.resources
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Newtonsoft.Json.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Resources\en-US.json
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Resources\pt-BR.json
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Resources\es-AR.json

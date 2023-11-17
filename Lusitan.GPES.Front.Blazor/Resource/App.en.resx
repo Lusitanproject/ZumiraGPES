@@ -129,6 +129,9 @@
   <data name="MsgObriSenhaNova" xml:space="preserve">
     <value>The application requires the New Password field!</value>
   </data>
+  <data name="msgSenhaAlteradaComSucesso" xml:space="preserve">
+    <value>Password changed successfully!</value>
+  </data>
   <data name="nomeAplicacao" xml:space="preserve">
     <value>People Magement</value>
   </data>

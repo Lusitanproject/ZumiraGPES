@@ -1,0 +1,6 @@
+{
+  "msgBloqueioAlteraSenhaUsuario": "Não é possível Alterar a Senha de um Usuário Bloqueado ou Inativo!",
+  "msgSenhaAtualNaoConfere": "A senha atual não confere com a já cadastrada!",
+  "logSenhaAlterada": "Senha alterada",
+  "msgJaExisteUsuarioComEMail": "Já existe um Usuário cadastrado com este E-Mail!"
+}

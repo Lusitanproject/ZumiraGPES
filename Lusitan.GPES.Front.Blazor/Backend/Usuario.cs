@@ -89,12 +89,9 @@ namespace Lusitan.GPES.Front.Blazor.Backend
                         _result = "Acesso Negado!";
                         break;
 
-                    case HttpStatusCode.BadRequest:
-                        _result = _content.Content;
-                        break;
-
                     case HttpStatusCode.OK:
-                        _result = string.Empty;
+                    case HttpStatusCode.BadRequest:
+                        _result = _content.Content.Replace("\"", "");
                         break;
                 }
 

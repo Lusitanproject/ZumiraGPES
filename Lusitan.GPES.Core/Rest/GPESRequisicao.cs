@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System.Globalization;
 
 namespace Lusitan.GPES.Core.Rest
 {
@@ -14,6 +15,7 @@ namespace Lusitan.GPES.Core.Rest
             : this(url, metodo)
         {
             this.AddHeader("Authorization", token);
+            this.AddHeader("Accept-Language", CultureInfo.CurrentCulture.Name);
         }
     }
 }
