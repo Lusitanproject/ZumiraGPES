@@ -1,5 +1,6 @@
 ﻿using Lusitan.GPES.Core.Base.Interface.CRUD;
 using Lusitan.GPES.Core.Entidade;
+using Lusitan.GPES.Core.Response;
 
 namespace Lusitan.GPES.Front.Blazor.Backend.Interface
 {

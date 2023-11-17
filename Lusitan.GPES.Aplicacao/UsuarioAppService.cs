@@ -1,6 +1,9 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
+using Lusitan.GPES.Core.Request;
+using Lusitan.GPES.Core.Response;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -273,5 +276,40 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
+        public string AlteraSenha(AlteraSenhaRequest obj)
+        {
+            var _resultado = string.Empty;
+
+            try
+            {
+                var _usuario = _servico.GetByIdComSenha(obj.NumUsuario);
+
+                if (_usuario.IdcAtivo != "A")
+                {
+                    return "Não é possível Alterar a Senha de um Usuário Bloqueado ou Inativo!";
+                }
+
+                if (CORE.CryptObj.Decripta(_usuario.DesSenha.Trim()) != obj.SenhaAntiga.Trim())
+                {
+                    return "A senha atual não confere com a já cadastrada!";
+                }
+
+                _usuario.DesSenha = CORE.CryptObj.Encripta(obj.SenhaNova);
+                _resultado = _servico.Update(_usuario);
+
+                if (string.IsNullOrEmpty(_resultado))
+                {
+                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = "Alteração de senha" });
+                }
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_resultado);
+            }
+
+            return _resultado;
+        }
     }
 }

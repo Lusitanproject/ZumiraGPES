@@ -25,31 +25,6 @@ namespace Lusitan.GPES.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization(options => options.ResourcesPath = "Resource");
-            services.Configure<RequestLocalizationOptions>(
-                options =>
-                {
-                    var supportedCultures = new List<CultureInfo>
-                    {
-                        new CultureInfo("en-US"),
-                        new CultureInfo("es-AR"),
-                        new CultureInfo("pt-BR")
-                    };
-
-                    options.DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR");
-                    options.SupportedCultures = supportedCultures;
-                    options.SupportedUICultures = supportedCultures;
-                    options.RequestCultureProviders = new[] { new RouteDataRequestCultureProvider { IndexOfCulture = 3, IndexofUICulture = 3 } };
-                });
-
-            services.Configure<RouteOptions>(options =>
-            {
-                options.ConstraintMap.Add("cultura", typeof(LanguageRouteConstraint));
-            });
-
-
-
-
             services.ConfigureServices(Configuration);
 
             services.AddControllers();
@@ -66,8 +41,6 @@ namespace Lusitan.GPES.WebApi
 
             //
             app.ConfigureSwagger(env);
-            var _opcoesLocalizacao = app.ApplicationServices.GetServices<IOptions<RequestLocalizationOptions>>();
-            app.UseRequestLocalization(_opcoesLocalizacao.FirstOrDefault().Value);
             //
 
             app.UseHttpsRedirection();

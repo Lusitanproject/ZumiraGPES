@@ -67,9 +67,3 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\es\Lusitan.GPES.WebApi.resour
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.resources
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.en.resources
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.Resource.App.es.resources
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Localization.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
-E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll

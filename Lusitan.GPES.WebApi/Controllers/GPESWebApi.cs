@@ -1,5 +1,4 @@
-﻿using Lusitan.GPES.Core.Entidade;
-using Lusitan.GPES.Core.Interface.Repositorio;
+﻿using Lusitan.GPES.Core.Interface.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
@@ -7,10 +6,11 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Lusitan.GPES.Core.Base.Interface.CRUD;
 using CORE.Validacao;
+using Lusitan.GPES.Core.Config;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
-    [Route("/api/GPES/{cultura:cultura}/[Controller]")]
+    [Route("/api/GPES/[Controller]")]
     [ApiController]
     public class GPESWebApi<T> : ControllerBase where T : class
     {

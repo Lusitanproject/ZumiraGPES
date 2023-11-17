@@ -1,7 +1,9 @@
 ﻿using CORE.Validacao;
+using Lusitan.GPES.Core.Config;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Repositorio;
+using Lusitan.GPES.Core.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -85,6 +87,30 @@ namespace Lusitan.GPES.WebApi.Controllers
                 }
 
                 _msg = _appServico.AddAdmin(obj);
+
+                return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("altera-senha")]
+        public ActionResult AlteraSenha([FromBody] AlteraSenhaRequest obj)
+        {
+            try
+            {
+                var _msg = ValidaPreenchimento.Validar(obj);
+
+                if (!string.IsNullOrEmpty(_msg))
+                {
+                    return BadRequest(_msg);
+                }
+
+                _msg = _appServico.AlteraSenha(obj);
 
                 return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
             }

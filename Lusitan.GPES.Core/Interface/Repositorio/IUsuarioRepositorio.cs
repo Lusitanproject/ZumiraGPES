@@ -4,7 +4,8 @@ using Lusitan.GPES.Core.Entidade;
 namespace Lusitan.GPES.Core.Interface.Repositorio
 {
     public interface IUsuarioRepositorio: IAdd<UsuarioViewDominio>,
-                                          IGetById<UsuarioDominio>
+                                          IGetById<UsuarioDominio>,
+                                          IUpdate<UsuarioViewDominio>
     {
         List<UsuarioDominio> GetList(string idcAtivo);
 
@@ -15,5 +16,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         string AlteraSituacao(string idcSituacao, int idUsuario);
 
         string RegistraLogAcesso(int idUsuario);
+
+        UsuarioViewDominio GetByIdComSenha(int id);
     }
 }

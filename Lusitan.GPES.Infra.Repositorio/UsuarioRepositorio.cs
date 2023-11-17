@@ -54,6 +54,32 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        public UsuarioViewDominio GetByIdComSenha(int id)
+        {
+            try
+            {
+                var _buscaUsuario = @$"SELECT	Id = num_usuario,
+                                                NomeUsuario = nom_usuario,
+                                                eMail = e_mail,
+                                                IdcAtivo = idc_ativo,
+                                                DesSenha = des_senha,
+                                                UltimoAcesso = dth_ultimo_acesso,
+                                                IdcForcaAlteraSenha = idc_forca_altera_senha
+                                        FROM usuario (NOLOCK) 
+                                        WHERE num_usuario = {id}";
+
+                return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
         public UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail)
         {
             try
@@ -154,6 +180,29 @@ namespace Lusitan.GPES.Infra.Repositorio
                 var _query = @$" UPDATE usuario 
                                  SET dth_ultimo_acesso = GETDATE()
                                  WHERE num_usuario = {idUsuario}";
+
+                this.ConexaoBD.Execute(_query.ToString());
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
+
+        public string Update(UsuarioViewDominio obj)
+        {
+            try
+            {
+                var _query = @$" UPDATE usuario 
+                                 SET des_senha = '{obj.DesSenha}',
+                                     nom_usuario = '{obj.NomeUsuario.Trim()}'
+                                 WHERE num_usuario = {obj.Id}";
 
                 this.ConexaoBD.Execute(_query.ToString());
 

@@ -5,6 +5,8 @@ using RestSharp;
 using System.Reflection;
 using System;
 using System.Globalization;
+using Lusitan.GPES.Core.Response;
+using Lusitan.GPES.Core.Request;
 
 namespace Lusitan.GPES.Front.Blazor.Backend
 {
@@ -17,7 +19,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
         {
             try
             {
-                var _req = new RestRequest($"api/GPES/{CultureInfo.CurrentCulture.Name}/Usuario/login", Method.Post);
+                var _req = new RestRequest($"api/GPES/Usuario/login", Method.Post);
                 _req.AddBody( new LoginRequest() { EMail = eMail, Pwd = pwd } );
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<LoginResponse>(_req).Data;
@@ -36,7 +38,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
         {
             try
             {
-                var _req = new RestRequest(string.Format("api/GPES/{0}/Usuario/busca-por-email/{1}", CultureInfo.CurrentCulture.Name, eMail.Trim()), Method.Get);
+                var _req = new RestRequest(string.Format("api/GPES/Usuario/busca-por-email/{1}", eMail.Trim()), Method.Get);
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<UsuarioDominio>(_req).Data;
             }
@@ -54,7 +56,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
         {
             try
             {
-                var _req = new RestRequest(string.Format($"api/GPES/{CultureInfo.CurrentCulture.Name}/Usuario/busca-por-id/{0}", id), Method.Get);
+                var _req = new RestRequest(string.Format("api/GPES/Usuario/busca-por-id/{0}", id), Method.Get);
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<UsuarioDominio>(_req).Data;
             }

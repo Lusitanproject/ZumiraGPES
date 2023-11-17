@@ -23,6 +23,9 @@ namespace Lusitan.GPES.Core.Servico
         public UsuarioDominio GetById(int id)
            => _repositorio.Usuario.GetById(id);
 
+        public UsuarioViewDominio GetByIdComSenha(int id)
+            => _repositorio.Usuario.GetByIdComSenha(id);
+
         public string AlteraSituacao(string idcSituacao, int idUsuario)
             => _repositorio.Usuario.AlteraSituacao(idcSituacao, idUsuario);
 
@@ -36,6 +39,22 @@ namespace Lusitan.GPES.Core.Servico
             try
             {
                 _repositorio.Usuario.Add(obj);
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+            }
+
+            return _resultado;
+        }
+
+        public string Update(UsuarioViewDominio obj)
+        {
+            var _resultado = string.Empty;
+
+            try
+            {
+                _repositorio.Usuario.Update(obj);
             }
             catch (Exception ex)
             {

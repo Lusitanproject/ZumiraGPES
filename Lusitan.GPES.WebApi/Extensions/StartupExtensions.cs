@@ -1,4 +1,5 @@
 ﻿using Lusitan.GPES.Aplicacao;
+using Lusitan.GPES.Core.Config;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
