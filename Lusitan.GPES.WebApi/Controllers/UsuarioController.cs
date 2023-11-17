@@ -15,16 +15,13 @@ namespace Lusitan.GPES.WebApi.Controllers
     public class UsuarioController : GPESWebApi<UsuarioDominio>
     {
         readonly IUsuarioAppService _appServico;
-        readonly IStringLocalizer<UsuarioController> _local;
 
         public UsuarioController(ConfigAmbiente config,
                                  IUnitOfWork unitOfWork,
-                                 IUsuarioAppService appServico,
-                                 IStringLocalizer<UsuarioController> local)
+                                 IUsuarioAppService appServico)
             : base(config, unitOfWork)
         {
             _appServico = appServico;
-            _local = local;
         }
 
         [HttpPost]
@@ -34,9 +31,6 @@ namespace Lusitan.GPES.WebApi.Controllers
         {
             try
             {
-                var _xpto = _local["msg"];
-
-
                 var _msg = ValidaPreenchimento.Validar(login);
 
                 if (!string.IsNullOrEmpty(_msg))

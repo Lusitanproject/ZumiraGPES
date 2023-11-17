@@ -44,7 +44,7 @@ namespace Lusitan.GPES.Infra.Repositorio
                                  INSERT INTO usuario_log (num_usuario_log, num_usuario, desc_log, dth_log, num_usuario_resp) 
                                  VALUES (@IdLog, {obj.IdUsuario}, '{obj.DescLog.Trim()}', GETDATE(), {obj.IdUsuarioResp})";
 
-                this.ConexaoBD.Execute(_query.ToString());
+                this.ConexaoBD.Execute(_query);
 
                 return string.Empty;
             }

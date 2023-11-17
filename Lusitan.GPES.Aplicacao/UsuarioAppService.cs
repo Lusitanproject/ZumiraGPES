@@ -295,11 +295,13 @@ namespace Lusitan.GPES.Aplicacao
                 }
 
                 _usuario.DesSenha = CORE.CryptObj.Encripta(obj.SenhaNova);
+                _usuario.IdcForcaAlteraSenha = "N";
+
                 _resultado = _servico.Update(_usuario);
 
                 if (string.IsNullOrEmpty(_resultado))
                 {
-                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = "Alteração de senha" });
+                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = "Senha alterada" });
                 }
             }
             catch (Exception ex)

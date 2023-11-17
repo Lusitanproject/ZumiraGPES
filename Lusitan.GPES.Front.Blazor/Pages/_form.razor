@@ -5,6 +5,9 @@
 
 @code 
 {
+	protected bool _idcErro = true;
+	protected string _msgErro { get; set; } 
+
 	protected async void TrataErro(string msgErro)
 				=> await _js.InvokeVoidAsync("console.log", msgErro);
 
@@ -17,7 +20,6 @@
 
 	protected async Task<string> Token()
 				=> await this.GetObjSessao<string>("token");
-
 
 	protected async Task<T> GetObjSessao<T>(string nomObj)
 				=> await _sessao.GetItemAsync<T>(nomObj);

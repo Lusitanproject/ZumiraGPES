@@ -123,10 +123,22 @@
   <data name="mnuAlteraSenha" xml:space="preserve">
     <value>Cambiar Contraseña</value>
   </data>
+  <data name="MsgObriSenhaAntiga" xml:space="preserve">
+    <value>¡La aplicación requiere el campo Contraseña antigua!</value>
+  </data>
+  <data name="MsgObriSenhaNova" xml:space="preserve">
+    <value>¡La aplicación requiere el campo Nueva contraseña!</value>
+  </data>
   <data name="nomeAplicacao" xml:space="preserve">
     <value>Gestión de Personas</value>
   </data>
   <data name="paginaNaoEncontrada" xml:space="preserve">
     <value>Sorry, there is nothing at this address.</value>
+  </data>
+  <data name="SenhaAtual" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="SenhaNova" xml:space="preserve">
+    <value>Nueva contraseña</value>
   </data>
 </root>

@@ -57,7 +57,7 @@ namespace Lusitan.GPES.Infra.Repositorio
                 var _query = @$" INSERT INTO usuario_perfil (num_usuario, num_perfil) 
                                  VALUES ({obj.IdUsuario}, {obj.IdPerfilAcesso})";
 
-                this.ConexaoBD.Execute(_query.ToString());
+                this.ConexaoBD.Execute(_query);
 
                 return string.Empty;
             }

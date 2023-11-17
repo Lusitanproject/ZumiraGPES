@@ -181,7 +181,7 @@ namespace Lusitan.GPES.Infra.Repositorio
                                  SET dth_ultimo_acesso = GETDATE()
                                  WHERE num_usuario = {idUsuario}";
 
-                this.ConexaoBD.Execute(_query.ToString());
+                this.ConexaoBD.Execute(_query);
 
                 return string.Empty;
             }
@@ -200,11 +200,12 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = @$" UPDATE usuario 
-                                 SET des_senha = '{obj.DesSenha}',
-                                     nom_usuario = '{obj.NomeUsuario.Trim()}'
+                                 SET des_senha              = '{obj.DesSenha}',
+                                     nom_usuario            = '{obj.NomeUsuario.Trim()}',
+                                     idc_forca_altera_senha = '{obj.IdcForcaAlteraSenha}'
                                  WHERE num_usuario = {obj.Id}";
 
-                this.ConexaoBD.Execute(_query.ToString());
+                this.ConexaoBD.Execute(_query);
 
                 return string.Empty;
             }

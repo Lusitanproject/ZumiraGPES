@@ -1,0 +1,105 @@
+﻿@page "/AlteraSenha/{NumUsuario}"
+@using Lusitan.GPES.Core.Request;
+
+@inherits _form
+
+@attribute [Authorize]
+
+@inject IUsuario _usuario
+
+<RadzenCard class="m-3">
+
+    <RadzenTemplateForm TItem="UsuarioViewDominio" Data=@model Submit=@Gravar>
+        <div class="row">
+            <div class="col-md-4 p-3">
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="SenhaAntiga" Text=@_local["SenhaAtual"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenPassword Name="SenhaAntiga" @bind-Value=@_senhaAntiga MaxLength="8" style="width: 20%;" Class="w-100" />
+                        <RadzenRequiredValidator Component="SenhaAntiga" Text=@_local["MsgObriSenhaAntiga"] />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="SenhaNova" Text=@_local["SenhaNova"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenPassword Name="SenhaNova" @bind-Value=@_senhaNova MaxLength="8" style="width: 20%;" Class="w-100" />
+                        <RadzenRequiredValidator Component="SenhaNova" Text="A aplicação requer que o campo Senha Nova!" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        @if (_idcErro)
+        {
+            <MudText Color="@Color.Error">
+                @_msgErro
+            </MudText>
+        }
+        else
+        {
+            <MudText Color="Color.Success">Senha alterada com sucesso!</MudText>
+        }
+
+        <div class="row justify-content-left">
+            <div class="col-md-12 d-flex align-items-end justify-content-left" style="margin-top: 16px;">
+                <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" />
+            </div>
+        </div>
+
+    </RadzenTemplateForm>
+</RadzenCard>
+
+@code 
+{
+    UsuarioViewDominio model = new UsuarioViewDominio();
+
+    [Parameter]
+    public string NumUsuario { get; set; }
+
+    string _senhaAntiga { get; set; }
+    string _senhaNova { get; set; }
+
+    async void Gravar()
+    {
+        try
+        {
+            var _msg = string.Empty;
+
+            this.ValidaToken();
+
+            if (string.IsNullOrEmpty(_msg))
+            {
+                _usuario.Token = await this.Token();                
+
+                _msg = _usuario.AlteraSenha(new AlteraSenhaRequest() { NumUsuario = int.Parse(NumUsuario), NumUsuarioResp = int.Parse(NumUsuario), SenhaAntiga = _senhaAntiga, SenhaNova = _senhaNova });
+
+                if (string.IsNullOrEmpty(_msg))
+                {
+                    _idcErro = false;
+                }
+                else
+                {
+                    _msgErro = _msg;
+                    _idcErro = true;
+                }
+            }
+            else
+            {
+                _msgErro = _msg;
+                _idcErro = false;
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

@@ -78,7 +78,9 @@
 
                     ((ProvedorAutenticacao)_autenticacao).MarcaUsuarioComoAutenticado(_usuarioLogado);
 
-                    _nav.NavigateTo("index", forceLoad: true);
+                    var _url = _usuarioLogado.IdcForcaAlteraSenha == "S" ? $"AlteraSenha/{_usuarioLogado.Id}" : "index";
+
+                    _nav.NavigateTo(_url, forceLoad: true);
                 }
                 else
                 {
@@ -97,11 +99,15 @@
         try
         {
             _msgErro = string.Empty;
-            _usuarioLogado = _usuario.BuscaPeloEMail(model.EMail);
 
-            if (_usuarioLogado == null)
+            if (!string.IsNullOrEmpty(model.EMail))
             {
-                _msgErro = "Usuário não encontrado!";
+                _usuarioLogado = _usuario.BuscaPeloEMail(model.EMail);
+
+                if (_usuarioLogado == null)
+                {
+                    _msgErro = "Usuário não encontrado!";
+                }
             }
         }
         catch (Exception ex)
