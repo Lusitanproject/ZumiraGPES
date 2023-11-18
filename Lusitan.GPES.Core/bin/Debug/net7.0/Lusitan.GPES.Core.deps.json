@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v7.0": {
       "Lusitan.GPES.Core/1.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0",
           "CORE.Validacao": "1.0.0.0"
         },
         "runtime": {
           "Lusitan.GPES.Core.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/8.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53112"
+          }
         }
       },
       "RestSharp/110.2.0": {
@@ -47,6 +56,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.Extensions.Localization.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LIMzXjjzv7o3tx3XXvQVHNcrMNPfSoUp4R/YJucdyBixJGRp5p8v2rF1CnRbo+wwtzB4Se/gJYyUpNN8F/TMGw==",
+      "path": "microsoft.extensions.localization.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.localization.abstractions.8.0.0.nupkg.sha512"
     },
     "RestSharp/110.2.0": {
       "type": "package",

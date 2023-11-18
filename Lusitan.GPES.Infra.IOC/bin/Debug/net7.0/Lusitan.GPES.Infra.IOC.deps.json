@@ -209,6 +209,7 @@
       },
       "Lusitan.GPES.Core/1.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0"
         },
         "runtime": {

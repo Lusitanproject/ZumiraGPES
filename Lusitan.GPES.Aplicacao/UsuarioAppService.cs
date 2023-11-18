@@ -6,6 +6,7 @@ using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Security.Claims;
@@ -263,9 +264,26 @@ namespace Lusitan.GPES.Aplicacao
 
                     _msg = _usuarioPerfil.Add( new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id} );
 
+                    var _msgEMail = string.Empty;
+
+                    switch (CultureInfo.CurrentCulture.Name)
+                    {
+                        case "pt-BR":
+                            _msgEMail = TextoEMail.GetTextoNovoUsuarioPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            break;
+
+                        case "en-US":
+                            _msgEMail = TextoEMail.GetTextoNovoUsuarioEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            break;
+
+                        case "es-AR":
+                            _msgEMail = TextoEMail.GetTextoNovoUsuarioEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            break;
+                    }
+
                     this.EnviaEMailParaUsuario( _novoUsuario,
-                                                "Novo acesso",
-                                                Constantes.GetTextoEMailNovoUsuario.Replace("[USUARIO]", _novoUsuario.NomeUsuario).Replace("[LOGIN]", _novoUsuario.eMail).Replace("[SENHA]", _config.SenhaPadraoNovoUsuario));
+                                                _localizador.GetString("tituloMSgNovoAcesso"),
+                                                _msgEMail);
                 }
 
                 return _msg;

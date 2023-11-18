@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "DLs5dJ//iNmIFaG1RooSSzf1Fz7TpEFqF1JPaaqGUyYhUPP63CBDsnh4WoeF7j28GP2VxcQQ0pH1kZRtDN9iDQ==",
+  "dgSpecHash": "/dgZoXkE2WyDTuGT/2VJqAcOUcKt02zXckkifkfr1I2/dvPkDnVZvjAnuLFsRDvkZCy9YTEJOxm6i83dHx7yhw==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Infra.Repositorio\\Lusitan.GPES.Infra.Repositorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\glaub\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\8.0.0\\microsoft.extensions.localization.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",

@@ -2,5 +2,6 @@
   "msgBloqueioAlteraSenhaUsuario": "¡No es posible cambiar la contraseña de un usuario bloqueado o inactivo!",
   "msgSenhaAtualNaoConfere": "¡La contraseña actual no coincide con la ya registrada!",
   "logSenhaAlterada": "Contraseña cambiada",
-  "msgJaExisteUsuarioComEMail": "¡Ya hay un Usuario registrado con este E-Mail!"
+  "msgJaExisteUsuarioComEMail": "¡Ya hay un Usuario registrado con este E-Mail!",
+  "tituloMSgNovoAcesso": "Nuevo acceso"
 }
