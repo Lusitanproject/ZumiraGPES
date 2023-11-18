@@ -1,0 +1,172 @@
+﻿@page "/novoAdmin"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Admin")]
+
+@inject IUsuario _usuario
+
+<br />
+<div>
+    &emsp;
+    <RadzenButton Click=@(args => Novo())
+                  Icon="add_circle_outline"
+                  title=@_local["toollTipNovo"]
+                  Size="ButtonSize.Small"
+                  ButtonStyle="ButtonStyle.Secondary" />
+</div>
+<br />
+
+<RadzenDataGrid AllowFiltering="true"
+                AllowColumnResize="true"
+                AllowSorting="true"
+                AllowPaging="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterMode="FilterMode.Advanced"
+                ShowPagingSummary="true"
+                PageSize="9"
+                PagerHorizontalAlign="HorizontalAlign.Left"
+                SelectionMode="DataGridSelectionMode.Single"
+                Data="@_lst"
+                TItem="UsuarioDominio"
+                IsLoading="@_idcCarregando"
+                EditMode="DataGridEditMode.Single"
+                Density="Density.Compact"
+                EmptyText="Nenhum registro encontrado"
+                AllowColumnPicking="true"
+                Count="@_qteRegistros">
+    <Columns>
+        <RadzenDataGridColumn TItem="UsuarioDominio"
+                              Context="item"
+                              Filterable="false"
+                              Sortable="false"
+                              TextAlign="TextAlign.Center"
+                              Width="50px">
+            <Template Context="item">
+                <RadzenButton Icon="edit"
+                              title=@_local["toollTipEditar"]
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Edita(item))"
+                              @onclick:stopPropagation="true" />
+
+                <RadzenButton Icon="loyalty"
+                              title=@_local["toollTipReenviaSenha"]
+                              Disabled=@(!(item.IdcAtivo == "A"))
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => ReenviaSenha(item))"
+                              @onclick:stopPropagation="true" />
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="UsuarioDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabNome"]
+                              Property="NomeUsuario"
+                              TextAlign="TextAlign.Left"
+                              Width=300px>
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.NomeUsuario</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="UsuarioDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabEMail"]
+                              Property="eMail"
+                              TextAlign="TextAlign.Left"
+                              Width="300px">
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.eMail</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="UsuarioDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabDescSituacao"]
+                              Property="DescSituacao"
+                              TextAlign="TextAlign.Left"
+                              Width="100px">
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.DescSituacao</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+    </Columns>
+</RadzenDataGrid>
+
+@code 
+{
+    List<UsuarioDominio> _lst = new List<UsuarioDominio>();
+
+    string GetFormatoLinha(UsuarioDominio item)
+       => item.IdcAtivo == "A" ? "color:black" : item.IdcAtivo == "B" ? "color:orange" : "color:red";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ValidaToken();
+
+            _usuario.Token = await this.Token();
+
+            await _sessionStorage.RemoveItemAsync("IdcAcaoUsuario");
+
+            await _sessionStorage.RemoveItemAsync("ObjUsuario");
+
+            _idcCarregando = true;
+
+            _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
+
+            _qteRegistros = _lst.Count();
+
+            _idcCarregando = false;
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+    async void Novo()
+    {
+        await ValidaToken();
+
+        _nav.NavigateTo("organizacao/novo");
+    }
+
+    async void Edita(UsuarioDominio obj)
+    {
+        await ValidaToken();
+
+        this.GravaObjSessao<String>("IdcAcaoUsuario", "A");
+
+        this.GravaObjSessao<UsuarioDominio>("ObjUsuario", obj);
+
+        _nav.NavigateTo("usuario/altera");
+    }
+
+    async void ReenviaSenha(UsuarioDominio obj)
+    {
+        await ValidaToken();
+        try
+        {
+            if (await _js.InvokeAsync<bool>("confirm", "Deseja reenviar a Senha para o E-mail cadastrado?"))
+            {
+                //_usuario.ReenviaSenha(obj.NumUsuario, await _sessionStorage.GetItemAsync<int>("NumUsuario"));
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

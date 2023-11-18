@@ -120,6 +120,18 @@
   <data name="AcessadoEm" xml:space="preserve">
     <value>Accedido en</value>
   </data>
+  <data name="cabDescSituacao" xml:space="preserve">
+    <value>Situación</value>
+  </data>
+  <data name="cabEMail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="cabNome" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="mnuAdmin" xml:space="preserve">
+    <value>Administradores</value>
+  </data>
   <data name="mnuAlteraSenha" xml:space="preserve">
     <value>Cambiar Contraseña</value>
   </data>
@@ -143,5 +155,14 @@
   </data>
   <data name="SenhaNova" xml:space="preserve">
     <value>Nueva contraseña</value>
+  </data>
+  <data name="toollTipEditar" xml:space="preserve">
+    <value>Para editar</value>
+  </data>
+  <data name="toollTipNovo" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="toollTipReenviaSenha" xml:space="preserve">
+    <value>Reenviar contraseña</value>
   </data>
 </root>

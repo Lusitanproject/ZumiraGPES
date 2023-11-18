@@ -2,6 +2,7 @@
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
+using System.Collections.Generic;
 
 namespace Lusitan.GPES.Front.Blazor.Backend.Interface
 {
@@ -12,6 +13,10 @@ namespace Lusitan.GPES.Front.Blazor.Backend.Interface
 
         UsuarioDominio BuscaPeloEMail(string eMail);
 
+        List<UsuarioDominio> GetListAdmin();
+
         string AlteraSenha(AlteraSenhaRequest obj);
+
+        
     }
 }

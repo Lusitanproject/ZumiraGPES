@@ -10,6 +10,7 @@ using Lusitan.GPES.Core.Request;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Lusitan.GPES.Core.Rest;
+using System.Collections.Generic;
 
 namespace Lusitan.GPES.Front.Blazor.Backend
 {
@@ -37,6 +38,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             }
         }
 
+
         public UsuarioDominio BuscaPeloEMail(string eMail)
         {
             try
@@ -62,6 +64,24 @@ namespace Lusitan.GPES.Front.Blazor.Backend
                 var _req = new RestRequest(string.Format("api/GPES/Usuario/busca-por-id/{0}", id), Method.Get);
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<UsuarioDominio>(_req).Data;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErroAcessoAPI(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
+
+        public List<UsuarioDominio> GetListAdmin()
+        {
+            try
+            {
+                var _req = new GPESRequisicao("api/GPES/Usuario/Admin", Method.Get, this.Token);
+
+                return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<List<UsuarioDominio>>(_req).Data;
             }
             catch (Exception ex)
             {
@@ -106,5 +126,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
                 throw new Exception(_msgErro);
             }
         }
+
+        
     }
 }

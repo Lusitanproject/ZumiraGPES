@@ -6,7 +6,9 @@
 @code 
 {
 	protected bool _idcErro = true;
-	protected string _msgErro { get; set; } 
+	protected string _msgErro { get; set; }
+	protected int _qteRegistros;
+	protected bool _idcCarregando;
 
 	protected async void TrataErro(string msgErro)
 				=> await _js.InvokeVoidAsync("console.log", msgErro);

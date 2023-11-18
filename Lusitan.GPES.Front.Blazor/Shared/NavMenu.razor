@@ -4,6 +4,10 @@
 <MudNavMenu>
     <MudNavLink OnClick=AlteraSenha>@_local["mnuAlteraSenha"]</MudNavLink>
 
+    <AuthorizeView Roles="Admin">
+        <MudNavLink Href="novoAdmin">@_local["mnuAdmin"]</MudNavLink>
+    </AuthorizeView>
+
 
 
 </MudNavMenu>
