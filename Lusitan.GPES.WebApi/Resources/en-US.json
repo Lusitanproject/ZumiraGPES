@@ -3,5 +3,10 @@
   "msgSenhaAtualNaoConfere": "The current password does not match the one already registered!",
   "logSenhaAlterada": "Password changed",
   "msgJaExisteUsuarioComEMail": "There is already a User registered with this E-Mail!",
-  "tituloMSgNovoAcesso": "New access"
+  "tituloMSgNovoAcesso": "New access",
+  "logUsuarioAtivado": "User activated",
+  "logUsuarioBloqueado": "Blocked user",
+  "logUsuarioInativado": "Inactivated user",
+  "tituloMSgReenvioSenha": "Access password",
+  "logReenvioSenhaEMail": "Password resent by email"
 }

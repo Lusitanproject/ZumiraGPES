@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.0" />
     <PackageReference Include="nlog" Version="5.2.5" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
   </ItemGroup>
 
   <ItemGroup>

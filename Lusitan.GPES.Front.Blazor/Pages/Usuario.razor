@@ -90,6 +90,19 @@
                               Context="item"
                               Filterable="true"
                               Sortable="true"
+                              Title=@_local["cabForcaAlteraSenha"]
+                              Property="DescForcaAlteraSenha"
+                              TextAlign="TextAlign.Left"
+                              Width="80px">
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.DescForcaAlteraSenha</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="UsuarioDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
                               Title=@_local["cabDescSituacao"]
                               Property="DescSituacao"
                               TextAlign="TextAlign.Left"
@@ -105,6 +118,7 @@
 @code 
 {
     List<UsuarioDominio> _lst = new List<UsuarioDominio>();
+    int _numUsuarioLogado;
 
     string GetFormatoLinha(UsuarioDominio item)
        => item.IdcAtivo == "A" ? "color:black" : item.IdcAtivo == "B" ? "color:orange" : "color:red";
@@ -114,6 +128,8 @@
         try
         {
             await ValidaToken();
+
+            _numUsuarioLogado = await this.NumUsuarioLogado();
 
             _usuario.Token = await this.Token();
 
@@ -139,7 +155,7 @@
     {
         await ValidaToken();
 
-        _nav.NavigateTo("organizacao/novo");
+        _nav.NavigateTo("usuario/novo");
     }
 
     async void Edita(UsuarioDominio obj)
@@ -158,9 +174,9 @@
         await ValidaToken();
         try
         {
-            if (await _js.InvokeAsync<bool>("confirm", "Deseja reenviar a Senha para o E-mail cadastrado?"))
+            if (await _js.InvokeAsync<bool>("confirm", _local["msgReenviaSenhaEMail"].Value))
             {
-                //_usuario.ReenviaSenha(obj.NumUsuario, await _sessionStorage.GetItemAsync<int>("NumUsuario"));
+                _usuario.ReenviaSenha(obj.Id, _numUsuarioLogado);
             }
         }
         catch (Exception ex)

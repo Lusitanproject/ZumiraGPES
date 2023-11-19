@@ -202,7 +202,8 @@ namespace Lusitan.GPES.Infra.Repositorio
                 var _query = @$" UPDATE usuario 
                                  SET des_senha              = '{obj.DesSenha}',
                                      nom_usuario            = '{obj.NomeUsuario.Trim()}',
-                                     idc_forca_altera_senha = '{obj.IdcForcaAlteraSenha}'
+                                     idc_forca_altera_senha = '{obj.IdcForcaAlteraSenha}',
+                                     idc_ativo              = '{obj.IdcAtivo}'
                                  WHERE num_usuario = {obj.Id}";
 
                 this.ConexaoBD.Execute(_query);

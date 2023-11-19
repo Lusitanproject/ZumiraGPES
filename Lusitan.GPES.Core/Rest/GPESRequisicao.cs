@@ -12,8 +12,9 @@ namespace Lusitan.GPES.Core.Rest
         }
 
         public GPESRequisicao(string url, Method metodo, string token)
-            : this(url, metodo)
+            : base(url, metodo)
         {
+            this.RequestFormat = DataFormat.Json;
             this.AddHeader("Authorization", token);
             this.AddHeader("Accept-Language", CultureInfo.CurrentCulture.Name);
         }

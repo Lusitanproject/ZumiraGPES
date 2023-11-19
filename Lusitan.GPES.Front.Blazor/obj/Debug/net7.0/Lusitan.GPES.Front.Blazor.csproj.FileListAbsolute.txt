@@ -14,7 +14,6 @@ E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.AspNetCore.Co
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Forms.dll
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Web.dll
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
-E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
 E:\ZumiraGPES\Lusitan.GPES.Front.Blazor\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll

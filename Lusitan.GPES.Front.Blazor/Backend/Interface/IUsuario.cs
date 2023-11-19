@@ -17,6 +17,13 @@ namespace Lusitan.GPES.Front.Blazor.Backend.Interface
 
         string AlteraSenha(AlteraSenhaRequest obj);
 
-        
+        string AddAdmin(UsuarioDominio obj);
+
+        string Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp);
+
+        string ReenviaSenha(int idUsuario, int idUsuarioResp);
+
+        List<UsuarioLogDominio> GetLog(int idUsuario);
+
     }
 }

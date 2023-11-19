@@ -120,14 +120,35 @@
   <data name="AcessadoEm" xml:space="preserve">
     <value>Accessed in</value>
   </data>
+  <data name="cabAtivo" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="cabBloqueado" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="cabData" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="cabDescricao" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="cabDescSituacao" xml:space="preserve">
     <value>Situation</value>
   </data>
   <data name="cabEMail" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="cabForcaAlteraSenha" xml:space="preserve">
+    <value>Change password next login</value>
+  </data>
+  <data name="cabInativo" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
   <data name="cabNome" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="cabResponsavel" xml:space="preserve">
+    <value>Responsible</value>
   </data>
   <data name="mnuAdmin" xml:space="preserve">
     <value>Administrators</value>
@@ -140,6 +161,12 @@
   </data>
   <data name="MsgObriSenhaNova" xml:space="preserve">
     <value>The application requires the New Password field!</value>
+  </data>
+  <data name="msgReenviaSenhaEMail" xml:space="preserve">
+    <value>Do you want to resend the Password to the registered E-mail?</value>
+  </data>
+  <data name="msgRegistroGravadoComSucesso" xml:space="preserve">
+    <value>Record saved successfully!</value>
   </data>
   <data name="msgSenhaAlteradaComSucesso" xml:space="preserve">
     <value>Password changed successfully!</value>
@@ -155,6 +182,9 @@
   </data>
   <data name="SenhaNova" xml:space="preserve">
     <value>New password</value>
+  </data>
+  <data name="tituloMSgReenvioSenha" xml:space="preserve">
+    <value>Senha de acesso</value>
   </data>
   <data name="toollTipEditar" xml:space="preserve">
     <value>To edit</value>

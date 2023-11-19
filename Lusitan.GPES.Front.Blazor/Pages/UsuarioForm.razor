@@ -1,0 +1,251 @@
+﻿@page "/usuario/novo"
+@page "/usuario/altera"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Admin")]
+
+@inject IUsuario _usuario
+
+<br />
+<RadzenCard class="m-3">
+
+    <RadzenTemplateForm TItem="UsuarioDominio" Data=@model Submit=@Gravar>
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="eMail" Text=@_local["cabNome"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenTextBox 
+                            Name="eMail"
+                            Disabled=@_desabilitaEMail
+                            @bind-Value=@model.eMail
+                            MaxLength="50" 
+                            style="width: 100%;"/>
+                        <RadzenRequiredValidator Component="eMail" Text="A aplicação requer que o campo E-mail seja preenchida!" />
+                        <RadzenEmailValidator Component="eMail" Text="E-mail inválido!" />
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="nomUsuario" Text=@_local["cabEMail"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenTextBox 
+                            Name="nomUsuario" 
+                            @bind-Value=@model.NomeUsuario 
+                            MaxLength="100" 
+                            style="width: 100%;"/>
+                        <RadzenRequiredValidator Component="nomUsuario" Text="A aplicação requer que o campo Nome seja preenchida!" />
+                    </div>
+                </div>   
+
+
+                @if (!string.IsNullOrEmpty(_idcAcaoUsuario))
+                {
+                    <br />
+                    <div class="col-md-12">
+                        <RadzenCheckBox @bind-Value=@idcForcaAlteraSenha Name="idcForcaAlteraSenha" TValue="bool" />
+                        <RadzenLabel Text=@_local["cabForcaAlteraSenha"] Component="idcForcaAlteraSenha" Style="margin-left: 8px; vertical-align: middle;" />
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <RadzenRadioButtonList @bind-Value=@_sitUsuario TValue="int">
+                                <Items>
+                                    <RadzenRadioButtonListItem Text=@_local["cabAtivo"] Value="1" />
+                                    <RadzenRadioButtonListItem Text=@_local["cabBloqueado"] Value="2" />
+                                    <RadzenRadioButtonListItem Text=@_local["cabInativo"] Value="3" />
+                                </Items>
+                            </RadzenRadioButtonList>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <br />
+        @if (_idcErro)
+        {
+            <MudText Color="@Color.Error">
+                @_msgErro
+            </MudText>            
+        }
+        else
+        {
+            <MudText Color="Color.Success">@_local["msgRegistroGravadoComSucesso"]</MudText>
+        }
+
+        <div class="row justify-content-left">
+             <div class="col-md-12 d-flex align-items-end justify-content-left" style="margin-top: 16px;">
+                 <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save"  />                 
+             </div>
+        </div>
+
+    </RadzenTemplateForm>
+
+    @{
+        if (_idcExibeTab)
+        {
+            <RadzenTabs TabPosition="TabPosition.Top" style="margin: 20px auto;" RenderMode="TabRenderMode.Client" >
+                <Tabs>
+                    <RadzenTabsItem Text="Logs de Usuário">
+                    <RadzenDataGrid ColumnWidth="150px"
+                                    AllowFiltering="true"
+                                    AllowColumnResize="true"
+                                    AllowPaging="true"
+                                    PageSize="8"
+                                    AllowSorting="true"
+                                    Data="@_logUsuario"
+                                    TItem="UsuarioLogDominio"
+                                    Count="@_qteRegistrosLogUsuario">
+                        <Columns>
+                            <RadzenDataGridColumn TItem="UsuarioLogDominio"
+                                                  Context="item"
+                                                  Filterable="true"
+                                                  Sortable="true"
+                                                  Title=@_local["cabDescricao"]
+                                                  Property="DescLog"
+                                                  TextAlign="TextAlign.Left"
+                                                  Width="100%">
+                                <Template Context="item">
+                                    @item.DescLog;
+                                </Template>
+                            </RadzenDataGridColumn>
+
+                                <RadzenDataGridColumn TItem="UsuarioLogDominio"
+                                                      Context="item"
+                                                      Filterable="true"
+                                                      Sortable="true"
+                                                      Title=@_local["cabResponsavel"]
+                                                      Property="NomeUsuario"
+                                                      TextAlign="TextAlign.Left"
+                                                      Width="70%">
+                                    <Template Context="item">
+                                        @{
+                                            @_usuario.GetById(item.IdUsuarioResp).NomeUsuario;
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+
+
+                            <RadzenDataGridColumn TItem="UsuarioLogDominio"
+                                                  Context="item"
+                                                  Filterable="true"
+                                                  Sortable="true"
+                                                      Title=@_local["cabData"]
+                                                  Property="DthLog"
+                                                  TextAlign="TextAlign.Left"
+                                                  Width="20%">
+                                <Template Context="item">
+                                    <span>@item.DthLog.ToString("dd/MM/yyyy HH:mm")</span>
+                                </Template>
+                            </RadzenDataGridColumn>
+                        </Columns>
+                    </RadzenDataGrid>
+                </RadzenTabsItem>
+                </Tabs>
+            </RadzenTabs>
+        }
+    }
+
+
+</RadzenCard>
+
+@code 
+{
+    UsuarioDominio model = new UsuarioDominio();
+
+    string _idcAcaoUsuario;
+    int _numUsuarioLogado;
+    int _sitUsuario = 1;
+    bool _idcExibeTab = false;
+    bool _desabilitaEMail;
+    bool idcForcaAlteraSenha;
+
+    List<UsuarioLogDominio> _logUsuario = new List<UsuarioLogDominio>();
+    int _qteRegistrosLogUsuario = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+
+            _numUsuarioLogado = await this.NumUsuarioLogado();
+
+            await ValidaToken();
+
+            _usuario.Token = await this.Token();
+            _usuario.NumUsuario = await this.NumUsuarioLogado();
+
+            _idcAcaoUsuario = await _sessionStorage.GetItemAsync<string>("IdcAcaoUsuario");
+
+            if (string.IsNullOrEmpty(_idcAcaoUsuario))
+            {
+                _sitUsuario = 1;
+                _idcExibeTab = false;
+
+                model = new UsuarioDominio() {
+                        IdcAtivo = "A",
+                        IdcForcaAlteraSenha = "S"
+                    };
+
+            }
+            else
+            {
+                _desabilitaEMail = true;
+
+                _idcExibeTab = true;
+
+                model = await _sessionStorage.GetItemAsync<UsuarioDominio>("ObjUsuario");
+
+                _sitUsuario = model.IdcAtivo == "A" ? 1 : model.IdcAtivo == "B" ? 2 : 3;
+
+                _logUsuario = _usuario.GetLog(model.Id).OrderByDescending(x => x.DthLog).ToList();
+                _qteRegistrosLogUsuario = _logUsuario.Count();
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+    async void Gravar()
+    {
+        try
+        {
+            model.IdcAtivo = _sitUsuario == 1 ? "A" : _sitUsuario == 2 ? "B" : "I";
+
+            await ValidaToken();
+
+            var _msg = string.IsNullOrEmpty(_idcAcaoUsuario) ? _usuario.AddAdmin(model) : _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha? "S": "N"), _numUsuarioLogado);
+
+            var _idcGravou = string.IsNullOrEmpty(_msg);
+
+            _idcGravou = string.IsNullOrEmpty(_msg);
+
+            if (_idcGravou)
+            {
+                _nav.NavigateTo("novoAdmin", forceLoad: true);
+            }
+            else
+            {
+                _idcErro = true;
+                _msgErro = _msg;
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

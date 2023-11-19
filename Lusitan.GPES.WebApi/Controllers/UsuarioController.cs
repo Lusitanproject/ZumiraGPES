@@ -8,20 +8,24 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
-    [ApiController]
     public class UsuarioController : GPESWebApi<UsuarioDominio>
     {
         readonly IUsuarioAppService _appServico;
+        readonly IUsuarioLogAppService _log;
 
         public UsuarioController(ConfigAmbiente config,
                                  IUnitOfWork unitOfWork,
-                                 IUsuarioAppService appServico)
+                                 IUsuarioAppService appServico,
+                                 IUsuarioLogAppService log)
             : base(config, unitOfWork)
         {
             _appServico = appServico;
+            _log = log;
         }
 
         [HttpPost]
@@ -68,7 +72,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        [Route("Admin")]
+        [Route("admin")]
         public ActionResult InsereAdmin([FromBody] UsuarioDominio obj)
         {
             try
@@ -90,7 +94,24 @@ namespace Lusitan.GPES.WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
+        [Authorize]
+        [Route("admin")]
+        public ActionResult Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp)
+        {
+            try
+            {
+                var _msg = _appServico.Update(idUsuario, nomUsuario, idcAtivo, idcForcaAlteraSenha, idUsuarioResp);
+
+                return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
         [Authorize]
         [Route("altera-senha")]
         public ActionResult AlteraSenha([FromBody] AlteraSenhaRequest obj)
@@ -113,5 +134,40 @@ namespace Lusitan.GPES.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut]
+        [Authorize]
+        [Route("reenvia-senha-email")]
+        public ActionResult ReenviaSenha(int idUsuario, int idUsuarioResp)
+        {
+            try
+            {
+                var _msg = _appServico.ReenviaSenha(idUsuario, idUsuarioResp);
+
+                return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("log/{id}")]
+        public IActionResult BuscaLogUsuario(int id)
+        {
+            try
+            {
+                var _lstLog = _log.GetByUsuario(id);
+
+                return _lstLog.Count() == 0 ? NotFound(_lstLog) : Ok(_lstLog);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

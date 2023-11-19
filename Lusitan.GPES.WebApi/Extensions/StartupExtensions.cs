@@ -51,20 +51,24 @@ namespace Lusitan.GPES.WebApi.Extensions
 
         public static void ConfigureJWT(this IServiceCollection service, IConfiguration configuration)
         {
+            #region JWT
+            service.AddCors();
+            service.AddEndpointsApiExplorer();
             service.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.RequireHttpsMetadata = false;
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        RequireExpirationTime = true,
-                        ClockSkew = TimeSpan.FromSeconds(10),
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWT.Chave))
-                    };
-                });
+                            .AddJwtBearer(opt =>
+                            {
+                                opt.RequireHttpsMetadata = false;
+                                opt.TokenValidationParameters = new TokenValidationParameters
+                                {
+                                    ValidateIssuer = false,
+                                    ValidateAudience = false,
+                                    ValidateLifetime = true,
+                                    RequireExpirationTime = true,
+                                    ClockSkew = TimeSpan.FromSeconds(10),
+                                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWT.Chave))
+                                };
+                            });
+            #endregion
         }
 
         public static void ConfigureSwagger(this IApplicationBuilder app)

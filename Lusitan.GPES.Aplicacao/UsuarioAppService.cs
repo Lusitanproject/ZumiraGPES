@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Config;
+﻿using Lusitan.GPES.Aplicacao.TextoEMAil;
+using Lusitan.GPES.Core.Config;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
@@ -6,6 +7,7 @@ using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -269,15 +271,15 @@ namespace Lusitan.GPES.Aplicacao
                     switch (CultureInfo.CurrentCulture.Name)
                     {
                         case "pt-BR":
-                            _msgEMail = TextoEMail.GetTextoNovoUsuarioPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            _msgEMail = TextoEMailNovoUsuario.GetTextoPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
                             break;
 
                         case "en-US":
-                            _msgEMail = TextoEMail.GetTextoNovoUsuarioEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            _msgEMail = TextoEMailNovoUsuario.GetTextoEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
                             break;
 
                         case "es-AR":
-                            _msgEMail = TextoEMail.GetTextoNovoUsuarioEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                            _msgEMail = TextoEMailNovoUsuario.GetTextoEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
                             break;
                     }
 
@@ -325,6 +327,100 @@ namespace Lusitan.GPES.Aplicacao
                 {
                     _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = _localizador.GetString("logSenhaAlterada") });
                 }
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_resultado);
+            }
+
+            return _resultado;
+        }
+
+        public string Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp)
+        {
+            var _resultado = string.Empty;
+
+            try
+            {
+                var _usuario = _servico.GetByIdComSenha(idUsuario);
+
+                var _msg = string.Empty;
+
+                if (_usuario.IdcAtivo != idcAtivo)
+                {
+                    switch (idcAtivo)
+                    {
+                        case "A":
+                            _msg = _localizador.GetString("logUsuarioAtivado");
+                            break;
+
+                        case "B":
+                            _msg = _localizador.GetString("logUsuarioBloqueado");
+                            break;
+
+                        case "I":
+                            _msg = _localizador.GetString("logUsuarioInativado");
+                            break;
+                    }
+                }
+
+                _usuario.NomeUsuario = nomUsuario;
+                _usuario.DesSenha = _usuario.DesSenha;
+                _usuario.IdcAtivo = idcAtivo;
+                _usuario.IdcForcaAlteraSenha = idcForcaAlteraSenha;
+
+                _resultado = _servico.Update(_usuario);
+
+                if (string.IsNullOrEmpty(_resultado))
+                {
+                    _log.Add(new UsuarioLogDominio() { IdUsuario = idUsuario, IdUsuarioResp = idUsuarioResp, DescLog = _msg });
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_resultado);
+            }
+
+            return _resultado;
+
+        }
+
+        public string ReenviaSenha(int idUsuario, int idUsuarioResp)
+        {
+            var _resultado = string.Empty;
+
+            try
+            {
+                var _msgEMail = string.Empty;
+
+                var _usuario = _servico.GetByIdComSenha(idUsuario);
+
+                switch (CultureInfo.CurrentCulture.Name)
+                {
+                    case "pt-BR":
+                        _msgEMail = TextoEMailReenvioSenha.GetTextoPtb(_usuario);
+                        break;
+
+                    case "en-US":
+                        _msgEMail = TextoEMailReenvioSenha.GetTextoEn(_usuario);
+                        break;
+
+                    case "es-AR":
+                        _msgEMail = TextoEMailReenvioSenha.GetTextoEs(_usuario);
+                        break;
+                }
+
+                this.EnviaEMailParaUsuario(_servico.GetById(idUsuario),
+                                            _localizador.GetString("tituloMSgReenvioSenha").Value,
+                                            _msgEMail);
+
+                _log.Add(new UsuarioLogDominio() { IdUsuario = idUsuario, IdUsuarioResp = idUsuarioResp, DescLog = _localizador.GetString("logReenvioSenhaEMail") });
             }
             catch (Exception ex)
             {

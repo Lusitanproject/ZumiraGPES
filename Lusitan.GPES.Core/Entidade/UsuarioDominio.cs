@@ -21,6 +21,11 @@ namespace Lusitan.GPES.Core.Entidade
 
         public string IdcForcaAlteraSenha { get; set; }
 
+        public string DescForcaAlteraSenha
+        {
+            get { return this.IdcForcaAlteraSenha == "S" ? "Sim" : "Não"; }
+        }
+
         public string DescSituacao
         {
             get {      

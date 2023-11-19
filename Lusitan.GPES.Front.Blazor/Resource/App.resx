@@ -120,14 +120,35 @@
   <data name="AcessadoEm" xml:space="preserve">
     <value>Acessado em</value>
   </data>
+  <data name="cabAtivo" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
+  <data name="cabBloqueado" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="cabData" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="cabDescricao" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
   <data name="cabDescSituacao" xml:space="preserve">
     <value>Situação</value>
   </data>
   <data name="cabEMail" xml:space="preserve">
     <value>E-mail</value>
   </data>
+  <data name="cabForcaAlteraSenha" xml:space="preserve">
+    <value>Altera senha próximo login</value>
+  </data>
+  <data name="cabInativo" xml:space="preserve">
+    <value>Inativo</value>
+  </data>
   <data name="cabNome" xml:space="preserve">
     <value>Nome</value>
+  </data>
+  <data name="cabResponsavel" xml:space="preserve">
+    <value>Responsável</value>
   </data>
   <data name="mnuAdmin" xml:space="preserve">
     <value>Administradores</value>
@@ -140,6 +161,12 @@
   </data>
   <data name="MsgObriSenhaNova" xml:space="preserve">
     <value>A aplicação requer que o campo Senha Nova!</value>
+  </data>
+  <data name="msgReenviaSenhaEMail" xml:space="preserve">
+    <value>Deseja reenviar a Senha para o E-mail cadastrado?</value>
+  </data>
+  <data name="msgRegistroGravadoComSucesso" xml:space="preserve">
+    <value>Registro gravado com sucesso!</value>
   </data>
   <data name="msgSenhaAlteradaComSucesso" xml:space="preserve">
     <value>Senha alterada com sucesso!</value>

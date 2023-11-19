@@ -16,5 +16,9 @@ namespace Lusitan.GPES.Core.Interface.Aplicacao
         LoginResponse Login(LoginRequest login);
 
         string AlteraSenha(AlteraSenhaRequest obj);
+
+        string Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp);
+
+        string ReenviaSenha(int idUsuario, int idUsuarioResp);
     }
 }

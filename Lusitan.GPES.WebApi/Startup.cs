@@ -33,26 +33,25 @@ namespace Lusitan.GPES.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            //
-            app.ConfigureSwagger();
-            app.ConfigureMultiIdiomas();
-            //
+            app.ConfigureSwagger();  //
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            //
             app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true) // allow any origin  
+               .AllowCredentials());
 
             app.UseAuthentication();
             app.UseAuthorization();
+            //
 
-            app.UseEndpoints(endpoints => { 
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute("default", "{cultura:cultura}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

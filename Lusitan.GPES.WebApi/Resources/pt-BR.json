@@ -3,5 +3,10 @@
   "msgSenhaAtualNaoConfere": "A senha atual não confere com a já cadastrada!",
   "logSenhaAlterada": "Senha alterada",
   "msgJaExisteUsuarioComEMail": "Já existe um Usuário cadastrado com este E-Mail!",
-  "tituloMSgNovoAcesso": "Novo acesso"
+  "tituloMSgNovoAcesso": "Novo acesso",
+  "logUsuarioAtivado": "Usuário ativado",
+  "logUsuarioBloqueado": "Usuário bloqueado",
+  "logUsuarioInativado": "Usuário inativado",
+  "tituloMSgReenvioSenha": "Senha de acesso",
+  "logReenvioSenhaEMail": "Senha Reenviada por e-mail"
 }

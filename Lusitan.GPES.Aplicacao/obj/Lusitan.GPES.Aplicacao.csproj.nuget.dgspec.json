@@ -61,7 +61,7 @@
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[6.14.1, )"
             },
             "nlog": {
               "target": "Package",

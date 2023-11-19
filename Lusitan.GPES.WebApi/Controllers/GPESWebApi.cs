@@ -11,7 +11,7 @@ using Lusitan.GPES.Core.Config;
 namespace Lusitan.GPES.WebApi.Controllers
 {
     [Route("/api/GPES/[Controller]")]
-    [ApiController]
+    //[ApiController]
     public class GPESWebApi<T> : ControllerBase where T : class
     {
         protected ConfigAmbiente _config;

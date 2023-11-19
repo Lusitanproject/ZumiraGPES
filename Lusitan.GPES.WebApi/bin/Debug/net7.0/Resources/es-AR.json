@@ -3,5 +3,10 @@
   "msgSenhaAtualNaoConfere": "¡La contraseña actual no coincide con la ya registrada!",
   "logSenhaAlterada": "Contraseña cambiada",
   "msgJaExisteUsuarioComEMail": "¡Ya hay un Usuario registrado con este E-Mail!",
-  "tituloMSgNovoAcesso": "Nuevo acceso"
+  "tituloMSgNovoAcesso": "Nuevo acceso",
+  "logUsuarioAtivado": "Usuario activado",
+  "logUsuarioBloqueado": "Usuario bloqueado",
+  "logUsuarioInativado": "Usuario inactivado",
+  "tituloMSgReenvioSenha": "Contraseña de acceso",
+  "logReenvioSenhaEMail": "Contraseña reenviada por correo electrónico"
 }
