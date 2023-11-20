@@ -2,6 +2,7 @@
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Lusitan.GPES.Front.Blazor.Backend.Interface
@@ -24,6 +25,5 @@ namespace Lusitan.GPES.Front.Blazor.Backend.Interface
         string ReenviaSenha(int idUsuario, int idUsuarioResp);
 
         List<UsuarioLogDominio> GetLog(int idUsuario);
-
     }
 }

@@ -5,6 +5,7 @@
 @attribute [Authorize(Roles = "Admin")]
 
 @inject IUsuario _usuario
+@inject IUsuarioPerfil _usuarioPerfil
 
 <br />
 <div>
@@ -56,6 +57,13 @@
                               Size="ButtonSize.ExtraSmall"
                               ButtonStyle="ButtonStyle.Secondary"
                               Click="@(args => ReenviaSenha(item))"
+                              @onclick:stopPropagation="true" />
+
+                <RadzenButton Icon="delete"
+                              title=@_local["toollTipExclui"]
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Exclui(item))"
                               @onclick:stopPropagation="true" />
             </Template>
         </RadzenDataGridColumn>
@@ -135,6 +143,7 @@
             _numUsuarioLogado = await this.NumUsuarioLogado();
 
             _usuario.Token = await this.Token();
+            _usuarioPerfil.Token = await this.Token();
 
             await _sessionStorage.RemoveItemAsync("IdcAcaoUsuario");
 
@@ -185,6 +194,38 @@
             if (await _js.InvokeAsync<bool>("confirm", _local["msgReenviaSenhaEMail"].Value))
             {
                 _usuario.ReenviaSenha(obj.Id, _numUsuarioLogado);
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+    async void Exclui(UsuarioDominio obj)
+    {
+        await ValidaToken();
+        try
+        {
+            if (await _js.InvokeAsync<bool>("confirm", string.Format(_local["msgExcluiUsuarioPerfil"].Value, _local["mnuAdmin"].Value)))
+            {
+                var _msg = _usuarioPerfil.ExcluiUsuarioPErfil(new UsuarioPerfilDominio() {
+                                                                                IdUsuario = obj.Id,
+                                                                                IdPerfilAcesso = _usuarioPerfil.GetListPerfil().Where(x => x.NomPerfil == Perfil).FirstOrDefault().Id
+                                                                              });
+
+                if (string.IsNullOrEmpty(_msg))
+                {
+                    switch (Perfil)
+                    {
+                        case "Admin":
+                            _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
+                            break;
+                    }
+                }else
+                {
+                    await _js.InvokeAsync<string>("alert", _msg);
+                }
             }
         }
         catch (Exception ex)

@@ -24,6 +24,7 @@ namespace Lusitan.GPES.Front.Blazor
             services.AddLocalization(options => options.ResourcesPath = "Resource");
             //
             services.AddScoped<IUsuario, Usuario>();
+            services.AddScoped<IUsuarioPerfil, UsuarioPerfil>();
 
             //
             services.AddScoped<AuthenticationStateProvider, ProvedorAutenticacao>();

@@ -156,6 +156,9 @@
   <data name="mnuAlteraSenha" xml:space="preserve">
     <value>Change Password</value>
   </data>
+  <data name="msgExcluiUsuarioPerfil" xml:space="preserve">
+    <value>Do you really want to delete this User from {0}'s profile?</value>
+  </data>
   <data name="MsgObriSenhaAntiga" xml:space="preserve">
     <value>The application requires the Old Password field!</value>
   </data>
@@ -188,6 +191,9 @@
   </data>
   <data name="toollTipEditar" xml:space="preserve">
     <value>To edit</value>
+  </data>
+  <data name="toollTipExclui" xml:space="preserve">
+    <value>Excludes</value>
   </data>
   <data name="toollTipNovo" xml:space="preserve">
     <value>New</value>

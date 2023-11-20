@@ -8,5 +8,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         List<UsuarioPerfilDominio> GetByUsuario(int idUsuario);
 
         List<UsuarioPerfilDominio> GetByPerfil(int idPerfil);
+
+        string Remove(UsuarioPerfilDominio obj);
     }
 }

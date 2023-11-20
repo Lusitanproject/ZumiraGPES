@@ -95,7 +95,7 @@ namespace Lusitan.GPES.WebApi.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("admin")]
         public ActionResult Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp)
         {
@@ -136,7 +136,7 @@ namespace Lusitan.GPES.WebApi.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("reenvia-senha-email")]
         public ActionResult ReenviaSenha(int idUsuario, int idUsuarioResp)
         {
@@ -153,7 +153,7 @@ namespace Lusitan.GPES.WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("log/{id}")]
         public IActionResult BuscaLogUsuario(int id)
         {

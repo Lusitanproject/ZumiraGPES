@@ -70,5 +70,27 @@ namespace Lusitan.GPES.Infra.Repositorio
                 this.FechaConexao();
             }
         }
+
+        public string Remove(UsuarioPerfilDominio obj)
+        {
+            try
+            {
+                var _query = @$" DELETE FROM usuario_perfil 
+                                 WHERE num_usuario = {obj.IdUsuario}
+                                 AND num_perfil = {obj.IdPerfilAcesso}";
+
+                this.ConexaoBD.Execute(_query);
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
     }
 }

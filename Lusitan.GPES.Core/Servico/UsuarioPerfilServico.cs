@@ -32,5 +32,21 @@ namespace Lusitan.GPES.Core.Servico
 
             return _resultado;
         }
+
+        public string Remove(UsuarioPerfilDominio obj)
+        {
+            var _resultado = string.Empty;
+
+            try
+            {
+                _repositorio.UsuarioPerfil.Remove(obj);
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+            }
+
+            return _resultado;
+        }
     }
 }

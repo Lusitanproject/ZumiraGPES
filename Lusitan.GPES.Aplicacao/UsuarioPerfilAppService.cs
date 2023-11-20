@@ -74,5 +74,21 @@ namespace Lusitan.GPES.Aplicacao
                 throw new Exception(_msgErro);
             }
         }
+
+        public string Remove(UsuarioPerfilDominio obj)
+        {
+            try
+            {
+                return _servico.Remove(obj);
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
     }
 }
