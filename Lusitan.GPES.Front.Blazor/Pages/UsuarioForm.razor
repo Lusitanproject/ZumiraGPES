@@ -1,5 +1,5 @@
-﻿@page "/usuario/novo"
-@page "/usuario/altera"
+﻿@page "/usuario/novo/{Perfil}"
+@page "/usuario/altera/{Perfil}"
 
 @inherits _form
 
@@ -172,11 +172,13 @@
     List<UsuarioLogDominio> _logUsuario = new List<UsuarioLogDominio>();
     int _qteRegistrosLogUsuario = 0;
 
+    [Parameter]
+    public string Perfil { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
-
             _numUsuarioLogado = await this.NumUsuarioLogado();
 
             await ValidaToken();
@@ -225,7 +227,21 @@
 
             await ValidaToken();
 
-            var _msg = string.IsNullOrEmpty(_idcAcaoUsuario) ? _usuario.AddAdmin(model) : _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha? "S": "N"), _numUsuarioLogado);
+            var _msg = string.Empty;
+
+            if (string.IsNullOrEmpty(_idcAcaoUsuario))
+            {
+                switch (Perfil)
+                {
+                    case "Admin":
+                        _msg = _usuario.AddAdmin(model);
+                        break;
+                }
+            }
+            else
+            {
+                _msg = _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha ? "S" : "N"), _numUsuarioLogado);
+            }            
 
             var _idcGravou = string.IsNullOrEmpty(_msg);
 
@@ -233,7 +249,7 @@
 
             if (_idcGravou)
             {
-                _nav.NavigateTo("novoAdmin", forceLoad: true);
+                _nav.NavigateTo($"Usuario/{Perfil}", forceLoad: true);
             }
             else
             {

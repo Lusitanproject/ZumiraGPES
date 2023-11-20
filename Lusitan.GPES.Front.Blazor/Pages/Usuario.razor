@@ -1,4 +1,4 @@
-﻿@page "/ListaAdmin"
+﻿@page "/Usuario/{Perfil}"
 
 @inherits _form
 
@@ -123,6 +123,9 @@
     string GetFormatoLinha(UsuarioDominio item)
        => item.IdcAtivo == "A" ? "color:black" : item.IdcAtivo == "B" ? "color:orange" : "color:red";
 
+    [Parameter]
+    public string Perfil { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         try
@@ -139,7 +142,12 @@
 
             _idcCarregando = true;
 
-            _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
+            switch (Perfil)
+            {
+                case "Admin":
+                    _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
+                    break;
+            }            
 
             _qteRegistros = _lst.Count();
 
@@ -155,7 +163,7 @@
     {
         await ValidaToken();
 
-        _nav.NavigateTo("usuario/novo");
+        _nav.NavigateTo($"usuario/novo/{Perfil}");
     }
 
     async void Edita(UsuarioDominio obj)
@@ -166,7 +174,7 @@
 
         this.GravaObjSessao<UsuarioDominio>("ObjUsuario", obj);
 
-        _nav.NavigateTo("usuario/altera");
+        _nav.NavigateTo($"usuario/altera/{Perfil}");
     }
 
     async void ReenviaSenha(UsuarioDominio obj)
