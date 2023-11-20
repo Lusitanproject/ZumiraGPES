@@ -62,11 +62,38 @@ namespace Lusitan.GPES.Aplicacao
                 return _localizador.GetString("msgJaExisteUsuarioComEMail");
             }
 
-            return _servico.Add(new UsuarioViewDominio() {
+            var _msg = _servico.Add(new UsuarioViewDominio() {
                                                             NomeUsuario = obj.NomeUsuario,
                                                             eMail = obj.eMail,
                                                             DesSenha = CORE.CryptObj.Encripta(_config.SenhaPadraoNovoUsuario)
                                                          });
+            if (string.IsNullOrEmpty(_msg))
+            {
+                var _msgEMail = string.Empty;
+
+                _novoUsuario = _servico.GetUsuarioComSenhaPorEmail(obj.eMail);
+
+                switch (CultureInfo.CurrentCulture.Name)
+                {
+                    case "pt-BR":
+                        _msgEMail = TextoEMailNovoUsuario.GetTextoPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                        break;
+
+                    case "en-US":
+                        _msgEMail = TextoEMailNovoUsuario.GetTextoEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                        break;
+
+                    case "es-AR":
+                        _msgEMail = TextoEMailNovoUsuario.GetTextoEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                        break;
+                }
+
+                this.EnviaEMailParaUsuario(_novoUsuario,
+                                            _localizador.GetString("tituloMSgNovoAcesso"),
+                                            _msgEMail);
+            }
+
+            return _msg;
         }
 
         void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
@@ -258,37 +285,28 @@ namespace Lusitan.GPES.Aplicacao
             {
                 Init();
 
-                var _msg = this.AddUsuario(obj);
+                var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
 
-                if (string.IsNullOrEmpty(_msg))
+                if (_novoUsuario == null)
                 {
-                    var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
+                    var _msg = this.AddUsuario(obj);
 
-                    _msg = _usuarioPerfil.Add( new UsuarioPerfilDominio() {  IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id} );
-
-                    var _msgEMail = string.Empty;
-
-                    switch (CultureInfo.CurrentCulture.Name)
+                    if (string.IsNullOrEmpty(_msg))
                     {
-                        case "pt-BR":
-                            _msgEMail = TextoEMailNovoUsuario.GetTextoPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
-                            break;
-
-                        case "en-US":
-                            _msgEMail = TextoEMailNovoUsuario.GetTextoEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
-                            break;
-
-                        case "es-AR":
-                            _msgEMail = TextoEMailNovoUsuario.GetTextoEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
-                            break;
+                        _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
                     }
-
-                    this.EnviaEMailParaUsuario( _novoUsuario,
-                                                _localizador.GetString("tituloMSgNovoAcesso"),
-                                                _msgEMail);
+                    else
+                    {
+                        return _msg;
+                    }                    
                 }
 
-                return _msg;
+                if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any())
+                {
+                    return _usuarioPerfil.Add(new UsuarioPerfilDominio() { IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id });
+                }
+
+                return string.Empty;
             }
             catch (Exception ex)
             {
