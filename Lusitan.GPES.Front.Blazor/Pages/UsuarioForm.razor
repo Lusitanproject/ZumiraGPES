@@ -16,7 +16,7 @@
 
                 <div class="row">
                     <div class="lign-items-center d-flex col-md-3">
-                        <RadzenLabel Component="eMail" Text=@_local["cabNome"] />
+                        <RadzenLabel Component="eMail" Text=@_local["cabEMail"] />
                     </div>
                     <div class="col-md-9">
                         <RadzenTextBox 
@@ -33,7 +33,7 @@
 
                 <div class="row">
                     <div class="lign-items-center d-flex col-md-3">
-                        <RadzenLabel Component="nomUsuario" Text=@_local["cabEMail"] />
+                        <RadzenLabel Component="nomUsuario" Text=@_local["cabNome"] />
                     </div>
                     <div class="col-md-9">
                         <RadzenTextBox 
@@ -155,7 +155,6 @@
         }
     }
 
-
 </RadzenCard>
 
 @code 
@@ -193,11 +192,7 @@
                 _sitUsuario = 1;
                 _idcExibeTab = false;
 
-                model = new UsuarioDominio() {
-                        IdcAtivo = "A",
-                        IdcForcaAlteraSenha = "S"
-                    };
-
+                model = new UsuarioDominio() { IdcAtivo = "A", IdcForcaAlteraSenha = "S" };
             }
             else
             {
@@ -208,6 +203,8 @@
                 model = await _sessionStorage.GetItemAsync<UsuarioDominio>("ObjUsuario");
 
                 _sitUsuario = model.IdcAtivo == "A" ? 1 : model.IdcAtivo == "B" ? 2 : 3;
+
+                idcForcaAlteraSenha = model.IdcForcaAlteraSenha == "S";
 
                 _logUsuario = _usuario.GetLog(model.Id).OrderByDescending(x => x.DthLog).ToList();
                 _qteRegistrosLogUsuario = _logUsuario.Count();
@@ -223,25 +220,11 @@
     {
         try
         {
-            model.IdcAtivo = _sitUsuario == 1 ? "A" : _sitUsuario == 2 ? "B" : "I";
-
             await ValidaToken();
 
-            var _msg = string.Empty;
+            model.IdcAtivo = _sitUsuario == 1 ? "A" : _sitUsuario == 2 ? "B" : "I";            
 
-            if (string.IsNullOrEmpty(_idcAcaoUsuario))
-            {
-                switch (Perfil)
-                {
-                    case "Admin":
-                        _msg = _usuario.AddAdmin(model);
-                        break;
-                }
-            }
-            else
-            {
-                _msg = _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha ? "S" : "N"), _numUsuarioLogado);
-            }            
+            var _msg = string.IsNullOrEmpty(_idcAcaoUsuario) ? _usuario.Add(model, Perfil) : _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha ? "S" : "N"), _numUsuarioLogado);      
 
             var _idcGravou = string.IsNullOrEmpty(_msg);
 
@@ -263,5 +246,4 @@
             TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
         }
     }
-
 }

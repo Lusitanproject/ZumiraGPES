@@ -66,14 +66,14 @@ namespace Lusitan.GPES.WebApi.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        [Route("Admin")]
-        public IActionResult ListaAdmin()
-           => Get(_appServico.GetListAdmin());
+        [Route("{Perfil}")]
+        public IActionResult GetList([FromRoute]string Perfil)
+           => Get(_appServico.GetList(Perfil));
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        [Route("admin")]
-        public ActionResult InsereAdmin([FromBody] UsuarioDominio obj)
+        [Route("{Perfil}")]
+        public ActionResult AddUsuarioPerfil([FromBody] UsuarioDominio obj, [FromRoute] string Perfil)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace Lusitan.GPES.WebApi.Controllers
                     return BadRequest(_msg);
                 }
 
-                _msg = _appServico.AddAdmin(obj);
+                _msg = _appServico.AddUsuarioPerfil(obj, Perfil);
 
                 return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
             }
@@ -96,7 +96,6 @@ namespace Lusitan.GPES.WebApi.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        [Route("admin")]
         public ActionResult Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp)
         {
             try

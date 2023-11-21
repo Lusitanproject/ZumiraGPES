@@ -38,7 +38,6 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             }
         }
 
-
         public UsuarioDominio BuscaPeloEMail(string eMail)
         {
             try
@@ -75,11 +74,11 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             }
         }
 
-        public List<UsuarioDominio> GetListAdmin()
+        public List<UsuarioDominio> GetList(string nomPerfil)
         {
             try
             {
-                var _req = new GPESRequisicao("api/GPES/Usuario/Admin", Method.Get, this.Token);
+                var _req = new GPESRequisicao($"api/GPES/Usuario/{nomPerfil}", Method.Get, this.Token);
 
                 return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<List<UsuarioDominio>>(_req).Data;
             }
@@ -127,12 +126,12 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             }
         }
 
-        public string AddAdmin(UsuarioDominio obj)
+        public string Add(UsuarioDominio obj, string nomPerfil)
         {
             var _result = string.Empty;
             try
             {
-                var _req = new GPESRequisicao("api/GPES/Usuario/admin", Method.Post, this.Token);
+                var _req = new GPESRequisicao($"api/GPES/Usuario/{nomPerfil}", Method.Post, this.Token);
                 _req.AddBody(obj);
 
                 var _content = new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute(_req);
@@ -166,7 +165,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             var _result = string.Empty;
             try
             {
-                var _req = new GPESRequisicao("api/GPES/Usuario/admin", Method.Put, this.Token);
+                var _req = new GPESRequisicao("api/GPES/Usuario", Method.Put, this.Token);
                 _req.AddParameter("idUsuario", idUsuario);
                 _req.AddParameter("nomUsuario", nomUsuario);
                 _req.AddParameter("idcAtivo", idcAtivo);
@@ -251,7 +250,6 @@ namespace Lusitan.GPES.Front.Blazor.Backend
                 throw new Exception(_msgErro);
             }
         }
-
 
     }
 }

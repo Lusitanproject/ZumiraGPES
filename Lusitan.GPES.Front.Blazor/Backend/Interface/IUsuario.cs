@@ -14,11 +14,11 @@ namespace Lusitan.GPES.Front.Blazor.Backend.Interface
 
         UsuarioDominio BuscaPeloEMail(string eMail);
 
-        List<UsuarioDominio> GetListAdmin();
+        List<UsuarioDominio> GetList(string nomPerfil);
 
         string AlteraSenha(AlteraSenhaRequest obj);
 
-        string AddAdmin(UsuarioDominio obj);
+        string Add(UsuarioDominio obj, string nomPerfil);
 
         string Update(int idUsuario, string nomUsuario, string idcAtivo, string idcForcaAlteraSenha, int idUsuarioResp);
 

@@ -10,14 +10,17 @@ namespace Lusitan.GPES.Aplicacao
         readonly IUsuarioPerfilServico _servico;
         readonly IPerfilAcessoAppService _perfilAcesso;
         readonly IUsuarioServico _usuario;
+        readonly IUsuarioLogAppService _logUsuario;
 
         public UsuarioPerfilAppService(IUsuarioPerfilServico servico,
                                        IPerfilAcessoAppService perfilAcesso,
-                                       IUsuarioServico usuario)
+                                       IUsuarioServico usuario,
+                                       IUsuarioLogAppService logUsuario)
         {
             _servico = servico;
             _perfilAcesso = perfilAcesso;
             _usuario = usuario;
+            _logUsuario = logUsuario;
         }
 
         public List<UsuarioDominio> GetByPerfil(int idPerfil)
@@ -63,6 +66,14 @@ namespace Lusitan.GPES.Aplicacao
                     return "Este Usuário já esta associado a este Perfil!";
                 }
 
+                //Gravar log de Usuário cadastrado no perfil X
+                //_logUsuario.Add(new UsuarioLogDominio()
+                //{
+                //    IdUsuario = obj.IdUsuario,
+                //    DescLog = "",
+                //    IdUsuarioResp = obj.Id
+                //});
+
                 return _servico.Add(obj);
             }
             catch (Exception ex)
@@ -79,6 +90,8 @@ namespace Lusitan.GPES.Aplicacao
         {
             try
             {
+                //Gravar log de Usuário excluido do perfil X
+
                 return _servico.Remove(obj);
             }
             catch (Exception ex)

@@ -7,9 +7,9 @@ namespace Lusitan.GPES.Core.Interface.Aplicacao
 {
     public interface IUsuarioAppService: IGetById<UsuarioDominio>
     {
-        List<UsuarioDominio> GetListAdmin();
+        List<UsuarioDominio> GetList(string nomPerfil);
 
-        string AddAdmin(UsuarioDominio obj);
+        string AddUsuarioPerfil(UsuarioDominio obj, string nomPerfil);
 
         UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail);
 

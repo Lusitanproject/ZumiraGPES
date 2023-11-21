@@ -7,7 +7,6 @@ using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -27,8 +26,6 @@ namespace Lusitan.GPES.Aplicacao
         readonly ConfigXMS _configXMS;
         readonly IStringLocalizer<UsuarioAppService> _localizador;
 
-        int _idPerfilAdmin;
-
         public UsuarioAppService(   ConfigAmbiente config,
                                     ConfigXMS configXMS,
                                     IUsuarioServico servico,
@@ -39,18 +36,13 @@ namespace Lusitan.GPES.Aplicacao
                                     IStringLocalizer<UsuarioAppService> localizador)
         {
             _config = config;
+            _configXMS = configXMS;
             _servico = servico;
             _perfilAcesso = perfilAcesso;
-            _usuarioPerfil = usuarioPerfil;
-            _configXMS = configXMS;
+            _usuarioPerfil = usuarioPerfil;            
             _log = log;
             _logAcessoErro = logAcessoErro;
             _localizador = localizador;
-        }
-
-        void Init()
-        {
-            _idPerfilAdmin = (_perfilAcesso.GetList().Where(x => x.NomPerfil == "Admin").FirstOrDefault()).Id;
         }
 
         string AddUsuario(UsuarioDominio obj)
@@ -247,12 +239,10 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
-        public List<UsuarioDominio> GetListAdmin()
+        public List<UsuarioDominio> GetList(string nomPerfil)
         {
             try
             {
-                Init();
-
                 var _result = new List<UsuarioDominio>();
 
                 var _lstUsuarios = _servico.GetList("A");
@@ -261,7 +251,7 @@ namespace Lusitan.GPES.Aplicacao
 
                 foreach (var item in _lstUsuarios)
                 {
-                    if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == _idPerfilAdmin))
+                    if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id))
                     {
                         _result.Add(item);
                     }
@@ -279,12 +269,10 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
-        public string AddAdmin(UsuarioDominio obj)
+        public string AddUsuarioPerfil(UsuarioDominio obj, string nomPerfil)
         {
             try
             {
-                Init();
-
                 var _novoUsuario = _servico.GetUsuarioSemSenhaPorEmail(obj.eMail);
 
                 if (_novoUsuario == null)
@@ -303,7 +291,8 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any())
                 {
-                    return _usuarioPerfil.Add(new UsuarioPerfilDominio() { IdPerfilAcesso = _idPerfilAdmin, IdUsuario = _novoUsuario.Id });
+                    return _usuarioPerfil.Add(new UsuarioPerfilDominio() {  IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id, 
+                                                                            IdUsuario = _novoUsuario.Id });
                 }
 
                 return string.Empty;
@@ -391,11 +380,10 @@ namespace Lusitan.GPES.Aplicacao
 
                 _resultado = _servico.Update(_usuario);
 
-                if (string.IsNullOrEmpty(_resultado))
+                if (string.IsNullOrEmpty(_resultado) && !string.IsNullOrEmpty(_msg))
                 {
                     _log.Add(new UsuarioLogDominio() { IdUsuario = idUsuario, IdUsuarioResp = idUsuarioResp, DescLog = _msg });
                 }
-
                 
             }
             catch (Exception ex)

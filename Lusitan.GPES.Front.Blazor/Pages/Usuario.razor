@@ -151,12 +151,7 @@
 
             _idcCarregando = true;
 
-            switch (Perfil)
-            {
-                case "Admin":
-                    _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
-                    break;
-            }            
+            _lst = _usuario.GetList(Perfil).OrderBy(u => u.NomeUsuario).ToList();
 
             _qteRegistros = _lst.Count();
 
@@ -165,6 +160,10 @@
         catch (Exception ex)
         {
             TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+        finally
+        {
+            StateHasChanged();
         }
     }
 
@@ -216,12 +215,7 @@
 
                 if (string.IsNullOrEmpty(_msg))
                 {
-                    switch (Perfil)
-                    {
-                        case "Admin":
-                            _lst = _usuario.GetListAdmin().OrderBy(u => u.NomeUsuario).ToList();
-                            break;
-                    }
+                    _lst = _usuario.GetList(Perfil).OrderBy(u => u.NomeUsuario).ToList();
                 }else
                 {
                     await _js.InvokeAsync<string>("alert", _msg);
@@ -232,6 +226,9 @@
         {
             TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
         }
+        finally
+        {
+            StateHasChanged();
+        }
     }
-
 }

@@ -45,7 +45,5 @@ namespace Lusitan.GPES.Core.Servico
 
             return _resultado;
         }
-
-
     }
 }
