@@ -51,6 +51,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "CORE.CryptObj": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.Extensions.Localization.Abstractions": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -128,6 +132,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "CORE.Validacao": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.Extensions.Localization.Abstractions": {
               "target": "Package",
               "version": "[8.0.0, )"

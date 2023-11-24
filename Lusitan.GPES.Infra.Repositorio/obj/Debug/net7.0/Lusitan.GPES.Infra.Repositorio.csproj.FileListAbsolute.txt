@@ -2,7 +2,6 @@ E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\Lusitan.GPES.Infra
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.dll
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\Lusitan.GPES.Core.dll
-E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\CORE.Validacao.dll
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Debug\net7.0\Lusitan.GPES.Core.pdb
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.csproj.AssemblyReference.cache
 E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.GeneratedMSBuildEditorConfig.editorconfig

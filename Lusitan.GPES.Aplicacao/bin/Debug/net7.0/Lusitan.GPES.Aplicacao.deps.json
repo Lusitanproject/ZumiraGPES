@@ -8,16 +8,32 @@
     ".NETCoreApp,Version=v7.0": {
       "Lusitan.GPES.Aplicacao/1.0.0": {
         "dependencies": {
+          "CORE.CryptObj": "1.0.0",
           "Lusitan.GPES.Core": "1.0.0",
           "Lusitan.GPES.Infra.Repositorio": "1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0",
           "System.IdentityModel.Tokens.Jwt": "6.14.1",
-          "NLog": "5.2.5",
-          "CORE.CryptObj": "1.0.0.0"
+          "NLog": "5.2.5"
         },
         "runtime": {
           "Lusitan.GPES.Aplicacao.dll": {}
+        }
+      },
+      "CORE.CryptObj/1.0.0": {
+        "runtime": {
+          "lib/net7.0/CORE.CryptObj.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CORE.Validacao/1.0.0": {
+        "runtime": {
+          "lib/net7.0/CORE.Validacao.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Dapper/2.1.15": {
@@ -184,6 +200,7 @@
       },
       "Lusitan.GPES.Core/1.0.0": {
         "dependencies": {
+          "CORE.Validacao": "1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0"
         },
@@ -200,22 +217,6 @@
         "runtime": {
           "Lusitan.GPES.Infra.Repositorio.dll": {}
         }
-      },
-      "CORE.CryptObj/1.0.0.0": {
-        "runtime": {
-          "CORE.CryptObj.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "CORE.Validacao/1.0.0.0": {
-        "runtime": {
-          "CORE.Validacao.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -224,6 +225,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CORE.CryptObj/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vbKJ9doq1oY64bz/et0mnXfKuX7e7PSw2RwiqjMN3oGuvCTde39C2wYdCw5K3R+PyM3fhdCBat14nNa4bIbbog==",
+      "path": "core.cryptobj/1.0.0",
+      "hashPath": "core.cryptobj.1.0.0.nupkg.sha512"
+    },
+    "CORE.Validacao/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TLXi8iBbQlImLEHydSVrU9M3Ng8OqIWFXd9zxL153Il3p8eSCeS026LbZTJgDazwuGJK7W0f0iCHJn6yu7IfWA==",
+      "path": "core.validacao/1.0.0",
+      "hashPath": "core.validacao.1.0.0.nupkg.sha512"
     },
     "Dapper/2.1.15": {
       "type": "package",
@@ -379,16 +394,6 @@
     },
     "Lusitan.GPES.Infra.Repositorio/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CORE.CryptObj/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CORE.Validacao/1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

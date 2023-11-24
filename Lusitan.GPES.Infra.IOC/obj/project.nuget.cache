@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "BVyViWaAIqYE1mxR0AbacltZlNlQtb5jl6UY1kPocVOCoshdaOtYf7kT34LVzI0bjirsoErKHdrEflMLM5Glsw==",
+  "dgSpecHash": "R5aJOYlsaV4E+JU0/boasLW09/GG9d+cVQGT4Lcz5JNYOTGIq/mUs2WqbXofjSVau21n6PRR3mAEh7q8qRXYEg==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Infra.IOC\\Lusitan.GPES.Infra.IOC.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\glaub\\.nuget\\packages\\core.cryptobj\\1.0.0\\core.cryptobj.1.0.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\core.validacao\\1.0.0\\core.validacao.1.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

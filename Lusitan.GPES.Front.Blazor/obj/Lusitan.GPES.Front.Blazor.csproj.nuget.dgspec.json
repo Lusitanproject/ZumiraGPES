@@ -44,6 +44,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "CORE.Validacao": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.Extensions.Localization.Abstractions": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -124,6 +128,10 @@
             "Bootstrap": {
               "target": "Package",
               "version": "[5.3.2, )"
+            },
+            "CORE.Util": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

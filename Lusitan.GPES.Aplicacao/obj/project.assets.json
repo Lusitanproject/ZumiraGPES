@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "CORE.CryptObj/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/CORE.CryptObj.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/CORE.CryptObj.dll": {}
+        }
+      },
+      "CORE.Validacao/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/CORE.Validacao.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/CORE.Validacao.dll": {}
+        }
+      },
       "Dapper/2.1.15": {
         "type": "package",
         "compile": {
@@ -337,6 +355,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "CORE.Validacao": "1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0"
         },
@@ -365,6 +384,30 @@
     }
   },
   "libraries": {
+    "CORE.CryptObj/1.0.0": {
+      "sha512": "vbKJ9doq1oY64bz/et0mnXfKuX7e7PSw2RwiqjMN3oGuvCTde39C2wYdCw5K3R+PyM3fhdCBat14nNa4bIbbog==",
+      "type": "package",
+      "path": "core.cryptobj/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "core.cryptobj.1.0.0.nupkg.sha512",
+        "core.cryptobj.nuspec",
+        "lib/net7.0/CORE.CryptObj.dll"
+      ]
+    },
+    "CORE.Validacao/1.0.0": {
+      "sha512": "TLXi8iBbQlImLEHydSVrU9M3Ng8OqIWFXd9zxL153Il3p8eSCeS026LbZTJgDazwuGJK7W0f0iCHJn6yu7IfWA==",
+      "type": "package",
+      "path": "core.validacao/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "core.validacao.1.0.0.nupkg.sha512",
+        "core.validacao.nuspec",
+        "lib/net7.0/CORE.Validacao.dll"
+      ]
+    },
     "Dapper/2.1.15": {
       "sha512": "1aWSAosZymEM+mRwfrXteRIN74/JTUjqj9B/KqEbanH6vfUKy9D9cemRN0q1ZOEfSB7d1PpFTpVOCbf2Uv70Og==",
       "type": "package",
@@ -1082,6 +1125,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "CORE.CryptObj >= 1.0.0",
       "Lusitan.GPES.Core >= 1.0.0",
       "Lusitan.GPES.Infra.Repositorio >= 1.0.0",
       "Microsoft.Extensions.Localization.Abstractions >= 8.0.0",
@@ -1141,6 +1185,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "CORE.CryptObj": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "Microsoft.Extensions.Localization.Abstractions": {
             "target": "Package",
             "version": "[8.0.0, )"

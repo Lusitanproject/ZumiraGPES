@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CORE.CryptObj" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.0" />
     <PackageReference Include="nlog" Version="5.2.5" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
@@ -16,12 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Lusitan.GPES.Core\Lusitan.GPES.Core.csproj" />
     <ProjectReference Include="..\Lusitan.GPES.Infra.Repositorio\Lusitan.GPES.Infra.Repositorio.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="CORE.CryptObj">
-      <HintPath>..\Componentes\CORE.CryptObj.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

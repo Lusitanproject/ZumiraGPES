@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
     <PackageReference Include="Bootstrap" Version="5.3.2" />
+    <PackageReference Include="CORE.Util" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
     <PackageReference Include="MudBlazor" Version="5.1.5" />
@@ -23,18 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lusitan.GPES.Core\Lusitan.GPES.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="CORE.CryptObj">
-      <HintPath>..\Componentes\CORE.CryptObj.dll</HintPath>
-    </Reference>
-    <Reference Include="CORE.Util">
-      <HintPath>..\Componentes\CORE.Util.dll</HintPath>
-    </Reference>
-    <Reference Include="CORE.Validacao">
-      <HintPath>..\Componentes\CORE.Validacao.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

@@ -51,7 +51,8 @@ create table perfil_acesso
    constraint pk_perfil_acesso primary key (num_perfil)
 )
 go
-insert into perfil_acesso (nom_perfil) values ('Admin')
+insert into perfil_acesso (nom_perfil) values ('Admin');
+insert into perfil_acesso (nom_perfil) values ('Contratante')
 go
 create table usuario_perfil
 (

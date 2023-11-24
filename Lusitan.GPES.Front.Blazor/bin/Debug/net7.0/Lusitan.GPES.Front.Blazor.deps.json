@@ -10,6 +10,7 @@
         "dependencies": {
           "Blazored.SessionStorage": "2.4.0",
           "bootstrap": "5.3.2",
+          "CORE.Util": "1.0.0",
           "Lusitan.GPES.Core": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
           "Microsoft.Extensions.Localization": "8.0.0",
@@ -17,10 +18,7 @@
           "Radzen.Blazor": "4.21.3",
           "RestSharp": "110.2.0",
           "System.IdentityModel.Tokens.Jwt": "6.14.1",
-          "NLog": "5.2.5",
-          "CORE.CryptObj": "1.0.0.0",
-          "CORE.Util": "1.0.0.0",
-          "CORE.Validacao": "1.0.0.0"
+          "NLog": "5.2.5"
         },
         "runtime": {
           "Lusitan.GPES.Front.Blazor.dll": {}
@@ -46,6 +44,27 @@
         }
       },
       "bootstrap/5.3.2": {},
+      "CORE.Util/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "lib/net7.0/CORE.Util.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CORE.Validacao/1.0.0": {
+        "runtime": {
+          "lib/net7.0/CORE.Validacao.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "DartSassBuilder/1.0.0": {},
       "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.10": {
         "dependencies": {
@@ -108,6 +127,17 @@
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.122.56809"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "7.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
         }
       },
       "Microsoft.AspNetCore.Metadata/7.0.1": {
@@ -249,6 +279,26 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/5.0.0": {},
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
       "MudBlazor/5.1.5": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "7.0.1",
@@ -294,6 +344,31 @@
           }
         }
       },
+      "System.Drawing.Common/5.0.2": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        }
+      },
       "System.IdentityModel.Tokens.Jwt/6.14.1": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "6.14.1",
@@ -324,35 +399,12 @@
       },
       "Lusitan.GPES.Core/1.0.0": {
         "dependencies": {
+          "CORE.Validacao": "1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "8.0.0",
           "RestSharp": "110.2.0"
         },
         "runtime": {
           "Lusitan.GPES.Core.dll": {}
-        }
-      },
-      "CORE.CryptObj/1.0.0.0": {
-        "runtime": {
-          "CORE.CryptObj.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "CORE.Util/1.0.0.0": {
-        "runtime": {
-          "CORE.Util.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "CORE.Validacao/1.0.0.0": {
-        "runtime": {
-          "CORE.Validacao.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       }
     }
@@ -376,6 +428,20 @@
       "sha512": "sha512-m0/GEaLwE35B8P1xScFhwAsQi5o6kWPzOVPdGkoFwv+5YjmbgXFPQai71N5APwRCU52ZO4vHYWJ5DYSqKKgivw==",
       "path": "bootstrap/5.3.2",
       "hashPath": "bootstrap.5.3.2.nupkg.sha512"
+    },
+    "CORE.Util/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NxrZ/+dPl1hWjbOJO55gTc3aH3yZw76bi/Rx5/YYhx9ztR5g29G4GxTxe9G3zgH2yQlK7y9hxQ3DK3tQrMwcIg==",
+      "path": "core.util/1.0.0",
+      "hashPath": "core.util.1.0.0.nupkg.sha512"
+    },
+    "CORE.Validacao/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TLXi8iBbQlImLEHydSVrU9M3Ng8OqIWFXd9zxL153Il3p8eSCeS026LbZTJgDazwuGJK7W0f0iCHJn6yu7IfWA==",
+      "path": "core.validacao/1.0.0",
+      "hashPath": "core.validacao.1.0.0.nupkg.sha512"
     },
     "DartSassBuilder/1.0.0": {
       "type": "package",
@@ -425,6 +491,20 @@
       "sha512": "sha512-4A0V4lHQ5UfNKcnUfkYmwQlNfFICaWYTpmXglxpB9NnoM+kX02zzd1+sEyyXGU1RaxzarNNEtXlfQw4q9CEgEw==",
       "path": "microsoft.aspnetcore.components.web/7.0.1",
       "hashPath": "microsoft.aspnetcore.components.web.7.0.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Metadata/7.0.1": {
       "type": "package",
@@ -531,6 +611,20 @@
       "path": "microsoft.jsinterop/7.0.1",
       "hashPath": "microsoft.jsinterop.7.0.1.nupkg.sha512"
     },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
     "MudBlazor/5.1.5": {
       "type": "package",
       "serviceable": true,
@@ -558,6 +652,13 @@
       "sha512": "sha512-FXGw0IMcqY7yO/hzS9QrD3iNswNgb9UxJnxWmfOxmGs4kRlZWqdtBoGPLuhlbgsDzX1RFo4WKui8TGGKXWKalw==",
       "path": "restsharp/110.2.0",
       "hashPath": "restsharp.110.2.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
     },
     "System.IdentityModel.Tokens.Jwt/6.14.1": {
       "type": "package",
@@ -603,21 +704,6 @@
     },
     "Lusitan.GPES.Core/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CORE.CryptObj/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CORE.Util/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CORE.Validacao/1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

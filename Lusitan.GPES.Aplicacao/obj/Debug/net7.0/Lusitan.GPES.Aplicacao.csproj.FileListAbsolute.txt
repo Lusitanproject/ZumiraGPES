@@ -6,10 +6,8 @@ E:\ZumiraGPES\Lusitan.GPES.Aplicacao\obj\Debug\net7.0\Lusitan.GPES.Aplicacao.csp
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Aplicacao.deps.json
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Aplicacao.dll
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Aplicacao.pdb
-E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\CORE.CryptObj.dll
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Core.dll
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.dll
-E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\CORE.Validacao.dll
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Core.pdb
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
 E:\ZumiraGPES\Lusitan.GPES.Aplicacao\obj\Debug\net7.0\Lusitan.GPES.Aplicacao.csproj.CopyComplete

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RDOw5qgU17CnPgWIry5WTx6HOJReyoVeJ/oCOr5cqJ44oe0dkA2alfQBhpyY6rjQYw8raREHAuxrWMCV9UxiAQ==",
+  "dgSpecHash": "lZTYvCgmJtUcXT2v5v0xxAyB58Gpe4MKzSdQOl6+KREXWh2QDcXAZ3an0DU/KrnK1FSIus1wigwG+qoV3t7pDQ==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Core\\Lusitan.GPES.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\glaub\\.nuget\\packages\\core.validacao\\1.0.0\\core.validacao.1.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\8.0.0\\microsoft.extensions.localization.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
