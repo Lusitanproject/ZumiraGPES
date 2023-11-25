@@ -11,5 +11,6 @@
   "logReenvioSenhaEMail": "Contraseña reenviada por correo electrónico",
   "msgUsuarioIncluidoPerfil": "Usuario incluido en el Perfil {0}",
   "msgUsuarioExcluidoPerfil": "Usuario eliminado del perfil {0}",
-  "msgUsuarioJaInclusoPerfil": "¡Este Usuario ya está asociado con este Perfil!"
+  "msgUsuarioJaInclusoPerfil": "¡Este Usuario ya está asociado con este Perfil!",
+  "msgRetornoEnvioEMail": "Devolver correo electrónico: {0}"
 }

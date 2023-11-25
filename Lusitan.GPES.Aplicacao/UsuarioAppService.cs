@@ -61,6 +61,7 @@ namespace Lusitan.GPES.Aplicacao
                 eMail = obj.eMail,
                 DesSenha = CORE.CryptObj.Encripta(_config.SenhaPadraoNovoUsuario)
             });
+            
             if (string.IsNullOrEmpty(_msg))
             {
                 var _msgEMail = string.Empty;
@@ -82,7 +83,7 @@ namespace Lusitan.GPES.Aplicacao
                         break;
                 }
 
-                this.EnviaEMailParaUsuario(_novoUsuario,
+                this.EnviaEMailParaUsuario( _novoUsuario,
                                             _localizador.GetString("tituloMSgNovoAcesso"),
                                             _msgEMail);
             }
@@ -90,23 +91,23 @@ namespace Lusitan.GPES.Aplicacao
             return _msg;
         }
 
-        void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
+		[ExcludeFromCodeCoverage]
+		void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
             var _msgEnvioEmail = this.EnviaEMail(_configXMS,
-                                                    new EMailDominio()
-                                                    {
-                                                        NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
-                                                        DescAssunto = descAssunto,
-                                                        NomDestino = obj.eMail,
-                                                        DescMensagem = msg
-                                                    });
+                                                 new EMailDominio()
+                                                 {
+                                                     NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
+                                                     DescAssunto = descAssunto,
+                                                     NomDestino = obj.eMail,
+                                                     DescMensagem = msg
+                                                 });
 
-            _log.Add(new UsuarioLogDominio()
-            {
-                IdUsuario = obj.Id,
-                DescLog = $"Retorno envio e-mail: {_msgEnvioEmail}",
-                IdUsuarioResp = obj.Id
-            });
+            _log.Add(new UsuarioLogDominio() {
+                                                IdUsuario = obj.Id,
+                                                DescLog = string.Format(_localizador.GetString("msgRetornoEnvioEMail"), _msgEnvioEmail),
+                                                IdUsuarioResp = obj.Id
+                                             });
         }
 
 
@@ -300,14 +301,11 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any(x => x.NomPerfil.Trim().ToLower() == nomPerfil.Trim().ToLower()))
                 {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                    return _usuarioPerfil.Add(new UsuarioPerfilDominio()
-                    {
-                        IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id,
-                        IdUsuario = _novoUsuario.Id,
-                        IdUsuarioResp = obj.IdUsuarioResp
-                    });
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                    return _usuarioPerfil.Add(new UsuarioPerfilDominio() {
+                                                                            IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id,
+                                                                            IdUsuario = _novoUsuario.Id,
+                                                                            IdUsuarioResp = obj.IdUsuarioResp
+                                                                         });
                 }
 
                 return string.Empty;

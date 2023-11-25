@@ -11,5 +11,6 @@
   "logReenvioSenhaEMail": "Password resent by email",
   "msgUsuarioIncluidoPerfil": "User included in the Profile {0}",
   "msgUsuarioExcluidoPerfil": "User deleted from Profile {0}",
-  "msgUsuarioJaInclusoPerfil": "This User is already associated with this Profile!"
+  "msgUsuarioJaInclusoPerfil": "This User is already associated with this Profile!",
+  "msgRetornoEnvioEMail": "Return email: {0}"
 }
