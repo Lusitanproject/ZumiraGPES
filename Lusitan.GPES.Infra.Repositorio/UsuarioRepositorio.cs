@@ -1,10 +1,12 @@
 ﻿using Dapper;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Repositorio;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Infra.Repositorio
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioRepositorio : BaseRepositorio, IUsuarioRepositorio
     {
         public UsuarioRepositorio(string strConexao)
@@ -136,7 +138,7 @@ namespace Lusitan.GPES.Infra.Repositorio
                                         {
                                             NOM_USUARIO = obj.NomeUsuario.Trim(),
                                             DES_SENHA = obj.DesSenha.Trim(),
-                                            E_MAIL = obj.eMail.Trim()
+                                            E_MAIL = obj.eMail.Trim().ToLower()
                                         });
 
                 return string.Empty;
@@ -200,10 +202,10 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = @$" UPDATE usuario 
-                                 SET des_senha              = '{obj.DesSenha}',
-                                     nom_usuario            = '{obj.NomeUsuario.Trim()}',
-                                     idc_forca_altera_senha = '{obj.IdcForcaAlteraSenha}',
-                                     idc_ativo              = '{obj.IdcAtivo}'
+                                 SET nom_usuario            = '{obj.NomeUsuario.Trim()}',
+                                     des_senha              = '{obj.DesSenha.Trim()}',
+                                     idc_ativo              = '{obj.IdcAtivo}',
+                                     idc_forca_altera_senha = '{obj.IdcForcaAlteraSenha}'
                                  WHERE num_usuario = {obj.Id}";
 
                 this.ConexaoBD.Execute(_query);

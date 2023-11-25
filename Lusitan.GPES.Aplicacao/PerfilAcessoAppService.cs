@@ -1,18 +1,20 @@
 ﻿using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Aplicacao
 {
-    public class PerfilAcessoAppService : BaseAplicacao, IPerfilAcessoAppService
+	[ExcludeFromCodeCoverage]
+	public class PerfilAcessoAppService : BaseAplicacao, IPerfilAcessoAppService
     {
         readonly IPerfilAcessoServico _servico;
 
         public PerfilAcessoAppService(IPerfilAcessoServico servico)
            => _servico = servico;
 
-        public PerfilAcessoDominio GetById(int id)
+		public PerfilAcessoDominio GetById(int id)
         {
             try
             {

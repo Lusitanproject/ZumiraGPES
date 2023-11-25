@@ -1,8 +1,10 @@
 ﻿using CORE.Validacao;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Core.Request
 {
+    [ExcludeFromCodeCoverage]
     public class LoginRequest
     {
         [Required(ErrorMessage = "A aplicação requer que o campo E-mail seja preenchido!")]

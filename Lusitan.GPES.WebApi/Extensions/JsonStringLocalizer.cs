@@ -2,11 +2,13 @@
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
 
 namespace Lusitan.GPES.WebApi.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public class JsonStringLocalizer : IStringLocalizer
     {
         private readonly IDistributedCache _cache;

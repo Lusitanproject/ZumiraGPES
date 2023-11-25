@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Lusitan.GPES.Core.Base.Interface.CRUD;
 using CORE.Validacao;
 using Lusitan.GPES.Core.Config;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
     [Route("/api/GPES/[Controller]")]
-    //[ApiController]
+    [ExcludeFromCodeCoverage]
     public class GPESWebApi<T> : ControllerBase where T : class
     {
         protected ConfigAmbiente _config;

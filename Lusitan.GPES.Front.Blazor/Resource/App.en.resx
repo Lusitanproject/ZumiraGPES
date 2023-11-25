@@ -156,6 +156,9 @@
   <data name="mnuAlteraSenha" xml:space="preserve">
     <value>Change Password</value>
   </data>
+  <data name="mnuContratante" xml:space="preserve">
+    <value>Contractor</value>
+  </data>
   <data name="msgExcluiUsuarioPerfil" xml:space="preserve">
     <value>Do you really want to delete this User from {0}'s profile?</value>
   </data>

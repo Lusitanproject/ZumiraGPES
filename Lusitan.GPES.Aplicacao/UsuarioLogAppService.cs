@@ -1,6 +1,7 @@
 ﻿using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Aplicacao
@@ -12,7 +13,8 @@ namespace Lusitan.GPES.Aplicacao
         public UsuarioLogAppService(IUsuarioLogServico servico)
            => _servico = servico;
 
-        public List<UsuarioLogDominio> GetByUsuario(int idUsuario)
+		[ExcludeFromCodeCoverage]
+		public List<UsuarioLogDominio> GetByUsuario(int idUsuario)
         {
             try
             {

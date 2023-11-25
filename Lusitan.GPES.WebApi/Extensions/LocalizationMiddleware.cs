@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Linq;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.WebApi.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public class LocalizationMiddleware : IMiddleware
     {
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)

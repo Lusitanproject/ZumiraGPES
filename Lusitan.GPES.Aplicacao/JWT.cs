@@ -1,7 +1,9 @@
-﻿
+﻿using System.Diagnostics.CodeAnalysis;
+
 namespace Lusitan.GPES.Aplicacao
 {
-    public static class JWT
+	[ExcludeFromCodeCoverage]
+	public static class JWT
     {
         public static string Chave
         {

@@ -7,6 +7,7 @@ using Lusitan.GPES.Core.Request;
 using Lusitan.GPES.Core.Response;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -26,7 +27,7 @@ namespace Lusitan.GPES.Aplicacao
         readonly ConfigXMS _configXMS;
         readonly IStringLocalizer<UsuarioAppService> _localizador;
 
-        public UsuarioAppService(   ConfigAmbiente config,
+        public UsuarioAppService(ConfigAmbiente config,
                                     ConfigXMS configXMS,
                                     IUsuarioServico servico,
                                     IPerfilAcessoAppService perfilAcesso,
@@ -39,7 +40,7 @@ namespace Lusitan.GPES.Aplicacao
             _configXMS = configXMS;
             _servico = servico;
             _perfilAcesso = perfilAcesso;
-            _usuarioPerfil = usuarioPerfil;            
+            _usuarioPerfil = usuarioPerfil;
             _log = log;
             _logAcessoErro = logAcessoErro;
             _localizador = localizador;
@@ -54,11 +55,12 @@ namespace Lusitan.GPES.Aplicacao
                 return _localizador.GetString("msgJaExisteUsuarioComEMail");
             }
 
-            var _msg = _servico.Add(new UsuarioViewDominio() {
-                                                            NomeUsuario = obj.NomeUsuario,
-                                                            eMail = obj.eMail,
-                                                            DesSenha = CORE.CryptObj.Encripta(_config.SenhaPadraoNovoUsuario)
-                                                         });
+            var _msg = _servico.Add(new UsuarioViewDominio()
+            {
+                NomeUsuario = obj.NomeUsuario,
+                eMail = obj.eMail,
+                DesSenha = CORE.CryptObj.Encripta(_config.SenhaPadraoNovoUsuario)
+            });
             if (string.IsNullOrEmpty(_msg))
             {
                 var _msgEMail = string.Empty;
@@ -90,19 +92,21 @@ namespace Lusitan.GPES.Aplicacao
 
         void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
-            var _msgEnvioEmail = this.EnviaEMail(   _configXMS, 
-                                                    new EMailDominio() {
-                                                                            NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
-                                                                            DescAssunto = descAssunto,
-                                                                            NomDestino = obj.eMail,
-                                                                            DescMensagem = msg
-                                                                        });
+            var _msgEnvioEmail = this.EnviaEMail(_configXMS,
+                                                    new EMailDominio()
+                                                    {
+                                                        NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
+                                                        DescAssunto = descAssunto,
+                                                        NomDestino = obj.eMail,
+                                                        DescMensagem = msg
+                                                    });
 
-            _log.Add(new UsuarioLogDominio() {
-                                                IdUsuario = obj.Id,
-                                                DescLog = $"Retorno envio e-mail: {_msgEnvioEmail}",
-                                                IdUsuarioResp = obj.Id
-                                             });
+            _log.Add(new UsuarioLogDominio()
+            {
+                IdUsuario = obj.Id,
+                DescLog = $"Retorno envio e-mail: {_msgEnvioEmail}",
+                IdUsuarioResp = obj.Id
+            });
         }
 
 
@@ -207,7 +211,8 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
-        public UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail)
+		[ExcludeFromCodeCoverage]
+		public UsuarioDominio GetUsuarioSemSenhaPorEmail(string eMail)
         {
             try
             {
@@ -223,7 +228,8 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
-        public UsuarioDominio GetById(int id)
+		[ExcludeFromCodeCoverage]
+		public UsuarioDominio GetById(int id)
         {
             try
             {
@@ -239,7 +245,8 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
-        public List<UsuarioDominio> GetList(string nomPerfil)
+		[ExcludeFromCodeCoverage]
+		public List<UsuarioDominio> GetList(string nomPerfil)
         {
             try
             {
@@ -251,10 +258,12 @@ namespace Lusitan.GPES.Aplicacao
 
                 foreach (var item in _lstUsuarios)
                 {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id))
                     {
                         _result.Add(item);
                     }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
 
                 return _result;
@@ -286,13 +295,19 @@ namespace Lusitan.GPES.Aplicacao
                     else
                     {
                         return _msg;
-                    }                    
+                    }
                 }
 
-                if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any())
+                if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any(x => x.NomPerfil.Trim().ToLower() == nomPerfil.Trim().ToLower()))
                 {
-                    return _usuarioPerfil.Add(new UsuarioPerfilDominio() {  IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id, 
-                                                                            IdUsuario = _novoUsuario.Id });
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    return _usuarioPerfil.Add(new UsuarioPerfilDominio()
+                    {
+                        IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id,
+                        IdUsuario = _novoUsuario.Id,
+                        IdUsuarioResp = obj.IdUsuarioResp
+                    });
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
 
                 return string.Empty;
@@ -384,7 +399,7 @@ namespace Lusitan.GPES.Aplicacao
                 {
                     _log.Add(new UsuarioLogDominio() { IdUsuario = idUsuario, IdUsuarioResp = idUsuarioResp, DescLog = _msg });
                 }
-                
+
             }
             catch (Exception ex)
             {

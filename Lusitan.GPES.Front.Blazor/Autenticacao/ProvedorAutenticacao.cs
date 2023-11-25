@@ -6,9 +6,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using Blazored.SessionStorage;
 using Lusitan.GPES.Core.Entidade;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Front.Blazor.Autenticacao
 {
+    [ExcludeFromCodeCoverage]
     public class ProvedorAutenticacao : AuthenticationStateProvider
     {
         readonly ISessionStorageService _sessionStorage;

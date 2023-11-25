@@ -8,5 +8,8 @@
   "logUsuarioBloqueado": "Blocked user",
   "logUsuarioInativado": "Inactivated user",
   "tituloMSgReenvioSenha": "Access password",
-  "logReenvioSenhaEMail": "Password resent by email"
+  "logReenvioSenhaEMail": "Password resent by email",
+  "msgUsuarioIncluidoPerfil": "User included in the Profile {0}",
+  "msgUsuarioExcluidoPerfil": "User deleted from Profile {0}",
+  "msgUsuarioJaInclusoPerfil": "This User is already associated with this Profile!"
 }

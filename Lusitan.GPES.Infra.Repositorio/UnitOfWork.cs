@@ -1,7 +1,9 @@
 ﻿using Lusitan.GPES.Core.Interface.Repositorio;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Infra.Repositorio
 {
+    [ExcludeFromCodeCoverage]
     public class UnitOfWork: IUnitOfWork
     {
         public string StrConexao { set; get; }

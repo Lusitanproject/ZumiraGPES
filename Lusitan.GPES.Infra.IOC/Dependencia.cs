@@ -5,9 +5,11 @@ using Lusitan.GPES.Core.Interface.Servico;
 using Lusitan.GPES.Core.Servico;
 using Lusitan.GPES.Infra.Repositorio;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Infra.IOC
 {
+    [ExcludeFromCodeCoverage]
     public class Dependencia
     {
         public static void RegistrarDependencias(IServiceCollection servico)

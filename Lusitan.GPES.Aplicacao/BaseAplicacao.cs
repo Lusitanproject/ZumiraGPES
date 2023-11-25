@@ -1,11 +1,13 @@
 ﻿using Lusitan.GPES.Core.Config;
 using Lusitan.GPES.Core.Entidade;
 using RestSharp;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Lusitan.GPES.Aplicacao
 {
-    public abstract class BaseAplicacao
+	[ExcludeFromCodeCoverage]
+	public abstract class BaseAplicacao
     {
         protected string RetiraAspas(string txt)
            => Regex.Replace(txt, @"[\u2018\u2019\u201a\u201b\u0022\u201c\u201d\u201e\u201f\u301d\u301e\u301f]", "");

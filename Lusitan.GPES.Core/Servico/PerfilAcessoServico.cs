@@ -2,9 +2,11 @@
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using Lusitan.GPES.Core.Interface.Servico;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Core.Servico
 {
+    [ExcludeFromCodeCoverage]
     public class PerfilAcessoServico : BaseServico, IPerfilAcessoServico
     {
         public PerfilAcessoServico(IUnitOfWork repositorio)

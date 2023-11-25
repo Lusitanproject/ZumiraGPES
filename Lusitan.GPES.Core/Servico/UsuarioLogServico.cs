@@ -2,10 +2,12 @@
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using Lusitan.GPES.Core.Interface.Servico;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Core.Servico
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioLogServico : BaseServico, IUsuarioLogServico
     {
         public UsuarioLogServico(IUnitOfWork repositorio)

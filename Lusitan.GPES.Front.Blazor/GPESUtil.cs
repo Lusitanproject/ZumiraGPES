@@ -1,5 +1,8 @@
-﻿namespace Lusitan.GPES.Front.Blazor
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Lusitan.GPES.Front.Blazor
 {
+    [ExcludeFromCodeCoverage]
     public static class GPESUtil
     {
         public static string RemovePrimeiroEUltimo(string txt)

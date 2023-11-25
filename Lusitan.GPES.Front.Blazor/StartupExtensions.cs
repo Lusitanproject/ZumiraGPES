@@ -8,12 +8,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 using Radzen;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 
 namespace Lusitan.GPES.Front.Blazor
 {
+    [ExcludeFromCodeCoverage]
     public static class StartupExtensions
     {
         public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)

@@ -210,7 +210,8 @@
             {
                 var _msg = _usuarioPerfil.ExcluiUsuarioPErfil(new UsuarioPerfilDominio() {
                                                                                 IdUsuario = obj.Id,
-                                                                                IdPerfilAcesso = _usuarioPerfil.GetListPerfil().Where(x => x.NomPerfil == Perfil).FirstOrDefault().Id
+                                                                                IdPerfilAcesso = _usuarioPerfil.GetListPerfil().Where(x => x.NomPerfil == Perfil).FirstOrDefault().Id,
+                                                                                IdUsuarioResp = _numUsuarioLogado
                                                                               });
 
                 if (string.IsNullOrEmpty(_msg))

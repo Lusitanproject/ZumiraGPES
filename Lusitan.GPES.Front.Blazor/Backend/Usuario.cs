@@ -11,9 +11,11 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Lusitan.GPES.Core.Rest;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Front.Blazor.Backend
 {
+    [ExcludeFromCodeCoverage]
     public class Usuario : _webApi, IUsuario
     {
         public Usuario(IConfiguration conf)

@@ -1,8 +1,10 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Infra.Repositorio
 {
+    [ExcludeFromCodeCoverage]
     public abstract class BaseRepositorio
     {
         protected BaseRepositorio(string strConexao)

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Core.Request
 {
+    [ExcludeFromCodeCoverage]
     public class AlteraSenhaRequest
     {
         [Range(1, int.MaxValue, ErrorMessage = "Informe o Usuário!")]

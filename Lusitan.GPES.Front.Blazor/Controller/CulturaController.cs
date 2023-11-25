@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Front.Blazor.Controller
 {
 	[Route("[controller]/[action]")]
-	public class CulturaController : ControllerBase
+    [ExcludeFromCodeCoverage]
+    public class CulturaController : ControllerBase
 	{
 		public IActionResult SetCultura(string cultura, string url)
 		{

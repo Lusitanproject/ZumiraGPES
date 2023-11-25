@@ -6,9 +6,11 @@ using Lusitan.GPES.Core.Rest;
 using RestSharp;
 using System.Linq;
 using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Front.Blazor.Backend
 {
+    [ExcludeFromCodeCoverage]
     public abstract class _webApi
     {
         readonly IConfiguration _conf;
@@ -23,7 +25,7 @@ namespace Lusitan.GPES.Front.Blazor.Backend
             get { return "Bearer " + _token; }
         }
 
-        public int NumUsuario { get; set; }
+        public int NumUsuarioLogado { get; set; }
 
         protected IConfiguration Conf
         {

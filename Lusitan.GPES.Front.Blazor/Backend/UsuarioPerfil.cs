@@ -5,11 +5,13 @@ using Microsoft.Extensions.Configuration;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Reflection;
 
 namespace Lusitan.GPES.Front.Blazor.Backend
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioPerfil : _webApi, IUsuarioPerfil
     {
         public UsuarioPerfil(IConfiguration conf)

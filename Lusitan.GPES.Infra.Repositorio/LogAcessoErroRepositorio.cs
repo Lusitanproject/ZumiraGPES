@@ -1,10 +1,12 @@
 ﻿using Dapper;
 using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Repositorio;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Infra.Repositorio
 {
+    [ExcludeFromCodeCoverage]
     public class LogAcessoErroRepositorio : BaseRepositorio, ILogAcessoErroRepositorio
     {
         public LogAcessoErroRepositorio(string strConexao)

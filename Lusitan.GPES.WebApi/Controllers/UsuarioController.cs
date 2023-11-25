@@ -6,13 +6,13 @@ using Lusitan.GPES.Core.Interface.Repositorio;
 using Lusitan.GPES.Core.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioController : GPESWebApi<UsuarioDominio>
     {
         readonly IUsuarioAppService _appServico;

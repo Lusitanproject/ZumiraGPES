@@ -6,11 +6,12 @@ using Lusitan.GPES.Core.Interface.Repositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioPerfilController : GPESWebApi<UsuarioPerfilDominio>
     {
         readonly IPerfilAcessoAppService _perfilAcesso;

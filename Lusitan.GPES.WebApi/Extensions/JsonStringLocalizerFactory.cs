@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Localization;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.WebApi.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public class JsonStringLocalizerFactory : IStringLocalizerFactory
     {
         private readonly IDistributedCache _cache;

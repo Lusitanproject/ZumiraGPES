@@ -1,8 +1,10 @@
 ﻿using RestSharp;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Lusitan.GPES.Core.Rest
 {
+    [ExcludeFromCodeCoverage]
     public class GPESRequisicao: RestRequest
     {
         public GPESRequisicao(string url, Method metodo)

@@ -68,7 +68,7 @@
                 if (_login.LoginEhValido)
                 {
                     _usuario.Token = _login.Token;
-                    _usuario.NumUsuario = _usuarioLogado.Id;
+                    _usuario.NumUsuarioLogado = _usuarioLogado.Id;
 
                     this.GravaObjSessao<UsuarioDominio>("Usuario", _usuarioLogado);
                     this.GravaObjSessao<string>("token", _login.Token);

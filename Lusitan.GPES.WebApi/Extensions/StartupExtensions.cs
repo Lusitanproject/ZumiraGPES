@@ -1,10 +1,8 @@
 ﻿using Lusitan.GPES.Aplicacao;
 using Lusitan.GPES.Core.Config;
-using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,11 +10,13 @@ using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
 namespace Lusitan.GPES.WebApi.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class StartupExtensions
     {
         public static void ConfigureServices(this IServiceCollection service, IConfiguration configuration)

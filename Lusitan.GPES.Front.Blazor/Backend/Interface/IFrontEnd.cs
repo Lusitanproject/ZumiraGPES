@@ -4,6 +4,6 @@
     {
         string Token { get; set; }
 
-        public int NumUsuario { get; set; }
+        public int NumUsuarioLogado { get; set; }
     }
 }

@@ -5,10 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MudBlazor.Services;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Lusitan.GPES.Front.Blazor
 {
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         RequestLocalizationOptions _lstCulturasSuportadas;

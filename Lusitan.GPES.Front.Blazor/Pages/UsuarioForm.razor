@@ -183,7 +183,7 @@
             await ValidaToken();
 
             _usuario.Token = await this.Token();
-            _usuario.NumUsuario = await this.NumUsuarioLogado();
+            _usuario.NumUsuarioLogado = await this.NumUsuarioLogado();
 
             _idcAcaoUsuario = await _sessionStorage.GetItemAsync<string>("IdcAcaoUsuario");
 
@@ -222,7 +222,8 @@
         {
             await ValidaToken();
 
-            model.IdcAtivo = _sitUsuario == 1 ? "A" : _sitUsuario == 2 ? "B" : "I";            
+            model.IdcAtivo = _sitUsuario == 1 ? "A" : _sitUsuario == 2 ? "B" : "I";   
+            model.IdUsuarioResp = await this.NumUsuarioLogado();
 
             var _msg = string.IsNullOrEmpty(_idcAcaoUsuario) ? _usuario.Add(model, Perfil) : _usuario.Update(model.Id, model.NomeUsuario, model.IdcAtivo, (idcForcaAlteraSenha ? "S" : "N"), _numUsuarioLogado);      
 

@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using CORE.Validacao;
 using Lusitan.GPES.Core.Base;
 
 namespace Lusitan.GPES.Core.Entidade
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioDominio: BaseDomonio
     {
         public string Token { get; set; }
