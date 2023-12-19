@@ -52,7 +52,7 @@ create table perfil_acesso
 )
 go
 insert into perfil_acesso (nom_perfil) values ('Admin');
-insert into perfil_acesso (nom_perfil) values ('Contratante')
+insert into perfil_acesso (nom_perfil) values ('Gestor')
 go
 create table usuario_perfil
 (

@@ -36,13 +36,19 @@
     </div>
 
     <div class="form-group">
-        <button class="btn btn-dark btn-block btn-lg"
-                style="max-width:350px;background-color:#a9d0d7;color:#000000"
-        @onclick="Submit">
+        <button 
+            class="btn btn-dark btn-block btn-lg"
+            style="max-width:350px;background-color:#a9d0d7;color:#000000"
+            @onclick="Submit">
             Login
         </button>
 
+        <div style="width: 350px; align-content: center">
+            <MudNavLink Href="usuario/novo/Gestor">Quero me cadastrar</MudNavLink>
+        </div>
     </div>
+
+
 
     <b class="text-danger">@_msgErro</b>
 </div>
