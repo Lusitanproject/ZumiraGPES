@@ -298,12 +298,10 @@ namespace Lusitan.GPES.Aplicacao
                         return _msg;
                     }
                 }
-                else
-                {
-                    return "Usuário já cadastrado!";
-                }
 
-                if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any(x => x.NomPerfil.Trim().ToLower() == nomPerfil.Trim().ToLower()))
+                var _idcPerfilJaCadastrado = _usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any(x => x.NomPerfil.Trim().ToLower() == nomPerfil.Trim().ToLower());
+
+                if (!_idcPerfilJaCadastrado)
                 {
                     return _usuarioPerfil.Add(new UsuarioPerfilDominio() {
                                                                             IdPerfilAcesso = (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id,
@@ -312,7 +310,7 @@ namespace Lusitan.GPES.Aplicacao
                                                                          });
                 }
 
-                return string.Empty;
+                return _novoUsuario != null && _idcPerfilJaCadastrado? "Usuário já cadatrado para esse Perfil!": string.Empty;
             }
             catch (Exception ex)
             {

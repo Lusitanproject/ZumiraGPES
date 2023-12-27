@@ -86,11 +86,7 @@
 
             var _msg = _usuario.Add(model, "Gestor");
 
-            var _idcGravou = string.IsNullOrEmpty(_msg);
-
-            _idcGravou = string.IsNullOrEmpty(_msg);
-
-            if (_idcGravou)
+            if (string.IsNullOrEmpty(_msg))
             {
                 _nav.NavigateTo("/index", forceLoad: true);
             }
