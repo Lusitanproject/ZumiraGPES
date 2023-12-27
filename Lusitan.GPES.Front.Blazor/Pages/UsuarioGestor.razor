@@ -1,0 +1,111 @@
+﻿@page "/usuario/queroMeCadastrar"
+
+@layout LayoutPublico
+
+@inject IUsuario _usuario
+@inject IConfiguration _conf
+
+<br />
+<RadzenCard class="col-md-6">
+
+    <RadzenTemplateForm TItem="UsuarioDominio" Data=@model Submit=@Gravar Style="width: 100%; padding: 10px 10px; margin: 0; " class="rounded shadow">
+        <div class="container">
+            <div class="row">
+                <div class="lign-items-center d-flex col-md-3">
+                    <RadzenLabel Component="eMail" Text=E-mail />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox Name="eMail"
+                    @bind-Value=@model.eMail
+                                   MaxLength="50"
+                                   style="width: 100%;" />
+                    <RadzenRequiredValidator Component="eMail" Text="A aplicação requer que o campo E-mail seja preenchida!" />
+                    <RadzenEmailValidator Component="eMail" Text="E-mail inválido!" />
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="lign-items-center d-flex col-md-3">
+                    <RadzenLabel Component="nomUsuario" Text=Nome />
+                </div>
+                <div class="col-md-9">
+                    <RadzenTextBox Name="nomUsuario"
+                    @bind-Value=@model.NomeUsuario
+                                   MaxLength="100"
+                                   style="width: 100%;" />
+                    <RadzenRequiredValidator Component="nomUsuario" Text="A aplicação requer que o campo Nome seja preenchida!" />
+                </div>
+            </div>
+        </div>
+        <br />
+        @{
+            if (!_idcCarregaTela)
+            {
+                if (_idcErro)
+                {
+                    <MudText Color="@Color.Error">
+                        @_msgErro
+                    </MudText>
+                }
+            }
+        }
+
+
+        <div class="row justify-content-left">
+            <div class="col-md-12 d-flex align-items-end justify-content-left" style="margin-top: 16px;">
+                <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" />
+            </div>
+        </div>
+
+    </RadzenTemplateForm>
+
+</RadzenCard>
+
+@code 
+{
+    UsuarioDominio model = new UsuarioDominio();
+
+    bool _idcErro = false;
+    bool _idcCarregaTela = true;
+    string _msgErro = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _msgErro = string.Empty;
+        _idcCarregaTela = true;
+    }
+
+    async void Gravar()
+    {
+        try
+        {
+            _idcCarregaTela = false;
+            model.IdcAtivo = "A";
+            model.IdUsuarioResp = _usuario.BuscaPeloEMail(_conf.GetSection("eMailUsuarioAdmin").Value.ToString()).Id;
+
+            var _msg = _usuario.Add(model, "Gestor");
+
+            var _idcGravou = string.IsNullOrEmpty(_msg);
+
+            _idcGravou = string.IsNullOrEmpty(_msg);
+
+            if (_idcGravou)
+            {
+                _nav.NavigateTo("/index", forceLoad: true);
+            }
+            else
+            {
+                _idcErro = true;
+                _msgErro = _msg;
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+            await _js.InvokeVoidAsync("console.log", _msgErro);
+        }
+    }
+
+}

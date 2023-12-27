@@ -71,7 +71,7 @@ namespace Lusitan.GPES.WebApi.Controllers
            => Get(_appServico.GetList(Perfil));
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         [Route("{Perfil}")]
         public ActionResult AddUsuarioPerfil([FromBody] UsuarioDominio obj, [FromRoute] string Perfil)
         {
