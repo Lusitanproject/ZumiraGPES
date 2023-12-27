@@ -298,6 +298,10 @@ namespace Lusitan.GPES.Aplicacao
                         return _msg;
                     }
                 }
+                else
+                {
+                    return "Usuário já cadastrado!";
+                }
 
                 if (!_usuarioPerfil.GetByUsuario(_novoUsuario.Id).Any(x => x.NomPerfil.Trim().ToLower() == nomPerfil.Trim().ToLower()))
                 {
