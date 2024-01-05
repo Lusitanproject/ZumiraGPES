@@ -239,7 +239,7 @@
           }
         }
       },
-      "CORE.Util/1.0.0": {
+      "CORE.Util/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
@@ -1005,14 +1005,14 @@
         "contentFiles/any/any/wwwroot/js/bootstrap.min.js.map"
       ]
     },
-    "CORE.Util/1.0.0": {
-      "sha512": "NxrZ/+dPl1hWjbOJO55gTc3aH3yZw76bi/Rx5/YYhx9ztR5g29G4GxTxe9G3zgH2yQlK7y9hxQ3DK3tQrMwcIg==",
+    "CORE.Util/1.0.1": {
+      "sha512": "LfWzSKGhJVUQuoGIg7mRo1SVobA6V6IkM0U+n7UN9O86J6R2yVhaJ7wWuq6T4bvT0pnPliGfj1RcHCEAy6Kawg==",
       "type": "package",
-      "path": "core.util/1.0.0",
+      "path": "core.util/1.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "core.util.1.0.0.nupkg.sha512",
+        "core.util.1.0.1.nupkg.sha512",
         "core.util.nuspec",
         "lib/net7.0/CORE.Util.dll"
       ]
@@ -2131,7 +2131,7 @@
     "net7.0": [
       "Blazored.SessionStorage >= 2.4.0",
       "Bootstrap >= 5.3.2",
-      "CORE.Util >= 1.0.0",
+      "CORE.Util >= 1.0.1",
       "Lusitan.GPES.Core >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.10",
       "Microsoft.Extensions.Localization >= 8.0.0",
@@ -2200,7 +2200,7 @@
           },
           "CORE.Util": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.1, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
