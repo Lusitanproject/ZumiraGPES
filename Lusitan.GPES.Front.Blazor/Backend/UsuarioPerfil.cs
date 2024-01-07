@@ -68,5 +68,23 @@ namespace Lusitan.GPES.Front.Blazor.Backend
                 throw new Exception(_msgErro);
             }
         }
+
+        public List<PerfilAcessoDominio> ListaPerfilPorUsuario(int idUsuario)
+        {
+            try
+            {
+                var _req = new GPESRequisicao($"api/GPES/UsuarioPerfil/perfil-acesso/lista-por-usuario/{idUsuario}", Method.Get, this.Token);
+
+                return new RestClient(Conf.GetSection("WebApi").Value.ToString()).Execute<List<PerfilAcessoDominio>>(_req).Data;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErroAcessoAPI(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
     }
 }

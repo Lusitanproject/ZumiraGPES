@@ -79,5 +79,19 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        ICargoRepositorio _cargo;
+        public ICargoRepositorio Cargo
+        {
+            get
+            {
+                if (_cargo == null)
+                {
+                    _cargo = new CargoRepositorio(this.StrConexao);
+                }
+
+                return _cargo;
+            }
+        }
+
     }
 }

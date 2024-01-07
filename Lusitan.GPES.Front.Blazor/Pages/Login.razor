@@ -9,6 +9,7 @@
 @using Lusitan.GPES.Front.Blazor.Autenticacao
 
 @inject IUsuario _usuario
+@inject IUsuarioPerfil _usuarioPerfil
 
 <div class="form-group col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12">
 
@@ -83,6 +84,10 @@
                     ((ProvedorAutenticacao)_autenticacao).MarcaUsuarioComoAutenticado(_usuarioLogado);
 
                     var _url = _usuarioLogado.IdcForcaAlteraSenha == "S" ? $"AlteraSenha/{_usuarioLogado.Id}" : "index";
+
+                    _usuarioPerfil.Token = _login.Token;
+
+                    var _lsrPerfilUsuario = _usuarioPerfil.ListaPerfilPorUsuario(_usuarioLogado.Id);
 
                     _nav.NavigateTo(_url, forceLoad: true);
                 }

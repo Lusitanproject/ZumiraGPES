@@ -35,6 +35,10 @@ namespace Lusitan.GPES.Infra.IOC
             servico.AddSingleton<ILogAcessoErroAppService, LogAcessoErroAppService>();
             servico.AddSingleton<ILogAcessoErroServico, LogAcessoErroServico>();
             servico.AddSingleton<ILogAcessoErroRepositorio>(s => new LogAcessoErroRepositorio(string.Empty));
+
+            servico.AddSingleton<ICargoAppService, CargoAppService>();
+            servico.AddSingleton<ICargoServico, CargoServico>();
+            servico.AddSingleton<ICargoRepositorio>(s => new CargoRepositorio(string.Empty));
         }
     }
 }

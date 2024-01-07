@@ -44,6 +44,23 @@ namespace Lusitan.GPES.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("perfil-acesso/lista-por-usuario/{IdUsuario}")]
+        public IActionResult ListaPerfilPorUsuario([FromRoute] int IdUsuario)
+        {
+            try
+            {
+                var _lst = _usuarioPerfil.GetByUsuario(IdUsuario);
+
+                return _lst.Count() == 0 ? NotFound(_lst) : Ok(_lst);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpDelete]
         [Authorize(Roles = "Admin")]
         [Route("usuario-perfil")]

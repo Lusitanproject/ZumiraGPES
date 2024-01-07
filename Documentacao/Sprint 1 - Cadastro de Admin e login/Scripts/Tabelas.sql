@@ -84,4 +84,6 @@ desc_log_erro varchar(500),
  constraint fk1_log_acesso_erro  foreign key (num_usuario) references usuario(num_usuario)
 )
 
+
+
 set nocount off
