@@ -5,16 +5,18 @@
     <MudNavLink OnClick=AlteraSenha>@_local["mnuAlteraSenha"]</MudNavLink>
 
     <AuthorizeView Roles="Admin">
-
         <MudNavLink Href="Usuario/Admin">@_local["mnuAdmin"]</MudNavLink>
+    </AuthorizeView>
 
+    <AuthorizeView Roles="Gestor">
+        <MudNavLink Href="Cargos">@_local["mnuCargos"]</MudNavLink>
     </AuthorizeView>
 
 </MudNavMenu>
 
 @code
 {
-    bool _idcOrganizacaoPF = true;
+    bool _idcGestor = true;
 
     async void AlteraSenha()
     {

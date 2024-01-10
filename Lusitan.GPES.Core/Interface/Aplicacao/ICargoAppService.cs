@@ -6,7 +6,8 @@ namespace Lusitan.GPES.Core.Interface.Aplicacao
     public interface ICargoAppService : IGetList<CargoDominio>,
                                          IGetById<CargoDominio>,
                                          IAdd<CargoDominio>,
-                                         IUpdate<CargoDominio>
+                                         IUpdate<CargoDominio>,
+                                         IRemove
     {
     }
 }

@@ -112,5 +112,25 @@ namespace Lusitan.GPES.Infra.Repositorio
                 this.FechaConexao();
             }
         }
+
+        public string Remove(int id)
+        {
+            try
+            {
+                var _query = $@" DELETE FROM cargo WHERE num_cargo = {id}";
+
+                this.ConexaoBD.Execute(_query);
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+            }
+            finally
+            {
+                this.FechaConexao();
+            }
+        }
     }
 }

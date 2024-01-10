@@ -24,25 +24,31 @@ namespace Lusitan.GPES.WebApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Gestor")]
         public IActionResult GetList()
           => Get(_cargo.GetList());
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Gestor")]
         [Route("{Id}")]
         public IActionResult GetById([FromRoute] int Id)
            => Get(_cargo.GetById(Id));
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Gestor")]
         public IActionResult Insere([FromBody] CargoDominio obj)
           => Add(ModelState, _cargo, obj);
 
         [HttpPut]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Gestor")]
         public IActionResult Update([FromBody] CargoDominio obj)
           => Update(ModelState, _cargo, obj);
+
+        [HttpDelete]
+        [Authorize(Roles = "Gestor")]
+        [Route("{Id}")]
+        public IActionResult Remove([FromRoute] int Id)
+          => Remove(ModelState, _cargo, Id);
 
     }
 }

@@ -1,0 +1,130 @@
+﻿@page "/cargo/novo"
+@page "/cargo/altera"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Gestor")]
+
+@inject ICargo _cargo
+
+<br />
+<RadzenCard class="m-3">
+
+    <RadzenTemplateForm TItem="CargoDominio" Data=@model Submit=@Gravar>
+        <div class="row">
+            <div class="col-md-6">
+
+
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="nomUsuario" Text=@_local["cabDescricao"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenTextBox Name="descCargo"
+                                       @bind-Value=@model.DescCargo
+                                       MaxLength="1000"
+                                       style="width: 100%;" />
+                        <RadzenRequiredValidator Component="descCargo" Text="A aplicação requer que o campo Descrição seja preenchida!" />
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(_idcAcaoCargo))
+                {
+                    <br />
+                    <RadzenCheckBox @bind-Value=@_sitCargo Name="idcSituacao" TValue="bool" />
+                    <RadzenLabel Text=@_local["cabAtivo"] Component="idcSituacao" Style="margin-left: 8px; vertical-align: middle;" />
+                }
+
+
+            </div>
+        </div>
+        <br />
+        @if (_idcErro)
+        {
+            <MudText Color="@Color.Error">
+                @_msgErro
+            </MudText>
+        }
+        else
+        {
+            <MudText Color="Color.Success">@_local["msgRegistroGravadoComSucesso"]</MudText>
+        }
+
+        <div class="row justify-content-left">
+            <div class="col-md-12 d-flex align-items-end justify-content-left" style="margin-top: 16px;">
+                <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" />
+            </div>
+        </div>
+
+    </RadzenTemplateForm>
+
+</RadzenCard>
+
+@code 
+{
+    CargoDominio model = new CargoDominio();
+
+    string _idcAcaoCargo;
+
+    bool _sitCargo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ValidaToken();
+
+            _cargo.Token = await this.Token();
+
+            _idcAcaoCargo = await _sessionStorage.GetItemAsync<string>("IdcAcaoCargo");
+
+            if (string.IsNullOrEmpty(_idcAcaoCargo))
+            {
+                model = new CargoDominio();
+            }
+            else
+            {
+
+                model = await _sessionStorage.GetItemAsync<CargoDominio>("ObjCargo");
+
+                _sitCargo = model.IdcAtivo == "S";
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+    async void Gravar()
+    {
+        try
+        {
+            await ValidaToken();
+
+            model.IdcAtivo = _sitCargo? "S" : "N";
+
+            var _msg = string.IsNullOrEmpty(_idcAcaoCargo) ? _cargo.Add(model) : _cargo.Update(model);
+
+            var _idcGravou = string.IsNullOrEmpty(_msg);
+
+            _idcGravou = string.IsNullOrEmpty(_msg);
+
+            if (_idcGravou)
+            {
+                _nav.NavigateTo("Cargos", forceLoad: true);
+            }
+            else
+            {
+                _idcErro = true;
+                _msgErro = _msg;
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

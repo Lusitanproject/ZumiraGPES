@@ -156,8 +156,14 @@
   <data name="mnuAlteraSenha" xml:space="preserve">
     <value>Altera Senha</value>
   </data>
+  <data name="mnuCargos" xml:space="preserve">
+    <value>Cargos</value>
+  </data>
   <data name="mnuContratante" xml:space="preserve">
     <value>Contratante</value>
+  </data>
+  <data name="msgExcluiRegistro" xml:space="preserve">
+    <value>Deseja realmente excluir este registro?</value>
   </data>
   <data name="msgExcluiUsuarioPerfil" xml:space="preserve">
     <value>Deseja realmente excluir este Usuário do perfil de {0}?</value>

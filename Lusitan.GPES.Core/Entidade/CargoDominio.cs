@@ -13,5 +13,27 @@ namespace Lusitan.GPES.Core.Entidade
         public string DescCargo { get; set; }
 
         public string IdcAtivo { get; set; }
+
+        public string DescSituacao
+        {
+            get
+            {
+
+                var _descSituacao = string.Empty;
+
+                switch (this.IdcAtivo)
+                {
+                    case "S":
+                        _descSituacao = "Ativo";
+                        break;
+
+                    case "N":
+                        _descSituacao = "Inativo";
+                        break;
+                }
+
+                return _descSituacao;
+            }
+        }
     }
 }

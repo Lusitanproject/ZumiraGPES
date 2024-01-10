@@ -1,0 +1,186 @@
+﻿@page "/Cargos"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Gestor")]
+
+@inject ICargo _cargo
+
+<br />
+<div>
+    &emsp;
+    <RadzenButton Click=@(args => Novo())
+                  Icon="add_circle_outline"
+                  title=@_local["toollTipNovo"]
+                  Size="ButtonSize.Small"
+                  ButtonStyle="ButtonStyle.Secondary" />
+</div>
+<br />
+
+<RadzenDataGrid AllowFiltering="true"
+                AllowColumnResize="true"
+                AllowSorting="true"
+                AllowPaging="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterMode="FilterMode.Advanced"
+                ShowPagingSummary="true"
+                PageSize="9"
+                PagerHorizontalAlign="HorizontalAlign.Left"
+                SelectionMode="DataGridSelectionMode.Single"
+                Data="@_lst"
+                TItem="CargoDominio"
+                IsLoading="@_idcCarregando"
+                EditMode="DataGridEditMode.Single"
+                Density="Density.Compact"
+                EmptyText="Nenhum registro encontrado"
+                AllowColumnPicking="true"
+                Count="@_qteRegistros">
+    <Columns>
+        <RadzenDataGridColumn TItem="CargoDominio"
+                              Context="item"
+                              Filterable="false"
+                              Sortable="false"
+                              TextAlign="TextAlign.Center"
+                              Width="20px">
+            <Template Context="item">
+                <RadzenButton Icon="edit"
+                              title=@_local["toollTipEditar"]
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Edita(item))"
+                              @onclick:stopPropagation="true" />
+
+                <RadzenButton Icon="delete"
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Exclui(item))"
+                              @onclick:stopPropagation="true" />
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="CargoDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabDescricao"]
+                              Property="DescCargo"
+                              TextAlign="TextAlign.Left"
+                              Width=300px>
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.DescCargo</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+
+        <RadzenDataGridColumn TItem="CargoDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabDescSituacao"]
+                              Property="DescSituacao"
+                              TextAlign="TextAlign.Left"
+                              Width="100px">
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.DescSituacao</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+    </Columns>
+</RadzenDataGrid>
+
+@code 
+{
+    List<CargoDominio> _lst = new List<CargoDominio>();
+
+    string GetFormatoLinha(CargoDominio item)
+       => item.IdcAtivo == "S" ? "color:black" : "color:red";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ValidaToken();
+
+            _cargo.Token = await this.Token();
+
+            await _sessionStorage.RemoveItemAsync("IdcAcaoCargo");
+
+            await _sessionStorage.RemoveItemAsync("ObjCargo");
+
+            Pesquisa();
+
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    void Pesquisa()
+    {
+        _idcCarregando = true;
+
+        try
+        {
+            _lst = _cargo.GetList().OrderBy(u => u.DescCargo).ToList();
+
+            _qteRegistros = _lst.Count();            
+        }
+        finally
+        {
+            _idcCarregando = false;
+            StateHasChanged();
+        }
+
+    }
+
+    async void Novo()
+    {
+        await ValidaToken();
+
+        _nav.NavigateTo("cargo/novo");
+    }
+
+    async void Edita(CargoDominio obj)
+    {
+        await ValidaToken();
+
+        this.GravaObjSessao<String>("IdcAcaoCargo", "A");
+
+        this.GravaObjSessao<CargoDominio>("ObjCargo", obj);
+
+        _nav.NavigateTo("cargo/altera");
+    }
+
+    async void Exclui(CargoDominio obj)
+    {
+        try
+        {
+            await this.ValidaToken();
+
+            if (await _js.InvokeAsync<bool>("confirm", _local["msgExcluiRegistro"].Value))
+            {
+                var _msgExclui = _cargo.Remove(obj.NumCargo);
+
+                if (string.IsNullOrEmpty(_msgExclui))
+                {
+                    Pesquisa();
+
+                }
+                else
+                {
+                    await _js.InvokeVoidAsync("alert", _msgExclui);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

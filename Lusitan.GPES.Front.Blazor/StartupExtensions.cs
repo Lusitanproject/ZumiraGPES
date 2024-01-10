@@ -27,9 +27,10 @@ namespace Lusitan.GPES.Front.Blazor
             //
             services.AddScoped<IUsuario, Usuario>();
             services.AddScoped<IUsuarioPerfil, UsuarioPerfil>();
+			services.AddScoped<ICargo, Cargo>();
 
-            //
-            services.AddScoped<AuthenticationStateProvider, ProvedorAutenticacao>();
+			//
+			services.AddScoped<AuthenticationStateProvider, ProvedorAutenticacao>();
 
             services.AddScoped<DialogService>();
             services.AddScoped<NotificationService>();

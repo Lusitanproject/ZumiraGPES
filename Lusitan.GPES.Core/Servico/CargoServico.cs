@@ -52,6 +52,20 @@ namespace Lusitan.GPES.Core.Servico
             return _resultado;
         }
 
+        public string Remove(int id)
+        {
+            var _resultado = string.Empty;
 
+            try
+            {
+                _repositorio.Cargo.Remove(id);
+            }
+            catch (Exception ex)
+            {
+                _resultado = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+            }
+
+            return _resultado;
+        }
     }
 }
