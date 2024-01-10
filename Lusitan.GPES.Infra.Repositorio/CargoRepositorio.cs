@@ -12,7 +12,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         public CargoRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	NumCargo = num_cargo,
+        string _query = @"  SELECT	Id = num_cargo,
                                     DescCargo = desc_cargo,
                                     IdcAtivo = idc_ativo
                             FROM cargo (NOLOCK) ";
@@ -79,7 +79,7 @@ namespace Lusitan.GPES.Infra.Repositorio
                 var _query = $@" UPDATE cargo 
                                  SET desc_cargo = '{obj.DescCargo}', 
                                      idc_ativo = '{obj.IdcAtivo}' 
-                                 WHERE num_cargo = {obj.NumCargo}";
+                                 WHERE num_cargo = {obj.Id}";
 
                 this.ConexaoBD.Execute(_query);
 

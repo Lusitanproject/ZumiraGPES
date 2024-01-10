@@ -162,11 +162,23 @@
   <data name="mnuContratante" xml:space="preserve">
     <value>Contratante</value>
   </data>
+  <data name="mnuEmpresas" xml:space="preserve">
+    <value>Empresas</value>
+  </data>
   <data name="msgExcluiRegistro" xml:space="preserve">
     <value>Deseja realmente excluir este registro?</value>
   </data>
   <data name="msgExcluiUsuarioPerfil" xml:space="preserve">
     <value>Deseja realmente excluir este Usuário do perfil de {0}?</value>
+  </data>
+  <data name="MsgObriDescricao" xml:space="preserve">
+    <value>A aplicação requer que o campo Descrição seja preenchido!</value>
+  </data>
+  <data name="MsgObriEMail" xml:space="preserve">
+    <value>A aplicação requer que o campo E-Mailseja preenchido!</value>
+  </data>
+  <data name="MsgObriNome" xml:space="preserve">
+    <value>A aplicação requer que o campo Nome seja preenchido!</value>
   </data>
   <data name="MsgObriSenhaAntiga" xml:space="preserve">
     <value>A aplicação requer que o campo Senha Antiga!</value>

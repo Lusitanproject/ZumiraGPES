@@ -164,7 +164,7 @@
 
             if (await _js.InvokeAsync<bool>("confirm", _local["msgExcluiRegistro"].Value))
             {
-                var _msgExclui = _cargo.Remove(obj.NumCargo);
+                var _msgExclui = _cargo.Remove(obj.Id);
 
                 if (string.IsNullOrEmpty(_msgExclui))
                 {

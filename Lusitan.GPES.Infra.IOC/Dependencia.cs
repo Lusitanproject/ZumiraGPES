@@ -39,6 +39,10 @@ namespace Lusitan.GPES.Infra.IOC
             servico.AddSingleton<ICargoAppService, CargoAppService>();
             servico.AddSingleton<ICargoServico, CargoServico>();
             servico.AddSingleton<ICargoRepositorio>(s => new CargoRepositorio(string.Empty));
+
+            servico.AddSingleton<IEmpresaAppService, EmpresaAppService>();
+            servico.AddSingleton<IEmpresaServico, EmpresaServico>();
+            servico.AddSingleton<IEmpresaRepositorio>(s => new EmpresaRepositorio(string.Empty));
         }
     }
 }

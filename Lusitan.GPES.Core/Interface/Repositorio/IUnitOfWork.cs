@@ -16,5 +16,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         ILogAcessoErroRepositorio LogAcessoErro { get; }
 
         ICargoRepositorio Cargo { get; }
+
+        IEmpresaRepositorio Empresa { get; }
     }
 }

@@ -1,0 +1,130 @@
+﻿@page "/empresa/novo"
+@page "/empresa/altera"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Gestor")]
+
+@inject IEmpresa _empresa
+
+<br />
+<RadzenCard class="m-3">
+
+    <RadzenTemplateForm TItem="EmpresaDominio" Data=@model Submit=@Gravar>
+        <div class="row">
+            <div class="col-md-6">
+
+
+                <div class="row">
+                    <div class="lign-items-center d-flex col-md-3">
+                        <RadzenLabel Component="nomEmpresa" Text=@_local["cabNome"] />
+                    </div>
+                    <div class="col-md-9">
+                        <RadzenTextBox Name="nomEmpresa"
+                                       @bind-Value=@model.NomEmpresa
+                                       MaxLength="1000"
+                                       style="width: 100%;" />
+                        <RadzenRequiredValidator Component="nomEmpresa" Text=@_local["MsgObriNome"] />
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(_idcAcaoEmpresa))
+                {
+                    <br />
+                    <RadzenCheckBox @bind-Value=@_sitCargo Name="idcSituacao" TValue="bool" />
+                    <RadzenLabel Text=@_local["cabAtivo"] Component="idcSituacao" Style="margin-left: 8px; vertical-align: middle;" />
+                }
+
+
+            </div>
+        </div>
+        <br />
+        @if (_idcErro)
+        {
+            <MudText Color="@Color.Error">
+                @_msgErro
+            </MudText>
+        }
+        else
+        {
+            <MudText Color="Color.Success">@_local["msgRegistroGravadoComSucesso"]</MudText>
+        }
+
+        <div class="row justify-content-left">
+            <div class="col-md-12 d-flex align-items-end justify-content-left" style="margin-top: 16px;">
+                <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" />
+            </div>
+        </div>
+
+    </RadzenTemplateForm>
+
+</RadzenCard>
+
+@code 
+{
+    EmpresaDominio model = new EmpresaDominio();
+
+    string _idcAcaoEmpresa;
+
+    bool _sitCargo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ValidaToken();
+
+            _empresa.Token = await this.Token();
+
+            _idcAcaoEmpresa = await _sessionStorage.GetItemAsync<string>("IdcAcaoEmpresa");
+
+            if (string.IsNullOrEmpty(_idcAcaoEmpresa))
+            {
+                model = new EmpresaDominio();
+            }
+            else
+            {
+
+                model = await _sessionStorage.GetItemAsync<EmpresaDominio>("ObjEmpresa");
+
+                _sitCargo = model.IdcAtivo == "S";
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+    async void Gravar()
+    {
+        try
+        {
+            await ValidaToken();
+
+            model.IdcAtivo = _sitCargo ? "S" : "N";
+
+            var _msg = string.IsNullOrEmpty(_idcAcaoEmpresa) ? _empresa.Add(model) : _empresa.Update(model);
+
+            var _idcGravou = string.IsNullOrEmpty(_msg);
+
+            _idcGravou = string.IsNullOrEmpty(_msg);
+
+            if (_idcGravou)
+            {
+                _nav.NavigateTo("Empresas", forceLoad: true);
+            }
+            else
+            {
+                _idcErro = true;
+                _msgErro = _msg;
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

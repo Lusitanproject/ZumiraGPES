@@ -11,11 +11,12 @@ create table cargo
  constraint ck1_cargo check (idc_ativo = 'S' or idc_ativo = 'N'))
 
 
---create table usuario_detalhe_perfil
---  (num_usuario int not null,
---   desc_cargo varchar(1000),
---   nom_empresa
---   constraint fk1_usuario_detalhe_perfil foreign key (num_usuario) usuario(num_usuario)
+create table empresa
+(num_empresa int identity,
+ desc_empresa varchar(1000),
+ idc_ativo char(1),
+ constraint pk_empresa primary key (num_empresa),
+ constraint ck1_empresa check (idc_ativo = 'S' or idc_ativo = 'N'))
 
 
 set nocount off

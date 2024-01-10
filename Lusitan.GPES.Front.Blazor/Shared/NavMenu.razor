@@ -12,12 +12,14 @@
         <MudNavLink Href="Cargos">@_local["mnuCargos"]</MudNavLink>
     </AuthorizeView>
 
+    <AuthorizeView Roles="Gestor">
+        <MudNavLink Href="Empresas">@_local["mnuEmpresas"]</MudNavLink>
+    </AuthorizeView>
+
 </MudNavMenu>
 
 @code
 {
-    bool _idcGestor = true;
-
     async void AlteraSenha()
     {
         var _usuario = await _sessao.GetItemAsync<UsuarioDominio>("Usuario");

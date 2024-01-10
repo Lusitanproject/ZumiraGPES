@@ -93,5 +93,19 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        IEmpresaRepositorio _empresa;
+        public IEmpresaRepositorio Empresa
+        {
+            get
+            {
+                if (_empresa == null)
+                {
+                    _empresa = new EmpresaRepositorio(this.StrConexao);
+                }
+
+                return _empresa;
+            }
+        }
+
     }
 }

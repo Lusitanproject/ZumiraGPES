@@ -15,7 +15,6 @@ namespace Lusitan.GPES.Front.Blazor.Backend
 		public Cargo(IConfiguration conf)
 			: base(conf) { }
 
-
 		public List<CargoDominio> GetList()
 		   => GetList<CargoDominio>("api/GPES/Cargo");
 

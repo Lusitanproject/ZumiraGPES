@@ -1,0 +1,186 @@
+﻿@page "/Empresas"
+
+@inherits _form
+
+@attribute [Authorize(Roles = "Gestor")]
+
+@inject IEmpresa _empresa
+
+<br />
+<div>
+    &emsp;
+    <RadzenButton Click=@(args => Novo())
+                  Icon="add_circle_outline"
+                  title=@_local["toollTipNovo"]
+                  Size="ButtonSize.Small"
+                  ButtonStyle="ButtonStyle.Secondary" />
+</div>
+<br />
+
+<RadzenDataGrid AllowFiltering="true"
+                AllowColumnResize="true"
+                AllowSorting="true"
+                AllowPaging="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterMode="FilterMode.Advanced"
+                ShowPagingSummary="true"
+                PageSize="9"
+                PagerHorizontalAlign="HorizontalAlign.Left"
+                SelectionMode="DataGridSelectionMode.Single"
+                Data="@_lst"
+                TItem="EmpresaDominio"
+                IsLoading="@_idcCarregando"
+                EditMode="DataGridEditMode.Single"
+                Density="Density.Compact"
+                EmptyText="Nenhum registro encontrado"
+                AllowColumnPicking="true"
+                Count="@_qteRegistros">
+    <Columns>
+        <RadzenDataGridColumn TItem="EmpresaDominio"
+                              Context="item"
+                              Filterable="false"
+                              Sortable="false"
+                              TextAlign="TextAlign.Center"
+                              Width="20px">
+            <Template Context="item">
+                <RadzenButton Icon="edit"
+                              title=@_local["toollTipEditar"]
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Edita(item))"
+                              @onclick:stopPropagation="true" />
+
+                <RadzenButton Icon="delete"
+                              Size="ButtonSize.ExtraSmall"
+                              ButtonStyle="ButtonStyle.Secondary"
+                              Click="@(args => Exclui(item))"
+                              @onclick:stopPropagation="true" />
+            </Template>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="EmpresaDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabNome"]
+                              Property="NomEmpresa"
+                              TextAlign="TextAlign.Left"
+                              Width=300px>
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.NomEmpresa</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+
+        <RadzenDataGridColumn TItem="EmpresaDominio"
+                              Context="item"
+                              Filterable="true"
+                              Sortable="true"
+                              Title=@_local["cabDescSituacao"]
+                              Property="DescSituacao"
+                              TextAlign="TextAlign.Left"
+                              Width="100px">
+            <Template Context="item">
+                <span style=@this.GetFormatoLinha(item)>@item.DescSituacao</span>
+            </Template>
+        </RadzenDataGridColumn>
+
+    </Columns>
+</RadzenDataGrid>
+
+@code 
+{
+    List<EmpresaDominio> _lst = new List<EmpresaDominio>();
+
+    string GetFormatoLinha(EmpresaDominio item)
+       => item.IdcAtivo == "S" ? "color:black" : "color:red";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ValidaToken();
+
+            _empresa.Token = await this.Token();
+
+            await _sessionStorage.RemoveItemAsync("IdcAcaoEmpresa");
+
+            await _sessionStorage.RemoveItemAsync("ObjEmpresa");
+
+            Pesquisa();
+
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    void Pesquisa()
+    {
+        _idcCarregando = true;
+
+        try
+        {
+            _lst = _empresa.GetList().OrderBy(u => u.NomEmpresa).ToList();
+
+            _qteRegistros = _lst.Count();
+        }
+        finally
+        {
+            _idcCarregando = false;
+            StateHasChanged();
+        }
+
+    }
+
+    async void Novo()
+    {
+        await ValidaToken();
+
+        _nav.NavigateTo("empresa/novo");
+    }
+
+    async void Edita(EmpresaDominio obj)
+    {
+        await ValidaToken();
+
+        this.GravaObjSessao<String>("IdcAcaoEmpresa", "A");
+
+        this.GravaObjSessao<EmpresaDominio>("ObjEmpresa", obj);
+
+        _nav.NavigateTo("empresa/altera");
+    }
+
+    async void Exclui(EmpresaDominio obj)
+    {
+        try
+        {
+            await this.ValidaToken();
+
+            if (await _js.InvokeAsync<bool>("confirm", _local["msgExcluiRegistro"].Value))
+            {
+                var _msgExclui = _empresa.Remove(obj.Id);
+
+                if (string.IsNullOrEmpty(_msgExclui))
+                {
+                    Pesquisa();
+
+                }
+                else
+                {
+                    await _js.InvokeVoidAsync("alert", _msgExclui);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            TrataErro("ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message);
+        }
+    }
+
+}

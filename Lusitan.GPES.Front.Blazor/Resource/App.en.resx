@@ -162,11 +162,23 @@
   <data name="mnuContratante" xml:space="preserve">
     <value>Contractor</value>
   </data>
+  <data name="mnuEmpresas" xml:space="preserve">
+    <value>Companies</value>
+  </data>
   <data name="msgExcluiRegistro" xml:space="preserve">
     <value>Do you really want to delete this record?</value>
   </data>
   <data name="msgExcluiUsuarioPerfil" xml:space="preserve">
     <value>Do you really want to delete this User from {0}'s profile?</value>
+  </data>
+  <data name="MsgObriDescricao" xml:space="preserve">
+    <value>The application requires that the Description field be filled in!</value>
+  </data>
+  <data name="MsgObriEMail" xml:space="preserve">
+    <value>The application requires that the E-Mail field be filled in!</value>
+  </data>
+  <data name="MsgObriNome" xml:space="preserve">
+    <value>The application requires the Name field to be filled in!</value>
   </data>
   <data name="MsgObriSenhaAntiga" xml:space="preserve">
     <value>The application requires the Old Password field!</value>
