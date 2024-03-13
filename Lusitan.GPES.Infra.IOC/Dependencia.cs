@@ -43,6 +43,10 @@ namespace Lusitan.GPES.Infra.IOC
             servico.AddSingleton<IEmpresaAppService, EmpresaAppService>();
             servico.AddSingleton<IEmpresaServico, EmpresaServico>();
             servico.AddSingleton<IEmpresaRepositorio>(s => new EmpresaRepositorio(string.Empty));
+
+            servico.AddSingleton<IFormacaoAcademicaAppService, FormacaoAcademicaAppService>();
+            servico.AddSingleton<IFormacaoAcademicaService, FormacaoAcademicaService>();
+            servico.AddSingleton<IFormacaoAcademicaRepositorio>(s => new FormacaoAcademicaRepositorio(string.Empty));
         }
     }
 }

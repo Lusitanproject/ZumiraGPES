@@ -77,7 +77,7 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = $@" UPDATE cargo 
-                                 SET desc_cargo = '{obj.DescCargo}', 
+                                 SET desc_cargo = '{obj.DescCargo.Trim()}', 
                                      idc_ativo = '{obj.IdcAtivo}' 
                                  WHERE num_cargo = {obj.Id}";
 

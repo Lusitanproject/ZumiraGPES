@@ -107,5 +107,19 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        IFormacaoAcademicaRepositorio _formacao;
+        public IFormacaoAcademicaRepositorio Formacao
+        {
+            get
+            {
+                if (_formacao == null)
+                {
+                    _formacao = new FormacaoAcademicaRepositorio(this.StrConexao);
+                }
+
+                return _formacao;
+            }
+        }
+
     }
 }

@@ -18,5 +18,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         ICargoRepositorio Cargo { get; }
 
         IEmpresaRepositorio Empresa { get; }
+
+        IFormacaoAcademicaRepositorio Formacao { get; }
     }
 }
