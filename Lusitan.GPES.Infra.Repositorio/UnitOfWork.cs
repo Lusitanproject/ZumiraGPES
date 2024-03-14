@@ -121,5 +121,19 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        IMinhaFormacaoRepositorio _minhaFormacao;
+        public IMinhaFormacaoRepositorio MinhaFormacao
+        {
+            get
+            {
+                if (_minhaFormacao == null)
+                {
+                    _minhaFormacao = new MinhaFormacaoRepositorio(this.StrConexao);
+                }
+
+                return _minhaFormacao;
+            }
+        }
+
     }
 }

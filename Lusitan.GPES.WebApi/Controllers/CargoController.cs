@@ -4,9 +4,7 @@ using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {

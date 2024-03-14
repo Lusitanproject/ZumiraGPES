@@ -20,5 +20,7 @@ namespace Lusitan.GPES.Core.Interface.Repositorio
         IEmpresaRepositorio Empresa { get; }
 
         IFormacaoAcademicaRepositorio Formacao { get; }
+
+        IMinhaFormacaoRepositorio MinhaFormacao { get; }
     }
 }

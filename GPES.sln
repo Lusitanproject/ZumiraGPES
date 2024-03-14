@@ -25,10 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.Infra.IOC", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.WebApi", "Lusitan.GPES.WebApi\Lusitan.GPES.WebApi.csproj", "{AC188566-5358-40E2-9FC2-01DC5349A924}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Apresentacao", "0-Apresentacao", "{06BCA57A-A783-43C7-92A8-DEEE085B67AA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lusitan.GPES.Front.Blazor", "Lusitan.GPES.Front.Blazor\Lusitan.GPES.Front.Blazor.csproj", "{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +51,6 @@ Global
 		{AC188566-5358-40E2-9FC2-01DC5349A924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC188566-5358-40E2-9FC2-01DC5349A924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC188566-5358-40E2-9FC2-01DC5349A924}.Release|Any CPU.Build.0 = Release|Any CPU
-		{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,7 +63,6 @@ Global
 		{F1BF1867-2AA2-477B-81DE-72DD5BC39151} = {1E97AD90-AE56-4829-94C5-F0A725D58FC3}
 		{9536D1F2-868B-4901-9283-D7E006F3049E} = {F1BF1867-2AA2-477B-81DE-72DD5BC39151}
 		{AC188566-5358-40E2-9FC2-01DC5349A924} = {6210BBFB-83F2-4507-9533-D6F8F255BF84}
-		{034A4A49-CC4E-4E9E-A106-8D9D675E3B1A} = {06BCA57A-A783-43C7-92A8-DEEE085B67AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E23C1B84-CA9E-4C87-A202-3459D72AD09F}

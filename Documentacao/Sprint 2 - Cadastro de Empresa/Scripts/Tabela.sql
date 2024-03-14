@@ -30,6 +30,19 @@ create table empresa
  constraint ck1_formacao check (idc_ativo = 'S' or idc_ativo = 'N'))
  */
 
+ /*
+ create table minha_formacao
+ (num_minha_formacao int identity not null,
+  num_usuario int not null,
+  num_formacao int not null,
+  mes_ano_inicio char(5),
+  mes_ano_fim char(5),
+  idc_situacao char(1),
+  constraint pk_minha_formacao primary key (num_minha_formacao),
+  constraint fk1_minha_formacacao foreign key (num_usuario) references usuario(num_usuario),
+  constraint fk2_minha_formacacao foreign key (num_formacao) references formacao_academica(num_formacao),
+  constraint ck1_minha_formacacao check (idc_situacao = 'A' or idc_situacao = 'C' or idc_situacao = 'I'))
+*/
 
  create  table meu_perfil
  (num_usuario int not null,

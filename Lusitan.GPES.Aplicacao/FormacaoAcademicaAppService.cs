@@ -2,6 +2,7 @@
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using Lusitan.GPES.Core.Servico;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Aplicacao
@@ -13,6 +14,7 @@ namespace Lusitan.GPES.Aplicacao
         public FormacaoAcademicaAppService(IFormacaoAcademicaService servico)
             => _servico = servico;
 
+        [ExcludeFromCodeCoverage]
         public List<FormacaoAcademicaDominio> GetList()
         {
             try
@@ -29,6 +31,7 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public FormacaoAcademicaDominio GetById(int id)
         {
             try

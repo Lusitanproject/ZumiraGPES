@@ -1,6 +1,7 @@
 ﻿using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Lusitan.GPES.Aplicacao
@@ -12,6 +13,7 @@ namespace Lusitan.GPES.Aplicacao
         public CargoAppService(ICargoServico servico)
             => _servico = servico;
 
+        [ExcludeFromCodeCoverage]
         public List<CargoDominio> GetList()
         {
             try
@@ -28,6 +30,7 @@ namespace Lusitan.GPES.Aplicacao
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public CargoDominio GetById(int id)
         {
             try
