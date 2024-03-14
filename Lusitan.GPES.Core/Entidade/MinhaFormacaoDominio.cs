@@ -16,10 +16,16 @@ namespace Lusitan.GPES.Core.Entidade
         public int IdFormacaoAcademica { get; set; }
 
         [Required(ErrorMessage = "A aplicação requer que o campo Mês/Ano Início seja preenchido!")]
+        [StringLength(5, ErrorMessage = "O Mês/Ano Início deve possuir no máximo 5 caracteres")]
         public string MesAnoInicio { get; set; }
 
         [Required(ErrorMessage = "A aplicação requer que o campo Mês/Ano Fim seja preenchido!")]
+        [StringLength(5, ErrorMessage = "O Mês/Ano Fim deve possuir no máximo 5 caracteres")]
         public string MesAnoFim { get; set; }
+
+        [Required(ErrorMessage = "A aplicação requer que o campo Instituição seja preenchido!")]
+        [StringLength(250, ErrorMessage = "A Instituição deve possuir no máximo 250 caracteres")]
+        public string NomInstituicao { get; set; }
 
         public string IdcSituacao { get; set; }
     }
@@ -36,6 +42,8 @@ namespace Lusitan.GPES.Core.Entidade
         public string MesAnoInicio { get; set; }
 
         public string MesAnoFim { get; set; }
+
+        public string NomInstituicao { get; set; }
 
         public SituacaoMinhaFormacaoEnum IdcSituacao { get; set; }
     }

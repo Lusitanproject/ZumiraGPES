@@ -17,6 +17,9 @@ namespace Lusitan.GPES.Aplicacao
             NLog.LogManager.GetCurrentClassLogger().Error(msgErro);
         }
 
+        protected string RemovePrimeiroEUltimo(string txt)
+            => txt.Substring(1, txt.Length - 2);
+
         protected string EnviaEMail(ConfigXMS configXMS, EMailDominio eMail)
         {
             var _reqEnviaEmail = new RestRequest("/api/XMS/controle-mensagem", Method.Post);

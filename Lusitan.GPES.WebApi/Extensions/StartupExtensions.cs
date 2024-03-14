@@ -36,6 +36,10 @@ namespace Lusitan.GPES.WebApi.Extensions
             configuration.Bind("ConfigXMS", _confXMS);
             service.AddSingleton(_confXMS);
 
+            var _confGED = new ConfigGED();
+            configuration.Bind("ConfigGED", _confGED);
+            service.AddSingleton(_confGED);
+
             Dependencia.RegistrarDependencias(service);
 
             service.AddSwaggerGen(c =>

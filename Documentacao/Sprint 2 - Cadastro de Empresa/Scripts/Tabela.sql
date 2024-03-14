@@ -37,6 +37,7 @@ create table empresa
   num_formacao int not null,
   mes_ano_inicio char(5),
   mes_ano_fim char(5),
+  nom_instituicao varchar(250),
   idc_situacao char(1),
   constraint pk_minha_formacao primary key (num_minha_formacao),
   constraint fk1_minha_formacacao foreign key (num_usuario) references usuario(num_usuario),
@@ -44,14 +45,13 @@ create table empresa
   constraint ck1_minha_formacacao check (idc_situacao = 'A' or idc_situacao = 'C' or idc_situacao = 'I'))
 */
 
+
+
  create  table meu_perfil
  (num_usuario int not null,
-  num_empresa int not null,
-  dth_inicio smalldatetime,
-  dth_fim smalldatetime,
-  desc_resumo_experiencia varchar(8000),
-  constraint fk1_meu_perfil foreign key (num_usuario) references usuario(num_usuario),
-  constraint fk2_meu_perfil foreign key (num_empresa) references empresa(num_empresa))
+  dir_curriculumn varchar(100),
+  dir_foto varchar(100),
+  constraint fk1_meu_perfil foreign key (num_usuario) references usuario(num_usuario))
 
 
 

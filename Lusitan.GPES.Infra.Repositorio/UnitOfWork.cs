@@ -135,5 +135,19 @@ namespace Lusitan.GPES.Infra.Repositorio
             }
         }
 
+        IMeuPerfilRepositorio _meuPerfil;
+        public IMeuPerfilRepositorio MeuPerfil
+        {
+            get
+            {
+                if (_meuPerfil == null)
+                {
+                    _meuPerfil = new MeuPerfilRepositorio(this.StrConexao);
+                }
+
+                return _meuPerfil;
+            }
+        }
+
     }
 }

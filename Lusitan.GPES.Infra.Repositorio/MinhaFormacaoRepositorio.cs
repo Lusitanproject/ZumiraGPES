@@ -17,6 +17,7 @@ namespace Lusitan.GPES.Infra.Repositorio
 		                                IdFormacaoAcademica = num_formacao,
 		                                MesAnoInicio = mes_ano_inicio,
 		                                MesAnoFim = mes_ano_fim,
+                                        NomInstituicao = nom_instituicao,
 		                                IdcSituacao = idc_situacao
                             from minha_formacao (NOLOCK) ";
 
@@ -41,8 +42,8 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
 
-                var _query = $@" INSERT INTO minha_formacao (num_usuario, num_formacao, mes_ano_inicio, mes_ano_fim, idc_situacao) 
-                                 VALUES ({obj.IdUsuario}, {obj.IdFormacaoAcademica}, '{obj.MesAnoInicio}', '{obj.MesAnoFim}', '{obj.IdcSituacao}')";
+                var _query = $@" INSERT INTO minha_formacao (num_usuario, num_formacao, mes_ano_inicio, mes_ano_fim, nom_instituicao, idc_situacao) 
+                                 VALUES ({obj.IdUsuario}, {obj.IdFormacaoAcademica}, '{obj.MesAnoInicio}', '{obj.MesAnoFim}', '{obj.NomInstituicao.Trim()}', '{obj.IdcSituacao}')";
 
                 this.ConexaoBD.Execute(_query.ToString());
 

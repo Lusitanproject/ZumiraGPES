@@ -51,6 +51,10 @@ namespace Lusitan.GPES.Infra.IOC
             servico.AddSingleton<IMinhaFormacaoAppService, MinhaFormacaoAppService>();
             servico.AddSingleton<IMinhaFormacaoService, MinhaFormacaoService>();
             servico.AddSingleton<IMinhaFormacaoRepositorio>(s => new MinhaFormacaoRepositorio(string.Empty));
+
+            servico.AddSingleton<IMeuPerfilAppService, MeuPerfilAppService>();
+            servico.AddSingleton<IMeuPerfilService, MeuPerfilService>();
+            servico.AddSingleton<IMeuPerfilRepositorio>(s => new MeuPerfilRepositorio(string.Empty));
         }
     }
 }
