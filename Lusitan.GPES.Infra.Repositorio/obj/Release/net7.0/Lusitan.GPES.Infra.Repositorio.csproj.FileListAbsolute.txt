@@ -1,0 +1,15 @@
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Release\net7.0\Lusitan.GPES.Infra.Repositorio.deps.json
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Release\net7.0\Lusitan.GPES.Infra.Repositorio.dll
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Release\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Release\net7.0\Lusitan.GPES.Core.dll
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\bin\Release\net7.0\Lusitan.GPES.Core.pdb
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.csproj.AssemblyReference.cache
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.GeneratedMSBuildEditorConfig.editorconfig
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.AssemblyInfoInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.AssemblyInfo.cs
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.csproj.CoreCompileInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.csproj.CopyComplete
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.dll
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\refint\Lusitan.GPES.Infra.Repositorio.dll
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
+E:\ZumiraGPES\Lusitan.GPES.Infra.Repositorio\obj\Release\net7.0\ref\Lusitan.GPES.Infra.Repositorio.dll

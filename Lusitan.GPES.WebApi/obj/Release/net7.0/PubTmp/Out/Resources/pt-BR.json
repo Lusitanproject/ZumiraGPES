@@ -1,0 +1,16 @@
+{
+  "msgBloqueioAlteraSenhaUsuario": "Não é possível Alterar a Senha de um Usuário Bloqueado ou Inativo!",
+  "msgSenhaAtualNaoConfere": "A senha atual não confere com a já cadastrada!",
+  "logSenhaAlterada": "Senha alterada",
+  "msgJaExisteUsuarioComEMail": "Já existe um Usuário cadastrado com este E-Mail!",
+  "tituloMSgNovoAcesso": "Novo acesso",
+  "logUsuarioAtivado": "Usuário ativado",
+  "logUsuarioBloqueado": "Usuário bloqueado",
+  "logUsuarioInativado": "Usuário inativado",
+  "tituloMSgReenvioSenha": "Senha de acesso",
+  "logReenvioSenhaEMail": "Senha Reenviada por e-mail",
+  "msgUsuarioIncluidoPerfil": "Usuário incluído no Perfil {0}",
+  "msgUsuarioExcluidoPerfil": "Usuário excluído do Perfil {0}",
+  "msgUsuarioJaInclusoPerfil": "Este Usuário já esta associado a este Perfil!",
+  "msgRetornoEnvioEMail": "Retorno envio e-mail: {0}"
+}

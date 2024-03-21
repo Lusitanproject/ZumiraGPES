@@ -49,8 +49,8 @@ create table empresa
 
  create  table meu_perfil
  (num_usuario int not null,
-  dir_curriculumn varchar(100),
-  dir_foto varchar(100),
+  id_doc_curriculumn varchar(100),
+  id_doc_foto varchar(100),
   constraint fk1_meu_perfil foreign key (num_usuario) references usuario(num_usuario))
 
 
