@@ -16,7 +16,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = "SELECT Id = num_perfil, NomPerfil = nom_perfil FROM perfil_acesso (NOLOCK)";
+                var _query = "SELECT num_perfil as Id, nom_perfil as NomPerfil FROM perfil_acesso ";
 
                 return this.ConexaoBD.Query<PerfilAcessoDominio>(_query).AsList();
             }
@@ -34,7 +34,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = $"SELECT Id = num_perfil, NomPerfil = nom_perfil FROM perfil_acesso (NOLOCK) WHERE num_perfil = {id}";
+                var _query = $"SELECT num_perfil as Id, nom_perfil as NomPerfil FROM perfil_acesso WHERE num_perfil = {id}";
 
                 return this.ConexaoBD.QueryFirstOrDefault<PerfilAcessoDominio>(_query);
             }

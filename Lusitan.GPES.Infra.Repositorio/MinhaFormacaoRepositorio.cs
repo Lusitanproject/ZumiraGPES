@@ -12,14 +12,14 @@ namespace Lusitan.GPES.Infra.Repositorio
         public MinhaFormacaoRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  select Id = num_minha_formacao,
-		                                IdUsuario = num_usuario,
-		                                IdFormacaoAcademica = num_formacao,
-		                                MesAnoInicio = mes_ano_inicio,
-		                                MesAnoFim = mes_ano_fim,
-                                        NomInstituicao = nom_instituicao,
-		                                IdcSituacao = idc_situacao
-                            from minha_formacao (NOLOCK) ";
+        string _query = @"  select num_minha_formacao as Id,
+		                           num_usuario as IdUsuario,
+		                           num_formacao as IdFormacaoAcademica,
+		                           mes_ano_inicio as MesAnoInicio,
+		                           mes_ano_fim as MesAnoFim,
+                                   nom_instituicao as NomInstituicao,
+		                           idc_situacao as IdcSituacao
+                            from minha_formacao ";
 
         public List<MinhaFormacaoDominio> BuscaPeloUsuario(int idUsuario)
         {

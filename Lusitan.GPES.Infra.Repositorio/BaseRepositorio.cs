@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using Npgsql;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Lusitan.GPES.Infra.Repositorio
@@ -20,7 +20,7 @@ namespace Lusitan.GPES.Infra.Repositorio
             {
                 FechaConexao();
 
-                _conexao = new SqlConnection(_strConexao);
+                _conexao = new NpgsqlConnection(_strConexao);
                 _conexao.Open();
 
                 return _conexao;

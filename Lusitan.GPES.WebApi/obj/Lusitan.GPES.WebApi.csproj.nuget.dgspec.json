@@ -214,12 +214,6 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "dependencies": {
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -287,6 +281,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.1.15, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

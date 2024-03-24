@@ -12,9 +12,9 @@ namespace Lusitan.GPES.Infra.Repositorio
         public UsuarioPerfilRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	IdUsuario = num_usuario,
-                                    IdPerfilAcesso = num_perfil
-                            FROM usuario_perfil (NOLOCK) ";
+        string _query = @"  SELECT	num_usuario as IdUsuario,
+                                    num_perfil as IdPerfilAcesso
+                            FROM usuario_perfil ";
 
         public List<UsuarioPerfilDominio> GetByPerfil(int idPerfil)
         {

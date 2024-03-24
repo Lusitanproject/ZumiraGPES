@@ -12,13 +12,13 @@ namespace Lusitan.GPES.Infra.Repositorio
         public UsuarioRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	Id = num_usuario,
-                                    NomeUsuario = nom_usuario,
-                                    eMail = e_mail,
-                                    IdcAtivo = idc_ativo,
-                                    UltimoAcesso = dth_ultimo_acesso,
-                                    IdcForcaAlteraSenha = idc_forca_altera_senha
-                            FROM usuario (NOLOCK) ";
+        string _query = @"  SELECT	num_usuario as Id,
+                                    nom_usuario as NomeUsuario,
+                                    e_mail as eMail,
+                                    idc_ativo as IdcAtivo,
+                                    dth_ultimo_acesso as UltimoAcesso,
+                                    idc_forca_altera_senha as IdcForcaAlteraSenha
+                            FROM usuario ";
 
         public List<UsuarioDominio> GetList(string idcAtivo)
         {
@@ -60,14 +60,14 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"SELECT	Id = num_usuario,
-                                                NomeUsuario = nom_usuario,
-                                                eMail = e_mail,
-                                                IdcAtivo = idc_ativo,
-                                                DesSenha = des_senha,
-                                                UltimoAcesso = dth_ultimo_acesso,
-                                                IdcForcaAlteraSenha = idc_forca_altera_senha
-                                        FROM usuario (NOLOCK) 
+                var _buscaUsuario = @$"SELECT	num_usuario as Id,
+                                                nom_usuario as NomeUsuario,
+                                                e_mail as eMail,
+                                                idc_ativo as IdcAtivo,
+                                                des_senha as DesSenha,
+                                                dth_ultimo_acesso as UltimoAcesso,
+                                                idc_forca_altera_senha as IdcForcaAlteraSenha
+                                        FROM usuario
                                         WHERE num_usuario = {id}";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
@@ -104,14 +104,14 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"SELECT	Id = num_usuario,
-                                                NomeUsuario = nom_usuario,
-                                                eMail = e_mail,
-                                                IdcAtivo = idc_ativo,
-                                                DesSenha = des_senha,
-                                                UltimoAcesso = dth_ultimo_acesso,
-                                                IdcForcaAlteraSenha = idc_forca_altera_senha
-                                        FROM usuario (NOLOCK) 
+                var _buscaUsuario = @$"SELECT	num_usuario as Id,
+                                                nom_usuario as NomeUsuario,
+                                                e_mail as eMail,
+                                                idc_ativo as IdcAtivo,
+                                                des_senha as DesSenha,
+                                                dth_ultimo_acesso as UltimoAcesso,
+                                                idc_forca_altera_senha as IdcForcaAlteraSenha
+                                        FROM usuario
                                         WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
@@ -180,7 +180,7 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = @$" UPDATE usuario 
-                                 SET dth_ultimo_acesso = GETDATE()
+                                 SET dth_ultimo_acesso = NOW()
                                  WHERE num_usuario = {idUsuario}";
 
                 this.ConexaoBD.Execute(_query);

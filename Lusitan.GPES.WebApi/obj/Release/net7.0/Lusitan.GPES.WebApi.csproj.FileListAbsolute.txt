@@ -63,3 +63,6 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Release\net7.0\refint\Lusitan.GPES.WebApi.
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Release\net7.0\Lusitan.GPES.WebApi.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Release\net7.0\Lusitan.GPES.WebApi.genruntimeconfig.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Release\net7.0\ref\Lusitan.GPES.WebApi.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Release\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Release\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Release\net7.0\Npgsql.dll

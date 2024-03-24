@@ -12,10 +12,10 @@ namespace Lusitan.GPES.Infra.Repositorio
         public LogAcessoErroRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	IdUsuario = num_usuario,
-                                    DthLogErro = dth_log_erro,
-                                    DescLogErro = desc_log_erro
-                            FROM log_acesso_erro (NOLOCK) ";
+        string _query = @"  SELECT	num_usuario as IdUsuario,
+                                    dth_log_erro as DthLogErro,
+                                    desc_log_erro as DescLogErro
+                            FROM log_acesso_erro ";
 
         public List<LogAcessoErroDominio> GetByUsuario(int idUsuario)
         {
@@ -40,7 +40,7 @@ namespace Lusitan.GPES.Infra.Repositorio
             try
             {
                 var _query = @$" INSERT INTO log_acesso_erro (num_usuario, dth_log_erro, desc_log_erro) 
-                                VALUES ({obj.IdUsuario}, GETDATE(), '{obj.DescLogErro.Trim()}')";
+                                VALUES ({obj.IdUsuario}, NOW(), '{obj.DescLogErro.Trim()}')";
 
                 this.ConexaoBD.Execute(_query.ToString());
 

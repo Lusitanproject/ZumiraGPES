@@ -10,10 +10,10 @@ namespace Lusitan.GPES.Infra.Repositorio
         public MeuPerfilRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  select IdUsuario = num_usuario,
-                                   IdDocCurriculum = id_doc_curriculumn,
-                                   IdDoc = id_doc_foto
-                            from meu_perfil (NOLOCK) ";
+        string _query = @"  select num_usuario as IdUsuario,
+                                   id_doc_curriculumn as IdDocCurriculum,
+                                   id_doc_foto as IdDoc
+                            from meu_perfil ";
 
         public MeuPerfilDominio BuscaPeloUsuario(int idUsuario)
         {

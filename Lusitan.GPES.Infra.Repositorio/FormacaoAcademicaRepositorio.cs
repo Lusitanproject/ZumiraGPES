@@ -12,11 +12,11 @@ namespace Lusitan.GPES.Infra.Repositorio
         public FormacaoAcademicaRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	Id = num_formacao,
-		                            DescFormacao = desc_formacao,
-		                            IdcNivel = idc_nivel,
-		                            IdcAtivo = idc_ativo
-                            FROM formacao_academica (NOLOCK) ";
+        string _query = @"  SELECT	num_formacao as Id,
+		                            desc_formacao as DescFormacao,
+		                            idc_nivel as IdcNivel,
+		                            idc_ativo as IdcAtivo
+                            FROM formacao_academica ";
 
         public List<FormacaoAcademicaDominio> GetList()
         {

@@ -1,3 +1,10 @@
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.AssemblyReference.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cs
+E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.Development.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\appsettings.json
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Resources\en-US.json
@@ -13,7 +20,9 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\CORE.CryptObj.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\CORE.Validacao.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Dapper.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
@@ -22,6 +31,7 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Token
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Microsoft.OpenApi.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Newtonsoft.Json.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\NLog.dll
+E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Npgsql.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\RestSharp.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -42,13 +52,6 @@ E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Aplicacao.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Core.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Infra.IOC.pdb
 E:\ZumiraGPES\Lusitan.GPES.WebApi\bin\Debug\net7.0\Lusitan.GPES.Infra.Repositorio.pdb
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.AssemblyReference.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.GeneratedMSBuildEditorConfig.editorconfig
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfoInputs.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.AssemblyInfo.cs
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.csproj.CoreCompileInputs.cache
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cs
-E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\Lusitan.GPES.WebApi.MvcApplicationPartsAssemblyInfo.cache
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.Lusitan.GPES.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.build.Lusitan.GPES.WebApi.props
 E:\ZumiraGPES\Lusitan.GPES.WebApi\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Lusitan.GPES.WebApi.props

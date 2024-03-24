@@ -12,10 +12,10 @@ namespace Lusitan.GPES.Infra.Repositorio
         public CargoRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	Id = num_cargo,
-                                    DescCargo = desc_cargo,
-                                    IdcAtivo = idc_ativo
-                            FROM cargo (NOLOCK) ";
+        string _query = @"  SELECT	num_cargo as Id,
+                                    desc_cargo as DescCargo,
+                                    idc_ativo as IdcAtivo
+                            FROM cargo ";
 
         public List<CargoDominio> GetList()
         {

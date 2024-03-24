@@ -17,4 +17,4 @@ nlog
 Arquitetura DDD
 
 -> Banco de Dados
-  MS-SQL Server
+  Postgree

@@ -12,10 +12,10 @@ namespace Lusitan.GPES.Infra.Repositorio
         public EmpresaRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	Id = num_empresa,
-                                    NomEmpresa = desc_empresa,
-                                    IdcAtivo = idc_ativo
-                            FROM empresa (NOLOCK) ";
+        string _query = @"  SELECT	num_empresa as Id,
+                                    desc_empresa as NomEmpresa,
+                                    idc_ativo as IdcAtivo
+                            FROM empresa ";
 
         public List<EmpresaDominio> GetList()
         {

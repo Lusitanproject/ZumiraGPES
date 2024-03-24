@@ -16,12 +16,12 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = $@"SELECT	Id = num_usuario_log,
-		                                IdUsuario = num_usuario,
-		                                DescLog = desc_log,
-		                                DthLog = dth_log,
-		                                IdUsuarioResp = num_usuario_resp
-                                FROM usuario_log (NOLOCK) 
+                var _query = $@"SELECT	num_usuario_log as Id,
+		                                num_usuario as IdUsuario,
+		                                desc_log as DescLog,
+		                                dth_log as DthLog,
+		                                num_usuario_resp as IdUsuarioResp
+                                FROM usuario_log
                                 WHERE num_usuario = {idUsuario} ";
 
                 return this.ConexaoBD.Query<UsuarioLogDominio>(_query).ToList();
@@ -41,10 +41,12 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = @$" DECLARE @IdLog INT
-                                 SELECT @IdLog = COUNT(num_usuario) + 1 FROM usuario_log WHERE num_usuario = {obj.IdUsuario}
-                                 INSERT INTO usuario_log (num_usuario_log, num_usuario, desc_log, dth_log, num_usuario_resp) 
-                                 VALUES (@IdLog, {obj.IdUsuario}, '{obj.DescLog.Trim()}', GETDATE(), {obj.IdUsuarioResp})";
+                var _query = @$" INSERT INTO usuario_log (num_usuario_log, num_usuario, desc_log, dth_log, num_usuario_resp) 
+                                 VALUES ((SELECT COUNT(num_usuario) + 1 FROM usuario_log WHERE num_usuario = {obj.IdUsuario}), 
+                                         {obj.IdUsuario}, 
+                                         '{obj.DescLog.Trim()}', 
+                                         NOW(), 
+                                         {obj.IdUsuarioResp})";
 
                 this.ConexaoBD.Execute(_query);
 

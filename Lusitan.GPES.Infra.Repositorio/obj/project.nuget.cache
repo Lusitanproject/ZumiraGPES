@@ -1,14 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "1gByCUmfNoZ9DhLRN/LWarvTkyExIjPOVL3CVUDfBRzafJUgPlJPoelp8q/CCn29u1NWk+L/t31aXOhvc6+8fA==",
+  "dgSpecHash": "Fa/IPO0xk8oE1eYnDPc6Mr/0jHSUsVmwIuoTSy5cy/fTjk2+NH7Ah5wBGGNNoNVW0GcQC4QYyJdikXu9Rj2BuQ==",
   "success": true,
   "projectFilePath": "E:\\ZumiraGPES\\Lusitan.GPES.Infra.Repositorio\\Lusitan.GPES.Infra.Repositorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\glaub\\.nuget\\packages\\core.validacao\\1.0.0\\core.validacao.1.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\8.0.0\\microsoft.extensions.localization.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\glaub\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\glaub\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
