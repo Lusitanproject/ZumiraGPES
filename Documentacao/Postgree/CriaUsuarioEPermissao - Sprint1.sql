@@ -1,10 +1,10 @@
 /*
-revoke all on canal_envio from userxms;
-revoke all on controle_mensagem from userxms;
-revoke all on controle_mensagem_log from userxms;
-revoke all on parametro_sistema from userxms;
-revoke all on remetente_mensagem from userxms;
-revoke all on database db_xms from userxms;
+revoke all on log_acesso_erro from usergpes;
+revoke all on usuario_perfil from usergpes;
+revoke all on perfil_acesso from usergpes;
+revoke all on usuario_log from usergpes;
+revoke all on usuario from usergpes;
+revoke all on database db_gpes from usergpes;
 drop USER usergpes
 */
 
