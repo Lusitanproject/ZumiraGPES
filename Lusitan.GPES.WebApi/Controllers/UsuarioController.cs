@@ -54,6 +54,11 @@ namespace Lusitan.GPES.WebApi.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        public IActionResult GetList()
+           => Get(_appServico.GetList());
+
+        [HttpGet]
+        [AllowAnonymous]
         [Route("busca-por-email/{eMail}")]
         public IActionResult BuscaPorEMail(string eMail)
            => Get(_appServico.GetUsuarioSemSenhaPorEmail(eMail.Trim()));
@@ -69,6 +74,23 @@ namespace Lusitan.GPES.WebApi.Controllers
         [Route("{Perfil}")]
         public IActionResult GetList([FromRoute]string Perfil)
            => Get(_appServico.GetList(Perfil));
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("log/{id}")]
+        public IActionResult BuscaLogUsuario(int id)
+        {
+            try
+            {
+                var _lstLog = _log.GetByUsuario(id);
+
+                return _lstLog.Count() == 0 ? NotFound(_lstLog) : Ok(_lstLog);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost]
         [AllowAnonymous]
@@ -151,22 +173,7 @@ namespace Lusitan.GPES.WebApi.Controllers
             }
         }
 
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        [Route("log/{id}")]
-        public IActionResult BuscaLogUsuario(int id)
-        {
-            try
-            {
-                var _lstLog = _log.GetByUsuario(id);
 
-                return _lstLog.Count() == 0 ? NotFound(_lstLog) : Ok(_lstLog);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
     }
 }

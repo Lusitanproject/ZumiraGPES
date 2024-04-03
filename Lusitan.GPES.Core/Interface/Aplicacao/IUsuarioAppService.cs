@@ -5,7 +5,8 @@ using Lusitan.GPES.Core.Response;
 
 namespace Lusitan.GPES.Core.Interface.Aplicacao
 {
-    public interface IUsuarioAppService: IGetById<UsuarioDominio>
+    public interface IUsuarioAppService: IGetById<UsuarioDominio>,
+                                         IGetList<UsuarioDominio>
     {
         List<UsuarioDominio> GetList(string nomPerfil);
 

@@ -253,18 +253,38 @@ namespace Lusitan.GPES.Aplicacao
             {
                 var _result = new List<UsuarioDominio>();
 
-                var _lstUsuarios = _servico.GetList("A");
-                _lstUsuarios.AddRange(_servico.GetList("I"));
-                _lstUsuarios.AddRange(_servico.GetList("B"));
+                var _lstUsuarios = this.GetList();
 
                 foreach (var item in _lstUsuarios)
                 {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     if (_usuarioPerfil.GetByUsuario(item.Id).Any(x => x.Id == (_perfilAcesso.GetList().Where(x => x.NomPerfil == nomPerfil).FirstOrDefault()).Id))
                     {
                         _result.Add(item);
                     }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                }
+
+                return _result;
+            }
+            catch (Exception ex)
+            {
+                var _msgErro = "ERRO " + this.GetType().Name + "." + MethodBase.GetCurrentMethod() + "(): " + ex.Message;
+
+                TrataErro(_msgErro);
+
+                throw new Exception(_msgErro);
+            }
+        }
+
+        [ExcludeFromCodeCoverage]
+        public List<UsuarioDominio> GetList()
+        {
+            try
+            {
+                var _result = new List<UsuarioDominio>();
+
+                foreach (var item in (new List<string>() { "A", "I", "B" }))
+                {
+                    _result.AddRange( _servico.GetList(item) );
                 }
 
                 return _result;
