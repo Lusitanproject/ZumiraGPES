@@ -47,7 +47,7 @@ namespace Lusitan.GPES.WebApi.Extensions
                 c.SwaggerDoc("v1",
                              new OpenApiInfo()
                              {
-                                 Title = "Back-end - Sistema de Gestão de Pessoas",
+                                 Title = "GPES - API de Integração",
                                  Version = "v1",
                              });
             });
@@ -81,7 +81,7 @@ namespace Lusitan.GPES.WebApi.Extensions
             app.UseSwaggerUI();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Back-end - Sistema de Gestão de Pessoas");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "GPES - API de Integração");
                 c.RoutePrefix = "docs";
             });
         }
