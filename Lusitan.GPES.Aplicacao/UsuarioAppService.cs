@@ -95,13 +95,13 @@ namespace Lusitan.GPES.Aplicacao
 		void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
             var _msgEnvioEmail = this.EnviaEMail(_configXMS,
-                                                 new EMailDominio()
-                                                 {
+                                                  new EMailDominio()
+                                                  {
                                                      NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
                                                      DescAssunto = descAssunto,
                                                      NomDestino = obj.eMail,
                                                      DescMensagem = msg
-                                                 });
+                                                  });
 
             _log.Add(new UsuarioLogDominio() {
                                                 IdUsuario = obj.Id,
