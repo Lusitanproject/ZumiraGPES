@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Enum;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
@@ -13,9 +14,11 @@ namespace Lusitan.GPES.Aplicacao
         readonly IFormacaoAcademicaService _formacacaoAcademica;
         readonly IMinhaFormacaoService _servico;
 
-        public MinhaFormacaoAppService( IMinhaFormacaoService servico,
+        public MinhaFormacaoAppService( ConfigXMS configXMS,
+                                        IMinhaFormacaoService servico,
                                         IUsuarioServico usuario,
                                         IFormacaoAcademicaService formacacaoAcademica)
+            : base(configXMS)
         {
             _usuario = usuario;
             _servico = servico;

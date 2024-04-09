@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using System.Diagnostics.CodeAnalysis;
@@ -10,7 +11,8 @@ namespace Lusitan.GPES.Aplicacao
     {
         readonly ILogAcessoErroServico _servico;
 
-        public LogAcessoErroAppService(ILogAcessoErroServico servico)
+        public LogAcessoErroAppService(ConfigXMS configXMS, ILogAcessoErroServico servico)
+            : base(configXMS)
             => _servico = servico;
 
 		[ExcludeFromCodeCoverage]

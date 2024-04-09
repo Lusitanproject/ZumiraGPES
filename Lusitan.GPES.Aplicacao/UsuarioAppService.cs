@@ -18,24 +18,25 @@ namespace Lusitan.GPES.Aplicacao
 {
     public class UsuarioAppService : BaseAplicacao, IUsuarioAppService
     {
+        readonly ConfigXMS _configXMS;
+        readonly ConfigAmbiente _config;
         readonly IUsuarioServico _servico;
         readonly IPerfilAcessoAppService _perfilAcesso;
         readonly IUsuarioPerfilAppService _usuarioPerfil;
         readonly IUsuarioLogAppService _log;
         readonly ILogAcessoErroAppService _logAcessoErro;
-        readonly ConfigAmbiente _config;
-        readonly ConfigXMS _configXMS;
 
-        public UsuarioAppService(ConfigAmbiente config,
-                                    ConfigXMS configXMS,
+        public UsuarioAppService(   ConfigXMS configXMS,
+                                    ConfigAmbiente config,
                                     IUsuarioServico servico,
                                     IPerfilAcessoAppService perfilAcesso,
                                     IUsuarioPerfilAppService usuarioPerfil,
                                     IUsuarioLogAppService log,
                                     ILogAcessoErroAppService logAcessoErro)
+            : base(configXMS)
         {
-            _config = config;
             _configXMS = configXMS;
+            _config = config;
             _servico = servico;
             _perfilAcesso = perfilAcesso;
             _usuarioPerfil = usuarioPerfil;
@@ -92,10 +93,9 @@ namespace Lusitan.GPES.Aplicacao
 		[ExcludeFromCodeCoverage]
 		string EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
-            var _msgEnvioEmail = this.EnviaEMail(_configXMS,
-                                                  new EMailDominio()
+            var _msgEnvioEmail = this.EnviaEMail( new EMailDominio()
                                                   {
-                                                     NumRemetente = _configXMS.IdRemetenteMsgNovoUsuario,
+                                                     NumRemetente = _configXMS.IdRemetenteMsgSistema,
                                                      DescAssunto = descAssunto,
                                                      NomDestino = obj.eMail,
                                                      DescMensagem = msg

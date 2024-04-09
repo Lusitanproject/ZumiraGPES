@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using System.Diagnostics.CodeAnalysis;
@@ -10,7 +11,8 @@ namespace Lusitan.GPES.Aplicacao
     {
         readonly ICargoServico _servico;
 
-        public CargoAppService(ICargoServico servico)
+        public CargoAppService(ConfigXMS configXMS, ICargoServico servico)
+            :base(configXMS)
             => _servico = servico;
 
         [ExcludeFromCodeCoverage]

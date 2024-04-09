@@ -14,9 +14,11 @@ namespace Lusitan.GPES.Core.Servico
         readonly ConfigGED _configGED;
         readonly IUsuarioAppService _usuario;
 
-        public MeuPerfilAppService( ConfigGED configGED, 
+        public MeuPerfilAppService(ConfigXMS configXMS,
+                                    ConfigGED configGED, 
                                     IUsuarioAppService usuario,     
                                     IMeuPerfilService servico)
+            : base(configXMS)
         {
             _configGED = configGED;
             _usuario = usuario;

@@ -1308,7 +1308,6 @@
       "CORE.CryptObj >= 1.0.0",
       "Lusitan.GPES.Core >= 1.0.0",
       "Lusitan.GPES.Infra.Repositorio >= 1.0.0",
-      "Microsoft.Extensions.Localization.Abstractions >= 8.0.0",
       "RestSharp >= 110.2.0",
       "System.IdentityModel.Tokens.Jwt >= 6.14.1",
       "nlog >= 5.2.5"
@@ -1368,10 +1367,6 @@
           "CORE.CryptObj": {
             "target": "Package",
             "version": "[1.0.0, )"
-          },
-          "Microsoft.Extensions.Localization.Abstractions": {
-            "target": "Package",
-            "version": "[8.0.0, )"
           },
           "RestSharp": {
             "target": "Package",

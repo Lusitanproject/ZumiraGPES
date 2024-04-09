@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using System.Diagnostics.CodeAnalysis;
@@ -11,7 +12,8 @@ namespace Lusitan.GPES.Aplicacao
     {
         readonly IPerfilAcessoServico _servico;
 
-        public PerfilAcessoAppService(IPerfilAcessoServico servico)
+        public PerfilAcessoAppService(ConfigXMS configXMS, IPerfilAcessoServico servico)
+            : base(configXMS)
            => _servico = servico;
 
 		public PerfilAcessoDominio GetById(int id)

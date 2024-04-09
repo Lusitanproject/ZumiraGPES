@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using Microsoft.Extensions.Localization;
@@ -14,10 +15,12 @@ namespace Lusitan.GPES.Aplicacao
         readonly IUsuarioServico _usuario;
         readonly IUsuarioLogAppService _logUsuario;
 
-        public UsuarioPerfilAppService(IUsuarioPerfilServico servico,
+        public UsuarioPerfilAppService(ConfigXMS configXMS,
+                                       IUsuarioPerfilServico servico,
                                        IPerfilAcessoAppService perfilAcesso,
                                        IUsuarioServico usuario,
                                        IUsuarioLogAppService logUsuario)
+            : base(configXMS)
         {
             _servico = servico;
             _perfilAcesso = perfilAcesso;

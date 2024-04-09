@@ -7,9 +7,7 @@ namespace Lusitan.GPES.Core.Config
     {
         public string WebApi { get; set; }
 
-        public int IdRemetenteMsgNovoUsuario { get; set; }
-
-        public int IdRemetenteMsgErro { get; set; }
+        public int IdRemetenteMsgSistema { get; set; }
 
         public string DestinoEMailErroSistema { get; set; }
     }

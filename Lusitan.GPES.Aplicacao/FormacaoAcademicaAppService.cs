@@ -1,4 +1,5 @@
-﻿using Lusitan.GPES.Core.Entidade;
+﻿using Lusitan.GPES.Core.Config;
+using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Servico;
 using Lusitan.GPES.Core.Servico;
@@ -11,7 +12,8 @@ namespace Lusitan.GPES.Aplicacao
     {
         readonly IFormacaoAcademicaService _servico;
 
-        public FormacaoAcademicaAppService(IFormacaoAcademicaService servico)
+        public FormacaoAcademicaAppService(ConfigXMS configXMS, IFormacaoAcademicaService servico)
+            : base(configXMS)
             => _servico = servico;
 
         [ExcludeFromCodeCoverage]
