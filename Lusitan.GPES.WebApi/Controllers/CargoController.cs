@@ -47,6 +47,5 @@ namespace Lusitan.GPES.WebApi.Controllers
         [Route("{Id}")]
         public IActionResult Remove([FromRoute] int Id)
           => Remove(ModelState, _cargo, Id);
-
     }
 }

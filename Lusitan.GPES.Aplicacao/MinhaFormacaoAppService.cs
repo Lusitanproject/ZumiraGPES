@@ -13,9 +13,9 @@ namespace Lusitan.GPES.Aplicacao
         readonly IFormacaoAcademicaService _formacacaoAcademica;
         readonly IMinhaFormacaoService _servico;
 
-        public MinhaFormacaoAppService(IMinhaFormacaoService servico,
-            IUsuarioServico usuario,
-            IFormacaoAcademicaService formacacaoAcademica)
+        public MinhaFormacaoAppService( IMinhaFormacaoService servico,
+                                        IUsuarioServico usuario,
+                                        IFormacaoAcademicaService formacacaoAcademica)
         {
             _usuario = usuario;
             _servico = servico;

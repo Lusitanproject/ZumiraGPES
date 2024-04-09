@@ -8,6 +8,7 @@ using Lusitan.GPES.Core.Base.Interface.CRUD;
 using CORE.Validacao;
 using Lusitan.GPES.Core.Config;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Http;
 
 namespace Lusitan.GPES.WebApi.Controllers
 {
@@ -52,12 +53,12 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status422UnprocessableEntity, _msg);
                 }
 
                 _msg = servico.Add(obj);
 
-                return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
+                return string.IsNullOrEmpty(_msg) ? this.StatusCode(StatusCodes.Status201Created, _msg) : BadRequest(_msg);
             }
             catch (Exception ex)
             {
@@ -73,7 +74,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status201Created, _msg);
                 }
 
                 _msg = servico.Update(obj);

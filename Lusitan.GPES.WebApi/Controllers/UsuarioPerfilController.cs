@@ -4,6 +4,7 @@ using Lusitan.GPES.Core.Entidade;
 using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -72,7 +73,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status422UnprocessableEntity, _msg);
                 }
 
                 _msg = _usuarioPerfil.Remove(obj);

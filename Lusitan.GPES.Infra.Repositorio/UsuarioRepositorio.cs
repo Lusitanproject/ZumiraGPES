@@ -12,19 +12,28 @@ namespace Lusitan.GPES.Infra.Repositorio
         public UsuarioRepositorio(string strConexao)
             : base(strConexao) { }
 
-        string _query = @"  SELECT	num_usuario as Id,
-                                    nom_usuario as NomeUsuario,
-                                    e_mail as eMail,
-                                    idc_ativo as IdcAtivo,
-                                    dth_ultimo_acesso as UltimoAcesso,
-                                    idc_forca_altera_senha as IdcForcaAlteraSenha
-                            FROM usuario ";
+        string _queryBuscaUsuarioSemSenha = @"  SELECT	num_usuario as Id,
+                                                        nom_usuario as NomeUsuario,
+                                                        e_mail as eMail,
+                                                        idc_ativo as IdcAtivo,
+                                                        dth_ultimo_acesso as UltimoAcesso,
+                                                        idc_forca_altera_senha as IdcForcaAlteraSenha
+                                                FROM usuario ";
+
+        string _queryBuscaUsuarioComSenha = @$"SELECT	num_usuario as Id,
+                                                nom_usuario as NomeUsuario,
+                                                e_mail as eMail,
+                                                idc_ativo as IdcAtivo,
+                                                des_senha as DesSenha,
+                                                dth_ultimo_acesso as UltimoAcesso,
+                                                idc_forca_altera_senha as IdcForcaAlteraSenha
+                                        FROM usuario";
 
         public List<UsuarioDominio> GetList(string idcAtivo)
         {
             try
             {
-                var _novaQuery = $"{_query} WHERE idc_ativo = '{idcAtivo}'";
+                var _novaQuery = $"{_queryBuscaUsuarioSemSenha} WHERE idc_ativo = '{idcAtivo}'";
 
                 return this.ConexaoBD.Query<UsuarioDominio>(_novaQuery).ToList();
             }
@@ -42,7 +51,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"{_query} WHERE num_usuario = {id}";
+                var _buscaUsuario = @$"{_queryBuscaUsuarioSemSenha} WHERE num_usuario = {id}";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }
@@ -60,15 +69,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"SELECT	num_usuario as Id,
-                                                nom_usuario as NomeUsuario,
-                                                e_mail as eMail,
-                                                idc_ativo as IdcAtivo,
-                                                des_senha as DesSenha,
-                                                dth_ultimo_acesso as UltimoAcesso,
-                                                idc_forca_altera_senha as IdcForcaAlteraSenha
-                                        FROM usuario
-                                        WHERE num_usuario = {id}";
+                var _buscaUsuario = @$"{_queryBuscaUsuarioComSenha} WHERE num_usuario = {id}";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
             }
@@ -86,7 +87,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"{_query} WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
+                var _buscaUsuario = @$"{_queryBuscaUsuarioSemSenha} WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioDominio>(_buscaUsuario);
             }
@@ -104,15 +105,7 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _buscaUsuario = @$"SELECT	num_usuario as Id,
-                                                nom_usuario as NomeUsuario,
-                                                e_mail as eMail,
-                                                idc_ativo as IdcAtivo,
-                                                des_senha as DesSenha,
-                                                dth_ultimo_acesso as UltimoAcesso,
-                                                idc_forca_altera_senha as IdcForcaAlteraSenha
-                                        FROM usuario
-                                        WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
+                var _buscaUsuario = @$"{_queryBuscaUsuarioComSenha} WHERE lower(e_mail) = '{eMail.Trim().ToLower()}'";
 
                 return this.ConexaoBD.QueryFirstOrDefault<UsuarioViewDominio>(_buscaUsuario);
             }
@@ -130,16 +123,10 @@ namespace Lusitan.GPES.Infra.Repositorio
         {
             try
             {
-                var _query = @" INSERT INTO usuario (nom_usuario, des_senha, e_mail, idc_ativo, dth_ultimo_acesso, idc_forca_altera_senha) 
-                                VALUES (@NOM_USUARIO, @DES_SENHA, @E_MAIL, 'A', NULL, 'S')";
+                var _query = @$" INSERT INTO usuario (nom_usuario, des_senha, e_mail, idc_ativo, dth_ultimo_acesso, idc_forca_altera_senha) 
+                                VALUES ('{obj.NomeUsuario.Trim()}', '{obj.DesSenha.Trim()}', '{obj.eMail.Trim().ToLower()}', 'A', NULL, 'S')";
 
-                this.ConexaoBD.Execute(_query.ToString(),
-                                        new
-                                        {
-                                            NOM_USUARIO = obj.NomeUsuario.Trim(),
-                                            DES_SENHA = obj.DesSenha.Trim(),
-                                            E_MAIL = obj.eMail.Trim().ToLower()
-                                        });
+                this.ConexaoBD.Execute(_query.ToString());
 
                 return string.Empty;
             }

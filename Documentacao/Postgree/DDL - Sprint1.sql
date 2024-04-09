@@ -30,9 +30,9 @@ create index ix2_usuario on usuario(idc_ativo);
 
 create table usuario_log
 (
-  num_usuario int GENERATED ALWAYS AS identity,
+  num_usuario int  not null,
   num_usuario_log int  not null,
-  desc_log varchar(100)  not null,
+  desc_log text  not null,
   dth_log timestamp default now(),
   num_usuario_resp int  not null,
   constraint fk1_usuario_log foreign key (num_usuario) references usuario(num_usuario),

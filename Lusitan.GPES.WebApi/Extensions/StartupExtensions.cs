@@ -3,15 +3,12 @@ using Lusitan.GPES.Core.Config;
 using Lusitan.GPES.Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Text;
 
 namespace Lusitan.GPES.WebApi.Extensions
@@ -21,13 +18,6 @@ namespace Lusitan.GPES.WebApi.Extensions
     {
         public static void ConfigureServices(this IServiceCollection service, IConfiguration configuration)
         {
-            #region Multi-idiomas
-            service.AddLocalization();
-            service.AddSingleton<LocalizationMiddleware>();
-            service.AddDistributedMemoryCache();
-            service.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
-            #endregion
-
             var _confAmbiente = new ConfigAmbiente();
             configuration.Bind("ConfigAmbiente", _confAmbiente);
             service.AddSingleton(_confAmbiente);
@@ -84,13 +74,6 @@ namespace Lusitan.GPES.WebApi.Extensions
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "GPES - API de Integração");
                 c.RoutePrefix = "docs";
             });
-        }
-
-        public static void ConfigureMultiIdiomas(this IApplicationBuilder app)
-        {
-            app.UseRequestLocalization(new RequestLocalizationOptions { DefaultRequestCulture = new RequestCulture(new CultureInfo("pt-BR")) });
-            app.UseStaticFiles();
-            app.UseMiddleware<LocalizationMiddleware>();
         }
     }
 }

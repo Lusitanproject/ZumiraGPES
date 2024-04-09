@@ -14,7 +14,7 @@ namespace Lusitan.GPES.Aplicacao
 
         protected void TrataErro(string msgErro)
         {
-            NLog.LogManager.GetCurrentClassLogger().Error(msgErro);
+            NLog.LogManager.GetLogger("fileTarget").Error(msgErro);
         }
 
         protected string RemovePrimeiroEUltimo(string txt)
@@ -23,12 +23,24 @@ namespace Lusitan.GPES.Aplicacao
         protected string EnviaEMail(ConfigXMS configXMS, EMailDominio eMail)
         {
             var _reqEnviaEmail = new RestRequest("/api/XMS/controle-mensagem", Method.Post);
+            _reqEnviaEmail.RequestFormat = DataFormat.Json;
 
-            _reqEnviaEmail.AddJsonBody(eMail);
+            _reqEnviaEmail.AddBody(eMail);
 
             var _resultado = new RestClient(configXMS.WebApi).Execute(_reqEnviaEmail);
 
-            return _resultado.IsSuccessful? $"Id e-mail: {this.RetiraAspas(_resultado.Content)}": $"Erro ao enviar e-mail: {this.RetiraAspas(_resultado.Content)}";
+            if (_resultado.IsSuccessful)
+            {
+                return $"Id e-mail: {this.RetiraAspas(_resultado.Content)}";
+            }
+            else
+            {
+                var _msg = $"Erro ao enviar e-mail: {_resultado.Content}";
+
+                TrataErro(_msg);
+
+                return _msg;
+            }
         }
     }
 }

@@ -13,19 +13,16 @@ namespace Lusitan.GPES.Aplicacao
         readonly IPerfilAcessoAppService _perfilAcesso;
         readonly IUsuarioServico _usuario;
         readonly IUsuarioLogAppService _logUsuario;
-        readonly IStringLocalizer<UsuarioPerfilAppService> _localizador;
 
         public UsuarioPerfilAppService(IUsuarioPerfilServico servico,
                                        IPerfilAcessoAppService perfilAcesso,
                                        IUsuarioServico usuario,
-                                       IUsuarioLogAppService logUsuario,
-                                       IStringLocalizer<UsuarioPerfilAppService> localizador)
+                                       IUsuarioLogAppService logUsuario)
         {
             _servico = servico;
             _perfilAcesso = perfilAcesso;
             _usuario = usuario;
             _logUsuario = logUsuario;
-            _localizador = localizador;
         }
 
 		[ExcludeFromCodeCoverage]
@@ -70,13 +67,14 @@ namespace Lusitan.GPES.Aplicacao
             {
                 if (_servico.GetByPerfil(obj.IdPerfilAcesso).Any(x => x.IdUsuario == obj.IdUsuario))
                 {
-                    return _localizador.GetString("msgUsuarioJaInclusoPerfil");
+                    return "Este Usuário já esta associado a este Perfil!"; // _localizador.GetString("msgUsuarioJaInclusoPerfil");
                 }
 
                 _logUsuario.Add(new UsuarioLogDominio()
                 {
                     IdUsuario = obj.IdUsuario,
-                    DescLog = string.Format(_localizador.GetString("msgUsuarioIncluidoPerfil"), _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
+                    //DescLog = string.Format(_localizador.GetString("msgUsuarioIncluidoPerfil"), _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
+                    DescLog = string.Format("Usuário incluído no Perfil {0}", _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
                     IdUsuarioResp = obj.IdUsuarioResp
                 });
 
@@ -99,7 +97,8 @@ namespace Lusitan.GPES.Aplicacao
                 _logUsuario.Add(new UsuarioLogDominio()
                 {
                     IdUsuario = obj.IdUsuario,
-                    DescLog = string.Format(_localizador.GetString("msgUsuarioExcluidoPerfil"), _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
+                    DescLog = string.Format("Usuário excluído do Perfil {0}", _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
+                    //DescLog = string.Format(_localizador.GetString("msgUsuarioExcluidoPerfil"), _perfilAcesso.GetById(obj.IdPerfilAcesso).NomPerfil),
                     IdUsuarioResp = obj.IdUsuarioResp
                 });
 

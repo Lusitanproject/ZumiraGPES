@@ -11,11 +11,12 @@ namespace Lusitan.GPES.Aplicacao.TextoEMAil
                         Aqui estão os seus dados para acessar a plataforma e começar a sua jornada de sucesso!
                         Login: {usu.eMail}
                         Senha:  {senhaPadrao}
-                        Para entrar  gora e encontrar novas oportunidades, clique no link abaixo:
+                        Para entrar  agora e encontrar novas oportunidades, clique no link abaixo:
+                        
                         Login
-                          só  sar as credenciais informadas acima. Anote-as para não esquecer, ok? :)
+                          só  usar as credenciais informadas acima. Anote-as para não esquecer, ok? :)
 
-                        Que  omece  ma jornada de facilidades e descobertas.
+                        Que  comece  ma jornada de facilidades e descobertas.
                         Com 🧡 
                         Equipe Zumira 
                     ";
@@ -29,6 +30,7 @@ namespace Lusitan.GPES.Aplicacao.TextoEMAil
                         Login: {usu.eMail}
                         Password:  {senhaPadrao}
                         To join now and find new opportunities, click the link below:
+
                         Login
                           Just use the credentials provided above. Write them down so you don't forget, ok? :)
 
@@ -46,6 +48,7 @@ namespace Lusitan.GPES.Aplicacao.TextoEMAil
                         Login: {usu.eMail}
                         Contraseña:  {senhaPadrao}
                         Para unirse ahora y encontrar nuevas oportunidades, haga clic en el siguiente enlace:
+
                         Login
                           simplemente use las credenciales proporcionadas anteriormente. Escríbelas para no olvidarlas., ok? :)
 

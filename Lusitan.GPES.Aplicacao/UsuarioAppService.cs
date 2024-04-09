@@ -25,7 +25,6 @@ namespace Lusitan.GPES.Aplicacao
         readonly ILogAcessoErroAppService _logAcessoErro;
         readonly ConfigAmbiente _config;
         readonly ConfigXMS _configXMS;
-        readonly IStringLocalizer<UsuarioAppService> _localizador;
 
         public UsuarioAppService(ConfigAmbiente config,
                                     ConfigXMS configXMS,
@@ -33,8 +32,7 @@ namespace Lusitan.GPES.Aplicacao
                                     IPerfilAcessoAppService perfilAcesso,
                                     IUsuarioPerfilAppService usuarioPerfil,
                                     IUsuarioLogAppService log,
-                                    ILogAcessoErroAppService logAcessoErro,
-                                    IStringLocalizer<UsuarioAppService> localizador)
+                                    ILogAcessoErroAppService logAcessoErro)
         {
             _config = config;
             _configXMS = configXMS;
@@ -43,7 +41,6 @@ namespace Lusitan.GPES.Aplicacao
             _usuarioPerfil = usuarioPerfil;
             _log = log;
             _logAcessoErro = logAcessoErro;
-            _localizador = localizador;
         }
 
         string AddUsuario(UsuarioDominio obj)
@@ -52,7 +49,7 @@ namespace Lusitan.GPES.Aplicacao
 
             if (_novoUsuario != null)
             {
-                return _localizador.GetString("msgJaExisteUsuarioComEMail");
+                return "Já existe um Usuário cadastrado com este E-Mail!"; // _localizador.GetString("msgJaExisteUsuarioComEMail");
             }
 
             var _msg = _servico.Add(new UsuarioViewDominio()
@@ -70,10 +67,6 @@ namespace Lusitan.GPES.Aplicacao
 
                 switch (CultureInfo.CurrentCulture.Name)
                 {
-                    case "pt-BR":
-                        _msgEMail = TextoEMailNovoUsuario.GetTextoPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
-                        break;
-
                     case "en-US":
                         _msgEMail = TextoEMailNovoUsuario.GetTextoEn(_novoUsuario, _config.SenhaPadraoNovoUsuario);
                         break;
@@ -81,18 +74,23 @@ namespace Lusitan.GPES.Aplicacao
                     case "es-AR":
                         _msgEMail = TextoEMailNovoUsuario.GetTextoEs(_novoUsuario, _config.SenhaPadraoNovoUsuario);
                         break;
+
+                    default:
+                        _msgEMail = TextoEMailNovoUsuario.GetTextoPtb(_novoUsuario, _config.SenhaPadraoNovoUsuario);
+                        break;
                 }
 
-                this.EnviaEMailParaUsuario( _novoUsuario,
-                                            _localizador.GetString("tituloMSgNovoAcesso"),
-                                            _msgEMail);
+                _msg = this.EnviaEMailParaUsuario(  _novoUsuario,
+                                                    "Novo acesso",
+                                                    //_localizador.GetString("tituloMSgNovoAcesso"),
+                                                    _msgEMail);
             }
 
             return _msg;
         }
 
 		[ExcludeFromCodeCoverage]
-		void EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
+		string EnviaEMailParaUsuario(UsuarioDominio obj, string descAssunto, string msg)
         {
             var _msgEnvioEmail = this.EnviaEMail(_configXMS,
                                                   new EMailDominio()
@@ -103,11 +101,12 @@ namespace Lusitan.GPES.Aplicacao
                                                      DescMensagem = msg
                                                   });
 
-            _log.Add(new UsuarioLogDominio() {
-                                                IdUsuario = obj.Id,
-                                                DescLog = string.Format(_localizador.GetString("msgRetornoEnvioEMail"), _msgEnvioEmail),
-                                                IdUsuarioResp = obj.Id
-                                             });
+            return _log.Add(new UsuarioLogDominio() {
+                                                        IdUsuario = obj.Id,
+                                                        DescLog = string.Format("Retorno envio e-mail: {0}", _msgEnvioEmail),
+                                                        //DescLog = string.Format(_localizador.GetString("msgRetornoEnvioEMail"), _msgEnvioEmail),
+                                                        IdUsuarioResp = obj.Id
+                                                    });
         }
 
 
@@ -352,12 +351,12 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (_usuario.IdcAtivo != "A")
                 {
-                    return _localizador.GetString("msgBloqueioAlteraSenhaUsuario");
+                    return "Não é possível Alterar a Senha de um Usuário Bloqueado ou Inativo!"; // _localizador.GetString("msgBloqueioAlteraSenhaUsuario");
                 }
 
                 if (CORE.CryptObj.Decripta(_usuario.DesSenha.Trim()) != obj.SenhaAntiga.Trim())
                 {
-                    return _localizador.GetString("msgSenhaAtualNaoConfere");
+                    return "A senha atual não confere com a já cadastrada!"; // _localizador.GetString("msgSenhaAtualNaoConfere");
                 }
 
                 _usuario.DesSenha = CORE.CryptObj.Encripta(obj.SenhaNova);
@@ -367,7 +366,10 @@ namespace Lusitan.GPES.Aplicacao
 
                 if (string.IsNullOrEmpty(_resultado))
                 {
-                    _log.Add(new UsuarioLogDominio() { IdUsuario = obj.NumUsuario, IdUsuarioResp = obj.NumUsuarioResp, DescLog = _localizador.GetString("logSenhaAlterada") });
+                    _log.Add(new UsuarioLogDominio() {  IdUsuario = obj.NumUsuario, 
+                                                        IdUsuarioResp = obj.NumUsuarioResp, 
+                                                        DescLog = "Senha alterada" //_localizador.GetString("logSenhaAlterada") 
+                                                     });
                 }
             }
             catch (Exception ex)
@@ -395,15 +397,15 @@ namespace Lusitan.GPES.Aplicacao
                     switch (idcAtivo)
                     {
                         case "A":
-                            _msg = _localizador.GetString("logUsuarioAtivado");
+                            _msg = "Usuário ativado"; // _localizador.GetString("logUsuarioAtivado");
                             break;
 
                         case "B":
-                            _msg = _localizador.GetString("logUsuarioBloqueado");
+                            _msg = "Usuário bloqueado"; // _localizador.GetString("logUsuarioBloqueado");
                             break;
 
                         case "I":
-                            _msg = _localizador.GetString("logUsuarioInativado");
+                            _msg = "Usuário inativado"; // _localizador.GetString("logUsuarioInativado");
                             break;
                     }
                 }
@@ -444,10 +446,6 @@ namespace Lusitan.GPES.Aplicacao
 
                 switch (CultureInfo.CurrentCulture.Name)
                 {
-                    case "pt-BR":
-                        _msgEMail = TextoEMailReenvioSenha.GetTextoPtb(_usuario);
-                        break;
-
                     case "en-US":
                         _msgEMail = TextoEMailReenvioSenha.GetTextoEn(_usuario);
                         break;
@@ -455,13 +453,21 @@ namespace Lusitan.GPES.Aplicacao
                     case "es-AR":
                         _msgEMail = TextoEMailReenvioSenha.GetTextoEs(_usuario);
                         break;
+
+                    default:
+                        _msgEMail = TextoEMailReenvioSenha.GetTextoPtb(_usuario);
+                        break;
                 }
 
                 this.EnviaEMailParaUsuario(_servico.GetById(idUsuario),
-                                            _localizador.GetString("tituloMSgReenvioSenha").Value,
+                                            //_localizador.GetString("tituloMSgReenvioSenha").Value,
+                                            "Senha de acesso",
                                             _msgEMail);
 
-                _log.Add(new UsuarioLogDominio() { IdUsuario = idUsuario, IdUsuarioResp = idUsuarioResp, DescLog = _localizador.GetString("logReenvioSenhaEMail") });
+                _log.Add(new UsuarioLogDominio() {  IdUsuario = idUsuario,   
+                                                    IdUsuarioResp = idUsuarioResp, 
+                                                    DescLog = "Senha Reenviada por e-mail" //_localizador.GetString("logReenvioSenhaEMail") 
+                                                 });
             }
             catch (Exception ex)
             {

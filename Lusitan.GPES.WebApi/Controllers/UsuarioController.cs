@@ -5,6 +5,7 @@ using Lusitan.GPES.Core.Interface.Aplicacao;
 using Lusitan.GPES.Core.Interface.Repositorio;
 using Lusitan.GPES.Core.Request;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -39,7 +40,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status422UnprocessableEntity, _msg);
                 }
 
                 var _response = _appServico.Login(login);
@@ -103,12 +104,12 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status422UnprocessableEntity, _msg);
                 }
 
                 _msg = _appServico.AddUsuarioPerfil(obj, Perfil);
 
-                return string.IsNullOrEmpty(_msg) ? Ok(_msg) : BadRequest(_msg);
+                return string.IsNullOrEmpty(_msg) ? this.StatusCode(StatusCodes.Status201Created, _msg) : BadRequest(_msg);
             }
             catch (Exception ex)
             {
@@ -143,7 +144,7 @@ namespace Lusitan.GPES.WebApi.Controllers
 
                 if (!string.IsNullOrEmpty(_msg))
                 {
-                    return BadRequest(_msg);
+                    return this.StatusCode(StatusCodes.Status422UnprocessableEntity, _msg);
                 }
 
                 _msg = _appServico.AlteraSenha(obj);
